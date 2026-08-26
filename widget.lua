@@ -82,12 +82,6 @@ THEMES = {
             red = "#da4453",
         },
 
-        gradients = {
-            text_value = { { 1, "#27ae60", 1 } },
-            bar_cpu = { { 1, "#3daee9", 1 } },
-            border_subtle = { { 1, "#a1a9b1", 0.6 } },
-        },
-
         defaults = {
             background = {
                 bg = { { 1, "#202326", 0.9 } },
@@ -141,127 +135,12 @@ _PADDING = 10
 
 require("require")
 
-draw[#draw + 1] = {
-    type = "background",
-    x = 0,
-    y = 0,
-    w = 0,
-    h = 0,
-    radius = 12,
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    view = "main",
-    x = 10,
-    y = 10,
-    font = "Mono",
-    size = 12,
-    text = "Cpu:",
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    view = "main",
-    x = 330,
-    y = 10,
-    font = "Mono",
-    size = 12,
-    text = "${lua conky_cpu_name}",
-    align = "right",
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    view = "main",
-    x = 10,
-    y = 25,
-    font = "Mono",
-    size = 12,
-    text = "Temperature:",
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    view = "main",
-    x = 140,
-    y = 25,
-    font = "Mono",
-    size = 12,
-    text = "${lua conky_cpu_temp}°C",
-    align = "right",
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    view = "main",
-    x = 330,
-    y = 25,
-    font = "Mono",
-    size = 12,
-    text = "${cpu}%",
-    align = "right",
-}
-
-draw[#draw + 1] = {
-    type = "graph",
-    view = "main",
-    x = 10,
-    y = 45,
-    width = 320,
-    height = 135,
-    value = "${cpu}",
-    max = 100,
-    graph_type = "fill",
-    grid = true,
-    grid_steps = 5,
-    grid_color = { { 1, "#aaaaaa", 1 } },
-    autoscale = true,
-}
-
-for i = 1, 12 do
-    local current_y = 10 + (i - 1) * 15
-
-    draw[#draw + 1] = {
-        type = "text",
-        x = 10,
-        y = current_y,
-        font = "Mono",
-        size = 12,
-        text = "Cpu" .. i .. ": ${cpu cpu" .. i .. "}%",
-        view = "view_1",
-    }
-
-    draw[#draw + 1] = {
-        type = "text",
-        view = "view_1",
-        x = 330,
-        y = current_y,
-        font = "Mono",
-        size = 12,
-        text = "${freq " .. i .. "}Mhz",
-        align = "right",
-    }
-
-    draw[#draw + 1] = {
-        type = "bar",
-        view = "view_1",
-        x = 100,
-        y = current_y,
-        width = 170,
-        height = 12,
-        value = "${cpu cpu" .. i .. "}",
-        max = 100,
-    }
-    end
-
 
 _GROUPS = {
 }
 
 _VIEWS = {
     { name = "main" },
-    { name = "view_1" },
 }
 
 ------------------------------------------------------------
@@ -275,7 +154,13 @@ _VIEWS = {
 ------------------------------------------------------------
 
 _MOUSE_ENABLED = true
-MOUSE_CLICK_LEFT = function() view_toggle("view_1") end
+
+
+function conky_weather_update()
+    conky_load_weather_data()
+    conky_update_alerts()
+    return ""
+end
 
 
 ------------------------------------------------------------

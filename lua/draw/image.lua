@@ -63,18 +63,25 @@ function draw_png(cr, m)
     if not conky_window then return end
     if not m.path then return nil end
 
-    -- resolve function / exec table path at draw time
+    -- resolve function / exec table path at draw time — into LOCAL
+    -- variables only. Never write back into `m`: it is the actual
+    -- persistent item table from draw[], shared across every frame.
+    -- Overwriting m.path/m.x/m.y here would permanently replace the
+    -- function with its first-resolved value, so it would never be
+    -- called again (icon/position frozen until the widget restarts).
     local path = m.path
     if type(path) == "table" and path.exec then path = path.exec()
     elseif type(path) == "function" then path = path() end
     if not path then return nil end
-    m.path = path
 
-    -- resolve function x/y at draw time
-    if type(m.x) == "function" then m.x = m.x() end
-    if type(m.y) == "function" then m.y = m.y() end
+    local x, y = m.x, m.y
+    if type(x) == "function" then x = x() end
+    if type(y) == "function" then y = y() end
 
     local c = apply_defaults(m, PNG_DEFAULT)
+    c.path = path
+    c.x = x
+    c.y = y
 
     local cached = PNG_CACHE[c.path]
     local reload = (not cached) or not is_surface_valid(cached.surface)

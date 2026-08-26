@@ -39,7 +39,7 @@ for _root, _dirs, _files in os.walk(_here):
 
 import gi
 gi.require_version("Gtk", "3.0")
-gi.require_version("GtkSource", "3.0")
+gi.require_version("GtkSource", "4")
 from gi.repository import Gtk, Gdk, GdkPixbuf, GLib, GObject, Pango, GtkSource
 
 GLib.set_prgname("nextgen-designer")

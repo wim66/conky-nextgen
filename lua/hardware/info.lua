@@ -22,6 +22,8 @@ function conky_cpu_name()
 	return cached("cpu_model", 86400, function()
 		local name = read_file("/proc/cpuinfo"):match("model name%s+:%s+(.-)\n") or "Unknown CPU"
 		return name:gsub("[™®]", "")
+			:gsub("%(R%)", "")
+			:gsub("%(TM%)", "")
 			:gsub("CPU", "")
 			:gsub("Processor", "")
 			:gsub("%s+", " ")

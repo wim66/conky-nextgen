@@ -71,7 +71,7 @@ mkdir -p "$TMP_DIR"
 fetch_weather() {
     local city_raw="${1:-Vienna}"
     local city=$(urlencode "$city_raw")
-    local lang="hu" forecast_days=7 air_forecast_days=4
+    local lang="nl" forecast_days=7 air_forecast_days=4
     local cj="$TMP_DIR/city.json"
 
     log "[geo] Geocoding $city_raw"
@@ -112,10 +112,6 @@ fetch_weather() {
     # log "[met] metnorway_raw.json"
     # curl_cmd "https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${lat}&lon=${lon}" >"$TMP_DIR/metnorway_raw.json.tmp" || { rm -f "$TMP_DIR/metnorway_raw.json.tmp"; log "[warn] MET Norway download failed"; }
     # [ -s "$TMP_DIR/metnorway_raw.json.tmp" ] && mv "$TMP_DIR/metnorway_raw.json.tmp" "$TMP_DIR/metnorway_raw.json" || { rm -f "$TMP_DIR/metnorway_raw.json.tmp"; log "[warn] MET Norway empty response"; }
-}
-
-# -------------------------------------------------------------------
-
 
     log "[sw] all done"
 }

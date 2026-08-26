@@ -6,20 +6,14 @@
 --}}}
 
 --{{{
---  widget.lua — Widget data (generated/edited by sh/designer/main.py)
---  Loaded directly by Conky (lua_load = 'widget.lua'). Structure:
---    Global paths / config (formerly settings.lua)
---    DEFAULT_THEME / _PADDING — global settings
---    draw[#draw + 1] = { ... }        — draw items (background, clock, bar, ...)
---    _GROUPS = { { name, views } }    — item groups (view switching)
---    _VIEWS  = { { name } }           — view definitions
---    MOUSE_*_ACTION = ...             — mouse event callbacks
---    Bootstrap (formerly init.lua)    — loads the modules, inits the groups
+--  music.lua — Widget data (generated/edited by sh/designer/main.py)
+--  Loaded directly by Conky (lua_load = 'music.lua'). Shows the
+--  currently playing track via conky_nowplaying_*() (lua/nowplaying.lua).
 --}}}
 
 ------------------------------------------------------------
 -- Global paths / config (formerly settings.lua)
--- script_dir is widget.lua's own directory (the project root)
+-- script_dir is music.lua's own directory (the project root)
 ------------------------------------------------------------
 script_dir = debug.getinfo(1, "S").source:match("@?(.*/)") or "./"
 
@@ -35,38 +29,16 @@ JSON_PATH      = script_dir .. "tmp/"
 
 draw = {}
 
-
 ICON_BASE      = script_dir .. "icons/"
 ICON_THEME     = "default"
 MOON_ICON_BASE = script_dir .. "icons/moon/"
 WIND_ICON_BASE = script_dir .. "icons/wind/"
 
 --{{{
--- THEMES — Theme definitions (palette, gradients, widget defaults).
--- Lives in widget.lua, before the modules are loaded, so that
--- theme_engine.lua picks it up (THEMES = THEMES or {}).
---
--- THEMES = {
---   theme = {
---     palette   = { key = "#hex", ... },
---     gradients = { name = { stops }, ... },
---     defaults  = {
---       background = { bg, border, border_width },
---       bar        = { fg, bg },
---       graph      = { fg, bg, border, grid_color },
---       ring       = { fg, bg },
---       text       = { color },
---       line       = { fg },
---       clock      = { bg, border, tick/number/hand colors },
---       calendar   = { color_month, color_weekdays, ... },
---     },
---   },
--- }
+-- THEMES — same palette as the other NextGen widgets, kept identical
+-- so music.conf matches the rest of the desktop at a glance.
 --}}}
-
 THEMES = {
-
-    -- ═══ THEME ═══
 
     theme = {
 
@@ -139,7 +111,26 @@ THEMES = {
 DEFAULT_THEME = "theme"
 _PADDING = 10
 
-require("require")
+------------------------------------------------------------
+-- Now Playing — draw items
+-- Data comes from lua/nowplaying.lua (conky_nowplaying_*), already
+-- wired into the central loader via require.lua ("EXTRAS" section).
+------------------------------------------------------------
+
+local STATUS_SYMBOL = {
+    Playing = "\226\150\182",  -- ▶
+    Paused  = "\226\143\184",  -- ⏸
+    Stopped = "\226\150\160",  -- ■
+}
+
+-- true only when a track title is actually available; used to switch
+-- between the normal layout and the "nothing playing" fallback text
+-- (fail quiet, per the widget-builder convention: never let a missing
+-- player crash the draw loop with a nil concat).
+local function np_has_track()
+    local ok, t = pcall(conky_nowplaying_title)
+    return ok and t ~= nil and t ~= ""
+end
 
 draw[#draw + 1] = {
     type = "background",
@@ -150,110 +141,77 @@ draw[#draw + 1] = {
     radius = 12,
 }
 
+-- Album art — only drawn when a track AND art are actually available
 draw[#draw + 1] = {
-    type = "text",
-    view = "main",
+    type = "image",
     x = 10,
     y = 10,
-    font = "Mono",
-    size = 12,
-    text = "Cpu:",
+    width = 100,
+    height = 100,
+    path = function() return conky_nowplaying_art_path() end,
+    draw_me = function()
+        return np_has_track() and conky_nowplaying_art_path() ~= nil
+    end,
 }
 
+-- Player + playback status ("▶  spotify")
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
-    x = 330,
-    y = 10,
+    x = 120,
+    y = 12,
     font = "Mono",
-    size = 12,
-    text = "${lua conky_cpu_name}",
-    align = "right",
+    size = 10,
+    text = function()
+        if not np_has_track() then return "" end
+        local status = conky_nowplaying_status() or "Stopped"
+        local symbol = STATUS_SYMBOL[status] or STATUS_SYMBOL.Stopped
+        local player = conky_nowplaying_player() or ""
+        return symbol .. "  " .. player
+    end,
+    color = { { 1, "#3daee9", 1 } },
 }
 
+-- Track title (or the "nothing playing" fallback)
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
-    x = 10,
-    y = 25,
+    x = 120,
+    y = 32,
     font = "Mono",
-    size = 12,
-    text = "Temperature:",
+    size = 13,
+    text = function()
+        if not np_has_track() then return "Niets aan het afspelen" end
+        return conky_nowplaying_title()
+    end,
+    color = { { 1, "#fcfcfc", 1 } },
 }
 
+-- Artist
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
-    x = 140,
-    y = 25,
+    x = 120,
+    y = 54,
     font = "Mono",
-    size = 12,
-    text = "${lua conky_cpu_temp}°C",
-    align = "right",
+    size = 11,
+    text = function()
+        if not np_has_track() then return "" end
+        return conky_nowplaying_artist() or ""
+    end,
+    color = { { 1, "#a1a9b1", 1 } },
 }
 
+-- Album
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
-    x = 330,
-    y = 25,
+    x = 120,
+    y = 72,
     font = "Mono",
-    size = 12,
-    text = "${cpu}%",
-    align = "right",
+    size = 10,
+    text = function()
+        if not np_has_track() then return "" end
+        return conky_nowplaying_album() or ""
+    end,
+    color = { { 1, "#a1a9b1", 1 } },
 }
-
-draw[#draw + 1] = {
-    type = "graph",
-    view = "main",
-    x = 10,
-    y = 45,
-    width = 320,
-    height = 135,
-    value = "${cpu}",
-    max = 100,
-    graph_type = "fill",
-    grid = true,
-    grid_steps = 5,
-    grid_color = { { 1, "#aaaaaa", 1 } },
-    autoscale = true,
-}
-
-for i = 1, 12 do
-    local current_y = 10 + (i - 1) * 15
-
-    draw[#draw + 1] = {
-        type = "text",
-        x = 10,
-        y = current_y,
-        font = "Mono",
-        size = 12,
-        text = "Cpu" .. i .. ": ${cpu cpu" .. i .. "}%",
-        view = "view_1",
-    }
-
-    draw[#draw + 1] = {
-        type = "text",
-        view = "view_1",
-        x = 330,
-        y = current_y,
-        font = "Mono",
-        size = 12,
-        text = "${freq " .. i .. "}Mhz",
-        align = "right",
-    }
-
-    draw[#draw + 1] = {
-        type = "bar",
-        view = "view_1",
-        x = 100,
-        y = current_y,
-        width = 170,
-        height = 12,
-        value = "${cpu cpu" .. i .. "}",
-        max = 100,
-    }
-    end
 
 
 _GROUPS = {
@@ -261,7 +219,6 @@ _GROUPS = {
 
 _VIEWS = {
     { name = "main" },
-    { name = "view_1" },
 }
 
 ------------------------------------------------------------
@@ -275,10 +232,19 @@ _VIEWS = {
 ------------------------------------------------------------
 
 _MOUSE_ENABLED = true
-MOUSE_CLICK_LEFT = function() view_toggle("view_1") end
+
+MOUSE_CLICK_LEFT = function()
+    os.execute("playerctl play-pause &")
+end
+
+MOUSE_CLICK_RIGHT = function()
+    os.execute("playerctl next &")
+end
 
 
 ------------------------------------------------------------
--- Bootstrap (formerly init.lua): initialize the item groups.
+-- Bootstrap (formerly init.lua): load the modules, then
+-- initialize the item groups.
 ------------------------------------------------------------
+require("require")
 init_groups(_GROUPS)
