@@ -115,10 +115,12 @@ class DesignerWindow(Gtk.Window):
         self._state_save_timeout = None  # pending debounced window-state save
         # Conky management (live preview instance)
         self._conky_managed = False
+        self._conky_pid = None
         self.conky_proc = None
         self.conky_log_path = None
         self._spawn_conf_path = None  # preview .conf (X11) vs. real .conf
         self._watchdog_id = None
+        self._state_poller_id = None
         self._restart_debounce_id = None
         # PNG capture queue (Save → on-demand surface export per view)
         self._capture_queue = []
@@ -198,6 +200,16 @@ class DesignerWindow(Gtk.Window):
             )
         )
         conky_box.pack_start(self.btn_reload_all, False, False, 0)
+
+        self.btn_stop_all = Gtk.Button(label="Stop All")
+        self.btn_stop_all.set_tooltip_text(
+            "Kill ALL conky instances.\n"
+            "Use when you need a clean slate."
+        )
+        self.btn_stop_all.connect(
+            "clicked", lambda _: self._conky_stop_all()
+        )
+        conky_box.pack_start(self.btn_stop_all, False, False, 0)
 
         self.conky_state_label = Gtk.Label(label="conky: stopped", xalign=0)
         conky_box.pack_start(self.conky_state_label, False, False, 0)
@@ -865,6 +877,7 @@ class DesignerWindow(Gtk.Window):
         self._refresh_custom_lua_tab()
         self._update_title()
         self._update_conky_state()
+        self._start_state_poller()
         self.status.set_text("Ready — use File > Open or add items")
 
     # ── RELOAD ──
@@ -2091,24 +2104,61 @@ class DesignerWindow(Gtk.Window):
 
     @staticmethod
     def _conky_pids():
-        """All running conky PIDs (pgrep -x conky)."""
+        """All live (non-zombie) conky PIDs — scans /proc directly."""
         pids = []
         try:
-            out = subprocess.run(
-                ["pgrep", "-x", "conky"],
-                capture_output=True, text=True,
-            )
-            for line in out.stdout.split():
-                line = line.strip()
-                if line.isdigit():
-                    pids.append(int(line))
+            for entry in os.listdir("/proc"):
+                if not entry.isdigit():
+                    continue
+                try:
+                    with open(f"/proc/{entry}/comm", "r") as f:
+                        comm = f.read().strip()
+                    if comm == "conky":
+                        with open(f"/proc/{entry}/stat", "r") as f:
+                            parts = f.read().split()
+                            if len(parts) > 2 and parts[2] == "Z":
+                                continue  # skip zombies
+                        pids.append(int(entry))
+                except (OSError, ValueError):
+                    pass
         except OSError:
             pass
         return pids
 
     def _ours_running(self):
-        """True when at least one conky process is alive."""
+        """True when our specific conky process is alive (not zombie)."""
+        if self._conky_pid:
+            try:
+                os.kill(self._conky_pid, 0)
+            except OSError:
+                self._conky_pid = None
+                return False
+            # os.kill(pid, 0) succeeds on zombies — check /proc state
+            try:
+                with open(f"/proc/{self._conky_pid}/stat", "r") as f:
+                    parts = f.read().split()
+                    if len(parts) > 2 and parts[2] == "Z":
+                        self._conky_pid = None
+                        return False
+            except OSError:
+                self._conky_pid = None
+                return False
+            return True
         return bool(self._conky_pids())
+
+    def _read_conky_pid_from_log(self):
+        """Read the daemon PID from the conky log after start."""
+        if not self.conky_log_path:
+            return None
+        try:
+            with open(self.conky_log_path, "r", errors="replace") as f:
+                for line in f:
+                    m = re.search(r"forked to background, pid is (\d+)", line)
+                    if m:
+                        return int(m.group(1))
+        except OSError:
+            pass
+        return None
 
     def _ensure_conf(self):
         conf_path = os.path.splitext(self.save_path)[0] + ".conf"
@@ -2118,10 +2168,18 @@ class DesignerWindow(Gtk.Window):
 
     def _conky_start(self, preview=True):
         self._conky_managed = True
-        if self._ours_running():
+        if self._conky_pid and self._ours_running():
             self._update_conky_state()
             self._start_watchdog()
             return True
+        # Clear the log so we can read the fresh PID
+        if self.conky_log_path is None:
+            self.conky_log_path = os.path.join(WORK_DIR, "conky.log")
+        try:
+            with open(self.conky_log_path, "w") as f:
+                f.truncate(0)
+        except OSError:
+            pass
         conf_path = self._ensure_conf()
         if not os.path.exists(conf_path):
             self.status.set_text(
@@ -2135,8 +2193,6 @@ class DesignerWindow(Gtk.Window):
         self._spawn_conf_path = (
             spawn_conf if spawn_conf != conf_path else None
         )
-        if self.conky_log_path is None:
-            self.conky_log_path = os.path.join(WORK_DIR, "conky.log")
         try:
             logf = open(self.conky_log_path, "ab")
         except OSError:
@@ -2153,8 +2209,11 @@ class DesignerWindow(Gtk.Window):
             self._conky_managed = False
             self.status.set_text(f"Could not start conky: {e}")
             return False
+        time.sleep(0.3)
+        self._conky_pid = self._read_conky_pid_from_log()
         activity_log.add(
             "Conky", f"started conky -c {os.path.basename(spawn_conf)}"
+            + (f" (pid {self._conky_pid})" if self._conky_pid else "")
         )
         self._update_conky_state()
         self._start_watchdog()
@@ -2186,18 +2245,52 @@ class DesignerWindow(Gtk.Window):
 
     def _conky_stop(self):
         self._stop_watchdog()
-        subprocess.run(["killall", "conky"], capture_output=True)
+        if self._conky_pid:
+            subprocess.run(
+                ["kill", str(self._conky_pid)], capture_output=True
+            )
+        self._conky_pid = None
         time.sleep(0.3)
         self._conky_managed = False
         self._update_conky_state()
         activity_log.add("Conky", "stopped conky")
 
+    def _conky_stop_all(self):
+        self._stop_watchdog()
+        subprocess.run(["killall", "conky"], capture_output=True)
+        self._conky_pid = None
+        time.sleep(0.3)
+        self._conky_managed = False
+        self._update_conky_state()
+        activity_log.add("Conky", "stopped ALL conky instances")
+
     def _conky_restart(self):
         self._stop_watchdog()
-        subprocess.run(["killall", "-USR1", "conky"], capture_output=True)
+        if self._conky_pid:
+            subprocess.run(
+                ["kill", "-USR1", str(self._conky_pid)], capture_output=True
+            )
+        else:
+            subprocess.run(
+                ["killall", "-USR1", "conky"], capture_output=True
+            )
         self._start_watchdog()
         self._update_conky_state()
-        activity_log.add("Conky", "restarted conky")
+        activity_log.add("Conky", "reloaded conky")
+
+    def _start_state_poller(self):
+        """Always-on poller: refreshes the conky state label every 3 s."""
+        if self._state_poller_id is None:
+            self._state_poller_id = GLib.timeout_add(3000, self._state_poller_tick)
+
+    def _stop_state_poller(self):
+        if self._state_poller_id is not None:
+            GLib.source_remove(self._state_poller_id)
+            self._state_poller_id = None
+
+    def _state_poller_tick(self):
+        self._update_conky_state()
+        return GLib.SOURCE_CONTINUE
 
     def _start_watchdog(self):
         if self._watchdog_id is None:
@@ -2215,17 +2308,17 @@ class DesignerWindow(Gtk.Window):
         if not self._ours_running():
             activity_log.add("Conky", "watchdog: conky not running — starting")
             self._conky_start()
-        self._update_conky_state()
         return GLib.SOURCE_CONTINUE
 
     def _update_conky_state(self):
         running = self._ours_running()
+        has_ours = self._conky_pid is not None and running
         self.conky_state_label.set_text(
             f"conky: {'running' if running else 'stopped'}"
         )
-        self.btn_conky_run.set_sensitive(not running)
-        self.btn_conky_stop.set_sensitive(running)
-        self.btn_conky_restart.set_sensitive(True)
+        self.btn_conky_run.set_sensitive(not has_ours)
+        self.btn_conky_stop.set_sensitive(has_ours)
+        self.btn_conky_restart.set_sensitive(has_ours)
 
     def _conky_restart_debounced(self):
         """Coalesce full restarts triggered by rapid live writes (X11)."""
@@ -3838,6 +3931,7 @@ class DesignerWindow(Gtk.Window):
         # Stop all management timers. A running conky is left untouched on
         # purpose: it is the desktop widget and keeps showing after exit.
         self._stop_watchdog()
+        self._stop_state_poller()
         for attr in ("_restart_debounce_id", "_capture_poll_id", "_log_poll_id"):
             tid = getattr(self, attr, None)
             if tid is not None:

@@ -299,5 +299,23 @@ _MOUSE_ENABLED = true
 -- Bootstrap (formerly init.lua): load the modules, then
 -- initialize the item groups.
 ------------------------------------------------------------
+------------------------------------------------------------
+-- Package-updates refresh hook — called via ${lua conky_updates_check}
+-- in conky.text. Uses script_dir (portable: resolves to wherever this
+-- .lua file itself was loaded from, independent of the launcher's cwd
+-- or the user's home directory) so it works for any user/clone/launcher.
+------------------------------------------------------------
+local UPDATES_CHECK_INTERVAL = 1800  -- seconds (30 min)
+local last_updates_check = 0
+
+function conky_updates_check()
+    local now = os.time()
+    if now - last_updates_check > UPDATES_CHECK_INTERVAL then
+        last_updates_check = now
+        os.execute(script_dir .. "sh/updates.sh >/dev/null 2>&1 &")
+    end
+    return ""
+end
+
 require("require")
 init_groups(_GROUPS)
