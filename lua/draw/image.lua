@@ -83,12 +83,26 @@ function draw_png(cr, m)
     c.x = x
     c.y = y
 
+    -- PNG_CACHE is keyed by path string only, which is correct for
+    -- static per-code assets (weather icons: 2d.png never changes
+    -- content) but wrong for a reused filename whose CONTENT changes
+    -- (e.g. album_art.png gets overwritten on every song change while
+    -- keeping the same path) — without an mtime check, a cache hit on
+    -- that unchanged path would keep serving the previous song's art
+    -- forever. lfs is already a global (loaded by require.lua), so we
+    -- can cheaply stat() the file each draw and invalidate on change.
     local cached = PNG_CACHE[c.path]
+    local mtime
+    if lfs then
+        local attr = lfs.attributes(c.path)
+        mtime = attr and attr.modification
+    end
     local reload = (not cached) or not is_surface_valid(cached.surface)
+        or (mtime and cached.mtime ~= mtime)
     if reload then
         local img = cairo_image_surface_create_from_png(c.path)
         if cairo_surface_status(img) == 0 then
-            cache_set(PNG_CACHE, c.path, { surface = img }, 256)
+            cache_set(PNG_CACHE, c.path, { surface = img, mtime = mtime }, 256)
         else
             cairo_surface_destroy(img)
             return
