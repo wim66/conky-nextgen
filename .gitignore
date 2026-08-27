@@ -1,3 +1,5 @@
+.vscode
+.luacheckrc
 .env
 __pycache__/
 *.pyc

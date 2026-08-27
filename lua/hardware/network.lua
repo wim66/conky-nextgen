@@ -14,6 +14,13 @@
 --     Name of the active WiFi interface, or "lo"/empty when offline.
 --   conky_wifi_active()     → 1|0
 --     Whether a WiFi interface is currently up.
+--   conky_ethernet_interface() → string ("enp3s0"), "" if none found
+--   conky_ethernet_active()    → 1|0
+--   conky_active_iface()       → string, ethernet preferred over wifi
+--   conky_net_downspeed()/conky_net_upspeed()   → string, for the active iface
+--   conky_net_downspeedf()/conky_net_upspeedf() → number (KiB/s), for graphs
+--   conky_net_totaldown()/conky_net_totalup()   → string, since this conky
+--     instance started, for the active iface
 --   conky_public_ip()       → string ("1.2.3.4")
 --     Public IPv4 address as reported by the network fetcher.
 --   conky_public_city()     → string ("Budapest")
@@ -38,6 +45,8 @@
 --   conky_wifi_downspeedf(iface) → string (e.g. "1.2 KiB/s")
 --   conky_wifi_upspeed(iface)    → string (e.g. "1.2 KiB/s")
 --   conky_wifi_upspeedf(iface)   → string (e.g. "1.2 KiB/s")
+--   conky_wifi_totaldown(iface)  → string, since this conky instance started
+--   conky_wifi_totalup(iface)    → string, since this conky instance started
 --   All wireless_* functions accept optional iface argument,
 --   default = conky_wifi_interface().
 --
@@ -50,97 +59,176 @@ local network_ping_cache = ""
 local network_ip_cache = ""
 
 local function read_network_file(filename)
-	local path = JSON_PATH .. filename
-	local f = io.open(path, "r")
-	if not f then return "" end
-	local data = f:read("*a")
-	f:close()
-	return data or ""
+    local path = JSON_PATH .. filename
+    local f = io.open(path, "r")
+    if not f then return "" end
+    local data = f:read("*a")
+    f:close()
+    return data or ""
 end
 
 local function get_ping_data()
-	local now = os.time()
-	if now - network_ping_time >= 10 then
-		network_ping_time = now
-		network_ping_cache = read_network_file("network_ping.json")
-	end
-	return network_ping_cache
+    local now = os.time()
+    if now - network_ping_time >= 10 then
+        network_ping_time = now
+        network_ping_cache = read_network_file("network_ping.json")
+    end
+    return network_ping_cache
 end
 
 local function get_ip_data()
-	local now = os.time()
-	if now - network_ip_time >= 600 then
-		network_ip_time = now
-		network_ip_cache = read_network_file("network_ip.json")
-	end
-	return network_ip_cache
+    local now = os.time()
+    if now - network_ip_time >= 600 then
+        network_ip_time = now
+        network_ip_cache = read_network_file("network_ip.json")
+    end
+    return network_ip_cache
 end
 
 function conky_wifi_interface()
-	return cached("wifi_iface", 3600, function()
-		if lfs then
-			for iface in lfs.dir("/sys/class/net") do
-				if iface ~= "." and iface ~= ".." then
-					local f = io.open("/sys/class/net/" .. iface .. "/wireless", "r")
-					if f then
-						f:close()
-						return iface
-					end
-				end
-			end
-		else
-			local list = pread("ls /sys/class/net 2>/dev/null")
-			for iface in list:gmatch("[^\n]+") do
-				local f = io.open("/sys/class/net/" .. iface .. "/wireless", "r")
-				if f then
-					f:close()
-					return iface
-				end
-			end
-		end
-		return ""
-	end)
+    return cached("wifi_iface", 3600, function()
+        if lfs then
+            for iface in lfs.dir("/sys/class/net") do
+                if iface ~= "." and iface ~= ".." then
+                    local f = io.open("/sys/class/net/" .. iface .. "/wireless", "r")
+                    if f then
+                        f:close()
+                        return iface
+                    end
+                end
+            end
+        else
+            local list = pread("ls /sys/class/net 2>/dev/null")
+            for iface in list:gmatch("[^\n]+") do
+                local f = io.open("/sys/class/net/" .. iface .. "/wireless", "r")
+                if f then
+                    f:close()
+                    return iface
+                end
+            end
+        end
+        return ""
+    end)
 end
 
 function conky_wifi_active()
-	return cached("wifi_conn", 5, function()
-		local iface = conky_wifi_interface()
-		if iface == "" then
-			return 0
-		end
-		local carrier = read_file("/sys/class/net/" .. iface .. "/carrier")
-		return (carrier == "1") and 1 or 0
-	end)
+    return cached("wifi_conn", 5, function()
+        local iface = conky_wifi_interface()
+        if iface == "" then
+            return 0
+        end
+        local carrier = read_file("/sys/class/net/" .. iface .. "/carrier")
+        return (carrier == "1") and 1 or 0
+    end)
+end
+
+--{{{
+-- Ethernet + "active interface" helpers, for the network widget.
+-- (delegates to the conky_wifi_*(iface) accessors below — no duplicated
+-- conky_parse calls)
+--}}}
+
+function conky_ethernet_interface()
+    return cached("eth_iface", 3600, function()
+        local list = {}
+        if lfs then
+            for iface in lfs.dir("/sys/class/net") do
+                if iface ~= "." and iface ~= ".." then
+                    list[#list + 1] = iface
+                end
+            end
+        else
+            for iface in pread("ls /sys/class/net 2>/dev/null"):gmatch("[^\n]+") do
+                list[#list + 1] = iface
+            end
+        end
+        for _, iface in ipairs(list) do
+            if iface ~= "lo" then
+                local wf = io.open("/sys/class/net/" .. iface .. "/wireless", "r")
+                if wf then
+                    wf:close()
+                else
+                    return iface
+                end
+            end
+        end
+        return ""
+    end)
+end
+
+function conky_ethernet_active()
+    return cached("eth_conn", 5, function()
+        local iface = conky_ethernet_interface()
+        if iface == "" then
+            return 0
+        end
+        local carrier = read_file("/sys/class/net/" .. iface .. "/carrier")
+        return (carrier == "1") and 1 or 0
+    end)
+end
+
+function conky_active_iface()
+    if conky_ethernet_active() == 1 then
+        return conky_ethernet_interface()
+    end
+    if conky_wifi_active() == 1 then
+        return conky_wifi_interface()
+    end
+    return ""
+end
+
+function conky_net_downspeed()
+    return conky_wifi_downspeed(conky_active_iface())
+end
+
+function conky_net_upspeed()
+    return conky_wifi_upspeed(conky_active_iface())
+end
+
+function conky_net_downspeedf()
+    return tonumber(conky_wifi_downspeedf(conky_active_iface())) or 0
+end
+
+function conky_net_upspeedf()
+    return tonumber(conky_wifi_upspeedf(conky_active_iface())) or 0
+end
+
+function conky_net_totaldown()
+    return conky_wifi_totaldown(conky_active_iface())
+end
+
+function conky_net_totalup()
+    return conky_wifi_totalup(conky_active_iface())
 end
 
 function conky_public_ip()
-	local s = get_ip_data()
-	return s:match('"ip"%s*:%s*"([^"]+)"') or "N/A"
+    local s = get_ip_data()
+    return s:match('"ip"%s*:%s*"([^"]+)"') or "N/A"
 end
 
 function conky_public_city()
-	local s = get_ip_data()
-	return s:match('"city"%s*:%s*"([^"]+)"') or "N/A"
+    local s = get_ip_data()
+    return s:match('"city"%s*:%s*"([^"]+)"') or "N/A"
 end
 
 function conky_public_country()
-	local s = get_ip_data()
-	return s:match('"country"%s*:%s*"([^"]+)"') or "N/A"
+    local s = get_ip_data()
+    return s:match('"country"%s*:%s*"([^"]+)"') or "N/A"
 end
 
 function conky_ping_avg()
-	local s = get_ping_data()
-	local avg = s:match("rtt min/avg/max/mdev = [%d%.]+/([%d%.]+)/")
-	return tonumber(avg)
+    local s = get_ping_data()
+    local avg = s:match("rtt min/avg/max/mdev = [%d%.]+/([%d%.]+)/")
+    return tonumber(avg)
 end
 
 function conky_ping_jitter()
-	local s = get_ping_data()
-	local min, _, max = s:match("rtt min/avg/max/mdev = ([%d%.]+)/([%d%.]+)/([%d%.]+)/")
-	if min and max then
-		return math.floor((tonumber(max) - tonumber(min)) * 10) / 10
-	end
-	return 0
+    local s = get_ping_data()
+    local min, _, max = s:match("rtt min/avg/max/mdev = ([%d%.]+)/([%d%.]+)/([%d%.]+)/")
+    if min and max then
+        return math.floor((tonumber(max) - tonumber(min)) * 10) / 10
+    end
+    return 0
 end
 
 --{{{
@@ -148,84 +236,93 @@ end
 --}}}
 
 local function wifi_iface(iface)
-	return iface or conky_wifi_interface() or ""
+    return iface or conky_wifi_interface() or ""
 end
 
 function conky_wifi_ap(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${wireless_ap " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${wireless_ap " .. i .. "}")
 end
 
 function conky_wifi_bitrate(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${wireless_bitrate " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${wireless_bitrate " .. i .. "}")
 end
 
 function conky_wifi_ip(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${addr " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${addr " .. i .. "}")
 end
 
 function conky_wifi_channel(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${wireless_channel " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${wireless_channel " .. i .. "}")
 end
 
 function conky_wifi_essid(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${wireless_essid " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${wireless_essid " .. i .. "}")
 end
 
 function conky_wifi_freq(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${wireless_freq " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${wireless_freq " .. i .. "}")
 end
 
-
 function conky_wifi_downspeed(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${downspeed " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${downspeed " .. i .. "}")
 end
 
 function conky_wifi_downspeedf(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${downspeedf " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${downspeedf " .. i .. "}")
 end
 
 function conky_wifi_upspeed(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${upspeed " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${upspeed " .. i .. "}")
 end
 
 function conky_wifi_upspeedf(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${upspeedf " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${upspeedf " .. i .. "}")
+end
+
+function conky_wifi_totaldown(iface)
+    local i = wifi_iface(iface)
+    return conky_parse("${totaldown " .. i .. "}")
+end
+
+function conky_wifi_totalup(iface)
+    local i = wifi_iface(iface)
+    return conky_parse("${totalup " .. i .. "}")
 end
 
 function conky_wifi_v6addrs(iface, show_netmask, show_scope)
-	local i = wifi_iface(iface)
-	local flags = ""
-	if show_netmask then flags = flags .. " -n" end
-	if show_scope then flags = flags .. " -s" end
-	return conky_parse("${v6addrs" .. flags .. " " .. i .. "}")
+    local i = wifi_iface(iface)
+    local flags = ""
+    if show_netmask then flags = flags .. " -n" end
+    if show_scope then flags = flags .. " -s" end
+    return conky_parse("${v6addrs" .. flags .. " " .. i .. "}")
 end
 
 function conky_wifi_link_qual(iface)
-	local i = wifi_iface(iface)
-	return tonumber(conky_parse("${wireless_link_qual " .. i .. "}"))
+    local i = wifi_iface(iface)
+    return tonumber(conky_parse("${wireless_link_qual " .. i .. "}"))
 end
 
 function conky_wifi_link_qual_max(iface)
-	local i = wifi_iface(iface)
-	return tonumber(conky_parse("${wireless_link_qual_max " .. i .. "}"))
+    local i = wifi_iface(iface)
+    return tonumber(conky_parse("${wireless_link_qual_max " .. i .. "}"))
 end
 
 function conky_wifi_link_qual_perc(iface)
-	local i = wifi_iface(iface)
-	return tonumber(conky_parse("${wireless_link_qual_perc " .. i .. "}"))
+    local i = wifi_iface(iface)
+    return tonumber(conky_parse("${wireless_link_qual_perc " .. i .. "}"))
 end
 
 function conky_wifi_mode(iface)
-	local i = wifi_iface(iface)
-	return conky_parse("${wireless_mode " .. i .. "}")
+    local i = wifi_iface(iface)
+    return conky_parse("${wireless_mode " .. i .. "}")
 end

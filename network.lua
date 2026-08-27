@@ -6,8 +6,8 @@
 --}}}
 
 --{{{
---  widget.lua — Widget data (generated/edited by sh/designer/main.py)
---  Loaded directly by Conky (lua_load = 'widget.lua'). Structure:
+--  network.lua — Widget data (generated/edited by sh/designer/main.py)
+--  Loaded directly by Conky (lua_load = 'network.lua'). Structure:
 --    Global paths / config (formerly settings.lua)
 --    DEFAULT_THEME / _PADDING — global settings
 --    draw[#draw + 1] = { ... }        — draw items (background, clock, bar, ...)
@@ -19,9 +19,9 @@
 
 ------------------------------------------------------------
 -- Global paths / config (formerly settings.lua)
--- script_dir is widget.lua's own directory (the project root)
+-- script_dir is network.lua's own directory (the project root)
 ------------------------------------------------------------
-script_dir   = debug.getinfo(1, "S").source:match("@?(.*/)") or "./"
+script_dir = debug.getinfo(1, "S").source:match("@?(.*/)") or "./"
 
 package.path = package.path
     .. ";" .. script_dir .. "lua/?.lua"
@@ -31,9 +31,9 @@ package.path = package.path
     .. ";" .. script_dir .. "lua/hardware/?.lua"
 
 -- JSON_PATH is always needed (weather, hardware/network, nowplaying data)
-JSON_PATH    = script_dir .. "tmp/"
+JSON_PATH      = script_dir .. "tmp/"
 
-draw         = {}
+draw = {}
 
 
 ICON_BASE      = script_dir .. "icons/"
@@ -41,30 +41,7 @@ ICON_THEME     = "default"
 MOON_ICON_BASE = script_dir .. "icons/moon/"
 WIND_ICON_BASE = script_dir .. "icons/wind/"
 
---{{{
--- THEMES — Theme definitions (palette, gradients, widget defaults).
--- Lives in widget.lua, before the modules are loaded, so that
--- theme_engine.lua picks it up (THEMES = THEMES or {}).
---
--- THEMES = {
---   theme = {
---     palette   = { key = "#hex", ... },
---     gradients = { name = { stops }, ... },
---     defaults  = {
---       background = { bg, border, border_width },
---       bar        = { fg, bg },
---       graph      = { fg, bg, border, grid_color },
---       ring       = { fg, bg },
---       text       = { color },
---       line       = { fg },
---       clock      = { bg, border, tick/number/hand colors },
---       calendar   = { color_month, color_weekdays, ... },
---     },
---   },
--- }
---}}}
-
-THEMES         = {
+THEMES = {
 
     -- ═══ THEME ═══
 
@@ -136,8 +113,8 @@ THEMES         = {
     },
 }
 
-DEFAULT_THEME  = "theme"
-_PADDING       = 10
+DEFAULT_THEME = "theme"
+_PADDING = 10
 
 require("require")
 
@@ -150,117 +127,192 @@ draw[#draw + 1] = {
     radius = 12,
 }
 
+------------------------------------------------------------
+-- Row 1 (y=10): Wifi — interface name + status.
+-- color has no function support (only static tables), so "Up"/"Down"
+-- are two separate draw items, shown/hidden via draw_me instead of
+-- one item with a dynamically computed color.
+------------------------------------------------------------
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
     x = 10,
     y = 10,
     font = "Mono",
     size = 12,
-    text = "Cpu:",
+    text = "Wifi:",
 }
 
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
+    x = 170,
+    y = 10,
+    font = "Mono",
+    size = 12,
+    align = "center",
+    text = function()
+        local iface = conky_wifi_interface()
+        return (iface ~= "") and iface or "niet gevonden"
+    end,
+}
+
+draw[#draw + 1] = {
+    type = "text",
     x = 330,
     y = 10,
     font = "Mono",
     size = 12,
-    text = "${lua conky_cpu_name}",
     align = "right",
+    text = "Up",
+    color = { { 1, "#27ae60", 1 } },
+    draw_me = function() return conky_wifi_active() == 1 end,
 }
 
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
+    x = 330,
+    y = 10,
+    font = "Mono",
+    size = 12,
+    align = "right",
+    text = "Down",
+    color = { { 1, "#da4453", 1 } },
+    draw_me = function() return conky_wifi_active() == 0 end,
+}
+
+------------------------------------------------------------
+-- Row 2 (y=25): Ethernet — same pattern as the Wifi row above.
+------------------------------------------------------------
+draw[#draw + 1] = {
+    type = "text",
     x = 10,
     y = 25,
     font = "Mono",
     size = 12,
-    text = "Temperature:",
+    text = "Ethernet:",
 }
 
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
-    x = 140,
+    x = 170,
     y = 25,
     font = "Mono",
     size = 12,
-    text = "${lua conky_cpu_temp}°C",
-    align = "right",
+    align = "center",
+    text = function()
+        local iface = conky_ethernet_interface()
+        return (iface ~= "") and iface or "niet gevonden"
+    end,
 }
 
 draw[#draw + 1] = {
     type = "text",
-    view = "main",
     x = 330,
     y = 25,
     font = "Mono",
     size = 12,
-    text = "${cpu}%",
     align = "right",
+    text = "Up",
+    color = { { 1, "#27ae60", 1 } },
+    draw_me = function() return conky_ethernet_active() == 1 end,
+}
+
+draw[#draw + 1] = {
+    type = "text",
+    x = 330,
+    y = 25,
+    font = "Mono",
+    size = 12,
+    align = "right",
+    text = "Down",
+    color = { { 1, "#da4453", 1 } },
+    draw_me = function() return conky_ethernet_active() == 0 end,
+}
+
+------------------------------------------------------------
+-- Row 3 (y=43): current speed, for whichever interface is active
+-- (ethernet preferred over wifi when both happen to be up).
+------------------------------------------------------------
+draw[#draw + 1] = {
+    type = "text",
+    x = 10,
+    y = 43,
+    font = "Mono",
+    size = 12,
+    text = function()
+        return "Down: " .. conky_net_downspeed() .. "/s"
+    end,
+}
+
+draw[#draw + 1] = {
+    type = "text",
+    x = 330,
+    y = 43,
+    font = "Mono",
+    size = 12,
+    align = "right",
+    text = function()
+        return "Up: " .. conky_net_upspeed() .. "/s"
+    end,
+}
+
+------------------------------------------------------------
+-- Row 4 (y=61-111): speed graphs, same layout as disk.lua's
+-- read/write graphs.
+--
+-- Graph `value` must be either a plain conky-syntax string or a
+-- { value = "<unique key>", exec = function() ... end } table (the
+-- same shape interpret_name() produces for strings) — a bare Lua
+-- function is NOT supported by draw_get_value and, worse, both
+-- graphs would collide on the same auto-derived cache key ("").
+------------------------------------------------------------
+draw[#draw + 1] = {
+    type = "graph",
+    x = 10,
+    y = 61,
+    width = 150,
+    height = 50,
+    value = { value = "net_down_speed", exec = function() return conky_net_downspeedf() end },
+    autoscale = true,
+    max = 100,
 }
 
 draw[#draw + 1] = {
     type = "graph",
-    view = "main",
-    x = 10,
-    y = 45,
-    width = 320,
-    height = 135,
-    value = "${cpu}",
-    max = 100,
-    graph_type = "fill",
-    grid = true,
-    grid_steps = 5,
-    grid_color = { { 1, "#aaaaaa", 1 } },
+    x = 180,
+    y = 61,
+    width = 150,
+    height = 50,
+    value = { value = "net_up_speed", exec = function() return conky_net_upspeedf() end },
     autoscale = true,
+    max = 100,
 }
 
--- Detect actual logical CPU count instead of assuming a fixed number —
--- a hardcoded core count (e.g. 12) would request ${cpu cpuN} for cores
--- that don't exist on smaller CPUs, and conky exits entirely on the
--- first out-of-range request (e.g. "requested CPU 9, but only 8
--- available" on a 4-core/8-thread CPU).
-local NUM_CPUS = tonumber((pread("nproc"))) or 4
+------------------------------------------------------------
+-- Row 5 (y=117): total transferred this session (since this conky
+-- instance started — conky's own ${totaldown}/${totalup}), for the
+-- same active interface as row 3/4.
+------------------------------------------------------------
+draw[#draw + 1] = {
+    type = "text",
+    x = 10,
+    y = 117,
+    font = "Mono",
+    size = 12,
+    text = function()
+        return "Total Down: " .. conky_net_totaldown()
+    end,
+}
 
-for i = 1, NUM_CPUS do
-    local current_y = 10 + (i - 1) * 15
-
-    draw[#draw + 1] = {
-        type = "text",
-        x = 10,
-        y = current_y,
-        font = "Mono",
-        size = 12,
-        text = "Cpu" .. i .. ": ${cpu cpu" .. i .. "}%",
-        view = "view_1",
-    }
-
-    draw[#draw + 1] = {
-        type = "text",
-        view = "view_1",
-        x = 330,
-        y = current_y,
-        font = "Mono",
-        size = 12,
-        text = "${freq " .. i .. "}Mhz",
-        align = "right",
-    }
-
-    draw[#draw + 1] = {
-        type = "bar",
-        view = "view_1",
-        x = 100,
-        y = current_y,
-        width = 170,
-        height = 12,
-        value = "${cpu cpu" .. i .. "}",
-        max = 100,
-    }
-end
+draw[#draw + 1] = {
+    type = "text",
+    x = 180,
+    y = 117,
+    font = "Mono",
+    size = 12,
+    text = function()
+        return "Total Up: " .. conky_net_totalup()
+    end,
+}
 
 
 _GROUPS = {
@@ -268,21 +320,13 @@ _GROUPS = {
 
 _VIEWS = {
     { name = "main" },
-    { name = "view_1" },
 }
 
 ------------------------------------------------------------
 -- Mouse event actions (only the non-nil ones are listed)
--- All callbacks receive: function(event)
--- event has: type, x, y, x_abs, y_abs, time,
---            button ("left"/"right"/"middle"/"back"/"forward"),
---            direction ("up"/"down"/"left"/"right"),
---            mods = { shift=bool, control=bool, alt=bool, super=bool,
---                     caps_lock=bool, num_lock=bool }
 ------------------------------------------------------------
 
 _MOUSE_ENABLED = true
-MOUSE_CLICK_LEFT = function() view_toggle("view_1") end
 
 
 ------------------------------------------------------------
