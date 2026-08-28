@@ -181,21 +181,12 @@ draw[#draw + 1] = {
 
 draw[#draw + 1] = {
     type = "text",
-    x = 10,
-    y = 25,
-    font = "Mono",
-    size = 12,
-    text = "Root:",
-}
-
-draw[#draw + 1] = {
-    type = "text",
     x = 170,
     y = 25,
     font = "Mono",
     size = 12,
     text = "${fs_used}/${fs_size}",
-    align ="center"
+    align = "center"
 }
 
 draw[#draw + 1] = {
@@ -205,7 +196,7 @@ draw[#draw + 1] = {
     font = "Mono",
     size = 12,
     text = "${fs_used_perc}% used",
-    align ="right"
+    align = "right"
 }
 
 draw[#draw + 1] = {
@@ -218,13 +209,24 @@ draw[#draw + 1] = {
     max = 100,
 }
 
+
 draw[#draw + 1] = {
     type = "text",
     x = 10,
     y = 58,
     font = "Mono",
     size = 12,
-    text = "Read: ${diskio_read}/s ",
+    text = "Home:",
+}
+
+draw[#draw + 1] = {
+    type = "text",
+    x = 170,
+    y = 58,
+    font = "Mono",
+    size = 12,
+    text = "${fs_used /home}/home${fs_size /home}",
+    align = "center"
 }
 
 draw[#draw + 1] = {
@@ -233,14 +235,46 @@ draw[#draw + 1] = {
     y = 58,
     font = "Mono",
     size = 12,
-    align ="right",
+    text = "${fs_used_perc /home}% used",
+    align = "right"
+}
+
+draw[#draw + 1] = {
+    type = "bar",
+    x = 10,
+    y = 73,
+    width = 320,
+    height = 12,
+    value = "${fs_used_perc /home}",
+    max = 100,
+}
+
+
+
+
+draw[#draw + 1] = {
+    type = "text",
+    x = 10,
+    y = 91,
+    font = "Mono",
+    size = 12,
+    text = "Read: ${diskio_read}/s ",
+}
+
+draw[#draw + 1] = {
+    type = "text",
+    x = 330,
+    y = 91,
+    font = "Mono",
+    size = 12,
+    align = "right",
     text = "Write: ${diskio_write}/s ",
 }
 
 draw[#draw + 1] = {
     type = "graph",
     x = 10,
-    y = 75,
+    y = 108,
     width = 150,
     height = 50,
     value = "${diskio_read}",
@@ -251,7 +285,7 @@ draw[#draw + 1] = {
 draw[#draw + 1] = {
     type = "graph",
     x = 180,
-    y = 75,
+    y = 108,
     width = 150,
     height = 50,
     value = "${diskio_write}",

@@ -1,3 +1,10 @@
+
+--{{{ custom_lua
+-- music.lua
+-- by @wim66
+-- August 27, 2026
+--{{{
+
 --{{{
 --  Conky NextGen Framework
 --  Author: István Molnár
@@ -123,13 +130,30 @@ local STATUS_SYMBOL = {
     Stopped = "\226\150\160",  -- ■
 }
 
--- true only when a track title is actually available; used to switch
--- between the normal layout and the "nothing playing" fallback text
--- (fail quiet, per the widget-builder convention: never let a missing
--- player crash the draw loop with a nil concat).
 local function np_has_track()
     local ok, t = pcall(conky_nowplaying_title)
     return ok and t ~= nil and t ~= ""
+end
+
+-- Helper: Splits a string into lines based on a maximum character limit per line
+local function wrap_text(str, max_len)
+    if not str then return "", "" end
+    if string.len(str) <= max_len then
+        return str, ""
+    end
+    -- Zoek naar een spatie om netjes op af te breken rond de limiet
+    local breakpoint = max_len
+    for i = max_len, 1, -1 do
+        if string.sub(str, i, i) == " " then
+            breakpoint = i
+            break
+        end
+    end
+    local line1 = string.sub(str, 1, breakpoint)
+    local line2 = string.sub(str, breakpoint + 1)
+    -- Trim leading space from line 2
+    line2 = line2:match("^%s*(.-)$")
+    return line1, line2
 end
 
 draw[#draw + 1] = {
@@ -141,7 +165,7 @@ draw[#draw + 1] = {
     radius = 12,
 }
 
--- Album art — only drawn when a track AND art are actually available
+-- Album art
 draw[#draw + 1] = {
     type = "image",
     x = 10,
@@ -154,7 +178,7 @@ draw[#draw + 1] = {
     end,
 }
 
--- Player + playback status ("▶  spotify")
+-- Player + playback status
 draw[#draw + 1] = {
     type = "text",
     x = 120,
@@ -171,7 +195,7 @@ draw[#draw + 1] = {
     color = { { 1, "#3daee9", 1 } },
 }
 
--- Track title (or the "nothing playing" fallback)
+-- Track title - Line 1
 draw[#draw + 1] = {
     type = "text",
     x = 120,
@@ -180,16 +204,45 @@ draw[#draw + 1] = {
     size = 13,
     text = function()
         if not np_has_track() then return "Niets aan het afspelen" end
-        return conky_nowplaying_title()
+        local title = conky_nowplaying_title() or ""
+        local l1, _ = wrap_text(title, 26) -- Pas de 26 aan als het breder/smalder moet
+        return l1
     end,
     color = { { 1, "#fcfcfc", 1 } },
 }
 
--- Artist
+-- Track title - Line 2 (Alleen getoond als de titel lang genoeg is)
 draw[#draw + 1] = {
     type = "text",
     x = 120,
-    y = 54,
+    y = 48,
+    font = "Mono",
+    size = 13,
+    text = function()
+        if not np_has_track() then return "" end
+        local title = conky_nowplaying_title() or ""
+        local _, l2 = wrap_text(title, 26)
+        return l2
+    end,
+    draw_me = function()
+        if not np_has_track() then return false end
+        local title = conky_nowplaying_title() or ""
+        local _, l2 = wrap_text(title, 26)
+        return l2 ~= ""
+    end,
+    color = { { 1, "#fcfcfc", 1 } },
+}
+
+-- Artist (schuift automatisch mee omlaag als regel 2 actief is)
+draw[#draw + 1] = {
+    type = "text",
+    x = 120,
+    y = function()
+        if not np_has_track() then return 54 end
+        local title = conky_nowplaying_title() or ""
+        local _, l2 = wrap_text(title, 26)
+        return (l2 ~= "") and 66 or 54
+    end,
     font = "Mono",
     size = 11,
     text = function()
@@ -199,11 +252,16 @@ draw[#draw + 1] = {
     color = { { 1, "#a1a9b1", 1 } },
 }
 
--- Album
+-- Album (schuift eveneens mee omlaag)
 draw[#draw + 1] = {
     type = "text",
     x = 120,
-    y = 72,
+    y = function()
+        if not np_has_track() then return 72 end
+        local title = conky_nowplaying_title() or ""
+        local _, l2 = wrap_text(title, 26)
+        return (l2 ~= "") and 84 or 72
+    end,
     font = "Mono",
     size = 10,
     text = function()
@@ -222,15 +280,8 @@ _VIEWS = {
 }
 
 ------------------------------------------------------------
--- Mouse event actions (only the non-nil ones are listed)
--- All callbacks receive: function(event)
--- event has: type, x, y, x_abs, y_abs, time,
---            button ("left"/"right"/"middle"/"back"/"forward"),
---            direction ("up"/"down"/"left"/"right"),
---            mods = { shift=bool, control=bool, alt=bool, super=bool,
---                     caps_lock=bool, num_lock=bool }
+-- Mouse event actions
 ------------------------------------------------------------
-
 _MOUSE_ENABLED = true
 
 MOUSE_CLICK_LEFT = function()
@@ -241,10 +292,5 @@ MOUSE_CLICK_RIGHT = function()
     os.execute("playerctl next &")
 end
 
-
-------------------------------------------------------------
--- Bootstrap (formerly init.lua): load the modules, then
--- initialize the item groups.
-------------------------------------------------------------
 require("require")
 init_groups(_GROUPS)

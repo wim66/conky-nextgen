@@ -3,7 +3,31 @@
 A modular, theme-driven Conky UI framework with a Lua/Cairo rendering engine, Bash data backend, and a full visual Designer.
 Built for modern desktops (KDE Plasma Wayland/X11), with clean SIGUSR1 reloads and zero window flashing.
 
+> Originally created by [**István Molnár**](https://github.com/molnari811023) — this is [wim66](https://github.com/wim66)'s fork. See [Credits](#credits).
+
 ![Desktop](screenshots/desktop.png)
+
+---
+
+## This Fork
+
+This is [wim66](https://github.com/wim66)'s fork of
+[molnari811023/conky-nextgen](https://github.com/molnari811023/conky-nextgen),
+built for Arch Linux + KDE Plasma (Wayland) on a ThinkPad L14 Gen 2. It
+periodically merges upstream, keeping the fixes below on top. All credit
+for the original framework — the Lua/Cairo rendering engine, the Designer,
+the weather/hardware backend, the theme system — goes to István Molnár;
+see [Credits](#credits) below.
+
+**New widgets:**
+
+- `clock_cal_combi` — compact analog clock + month calendar (with week numbers)
+  side by side in one view, instead of `clock_cal`'s two view-toggled screens
+- `network` — WiFi/ethernet interface status (up/down), current speed with
+  graphs, and session totals
+- `now-playing` — MPRIS album art, title (wraps to a second line for long
+  titles), artist, album; click to play/pause or skip
+- `vnstat` — today/week/month network traffic via `vnstat`
 
 ---
 
@@ -11,7 +35,7 @@ Built for modern desktops (KDE Plasma Wayland/X11), with clean SIGUSR1 reloads a
 
 ```bash
 # Clone into ~/.conky
-git clone git@github.com:molnari811023/conky-nextgen.git ~/.conky
+git clone git@github.com:wim66/conky-nextgen.git ~/.conky
 
 # Desktop entry (optional — adds NextGen Designer to app menu)
 cp ~/.conky/nextgen-designer.desktop ~/.local/share/applications/
@@ -56,11 +80,18 @@ The weather widget supports 3 views with clickable labels — click any label to
 | ![weather](screenshots/weather.png) | ![weather_hourly](screenshots/weather_view_1.png) | ![weather_daily](screenshots/weather_view_2.png) |
 
 **Features:**
+
 - **Current** — temperature, feels-like, wind, UV index, sunrise/sunset, moon phase, AQI
 - **Hourly** — 4-hour forecast with precipitation, wind, temperature
 - **Daily** — 4-day forecast with high/low, precipitation probability, UV
 - **Interactive** — mouse click switches between views
 - **22 languages** — full i18n: Hungarian, English, German, French, Spanish, and 17 more
+
+### Added widgets
+
+| Clock + Calendar Combi | Network | VNSTAT | Now Playing |
+|:---:|:---:|:---:|:---:|
+| ![clock_cal_combi](screenshots/clock_cal_combi.png) | ![network](screenshots/network.png) | ![vnstat](screenshots/vnstat.png) | ![now_playing](screenshots/now_playing.png) |
 
 ---
 
@@ -145,7 +176,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Core Modules
 
 | Module | Purpose |
-|---|---|
+| --- | --- |
 | `draw_core.lua` | Main render loop, auto-interpretation, visibility control |
 | `draw_group.lua` | Group offsets, view filtering, layout stacking |
 | `mouse.lua` | Mouse event dispatching, hit-testing, click regions |
@@ -157,7 +188,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Draw Modules
 
 | Module | Renders |
-|---|---|
+| --- | --- |
 | `background.lua` | Rounded rectangles with gradient fills and borders |
 | `bar.lua` | Progress bars — smooth, block, dot, and polygon modes |
 | `calendar.lua` | Month calendar grid with day highlighting |
@@ -174,7 +205,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Hardware Modules
 
 | Module | Data Source |
-|---|---|
+| --- | --- |
 | `battery.lua` | Battery level, headset/mouse battery via UPower |
 | `core.lua` | DMI info, shell cache, system identity |
 | `dmi.lua` | BIOS, board, chassis details from `/sys/class/dmi/id/` |
@@ -187,7 +218,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Weather Modules
 
 | Module | Data |
-|---|---|
+| --- | --- |
 | `current.lua` | Current conditions — 35 accessors for every field |
 | `hourly.lua` | Hourly forecast (1–24 hours) |
 | `daily.lua` | Daily forecast (1–7 days) |
@@ -202,12 +233,12 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 Each widget consists of three files:
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | `widget.conf` | Conky configuration (Designer-generated) |
 | `widget.lua` | Theme block + draw list (Designer-edited) |
 | `widget.png` | Preview icon (for Conky Manager) |
 
-Included widgets: `clock_cal` (analog clock + calendar), `cpu` (multi-view CPU stats), `disk` (NVMe/disk health), `weather` (multi-view with current/hourly/daily), `top` (multi-view system stats), `info` (system dashboard), `mem_swap` (memory + swap), `nvidia` (GPU stats).
+Included widgets: `clock_cal` (analog clock + calendar), `clock_cal_combi` (compact clock + calendar side by side, this fork), `cpu` (multi-view CPU stats), `disk` (NVMe/disk health), `weather` (multi-view with current/hourly/daily), `top` (multi-view system stats), `info` (system dashboard), `mem_swap` (memory + swap), `nvidia` (GPU stats), `network` (WiFi/ethernet status, speed graphs, session totals, this fork), `now-playing` (MPRIS album art + track info, this fork), `vnstat` (today/week/month traffic via vnstat, this fork).
 
 ## SIGUSR1 Reload Patch (X11)
 
@@ -226,7 +257,7 @@ The patch is applied automatically when building via the included `PKGBUILD`.
 Bash scripts fetch all external data into `tmp/`:
 
 | Script | Data |
-|---|---|
+| --- | --- |
 | `all_in_one.sh` | Single-call fetcher (weather + hardware + network) |
 | `0_fetch_all.sh` | Full data fetch (all modules) |
 | `4_fetch_weather.sh` | Open-Meteo weather API |
@@ -267,6 +298,15 @@ Themes can be switched at runtime from the Designer's Theme tab. Widgets can ove
 - **System tools**: lm-sensors, playerctl, upower, lsblk
 - **Optional**: XDG icon themes, `kio-extras` (MTP support under KDE Plasma)
 
+## Credits
+
+Conky NextGen was created by **[István Molnár](https://github.com/molnari811023)**
+([molnari811023/conky-nextgen](https://github.com/molnari811023/conky-nextgen)) —
+the Lua/Cairo rendering engine, the GTK3 Designer, the weather/hardware
+backend, the theme system, and every widget this fork builds on. This
+fork adds a handful of widgets and fixes on top (see [This Fork](#this-fork)
+above); none of it would exist without his original work.
+
 ## Documentation Status
 
 This project has been under active development for the past 8 months. During
@@ -286,3 +326,7 @@ A complete rewrite of the documentation is in progress.
 ## Documentation
 
 - [NextGen.md](NextGen.md) — full reference (themes, configuration, troubleshooting, shell backend, Lua engine internals)
+
+---
+
+Built on [Conky NextGen](https://github.com/molnari811023/conky-nextgen) by [István Molnár](https://github.com/molnari811023).
