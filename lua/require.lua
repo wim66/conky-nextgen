@@ -3,6 +3,7 @@
 --  Author: István Molnár
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
+-- edited by wim66
 --}}}
 
 --{{{
@@ -74,3 +75,4 @@ require("draw.calendar")
 require("draw.lines")
 require("draw.rings")
 require("draw.arc")
+require("draw.spectrum")

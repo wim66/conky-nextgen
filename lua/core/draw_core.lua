@@ -3,6 +3,7 @@
 --  Author: István Molnár
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
+-- edited by wim66
 --}}}
 
 --{{{
@@ -313,6 +314,7 @@ function conky_core_main()
             calendar   = draw_calendar,
             clock      = draw_clock,
             arc        = draw_arc,
+            spectrum   = draw_spectrum,
         }
     end
 
