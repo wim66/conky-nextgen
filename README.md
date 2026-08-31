@@ -89,6 +89,16 @@ The weather widget supports 3 views with clickable labels — click any label to
 
 ### Added widgets
 
+| Clock + Calendar Combi | Network | VNSTAT | Now Playing |
+|:---:|:---:|:---:|:---:|
+| ![clock_cal_combi](screenshots/clock_cal_combi.png) | ![network](screenshots/network.png) | ![vnstat](screenshots/vnstat.png) |
+
+| Now Playing | Visualizer |
+|:---:|:---:|
+| ![now_playing](screenshots/now_playing.png) | ![visualizer](screenshots/visualizer.png) |
+
+---
+
 ## Google Dashboard (experimental)
 
 A Google widget showing Gmail, Calendar, Tasks, Contacts, Drive, YouTube and Meet
@@ -201,7 +211,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Core Modules
 
 | Module | Purpose |
-|---|---|
+| --- | --- |
 | `draw_core.lua` | Main render loop, auto-interpretation, visibility control |
 | `draw_group.lua` | Group offsets, view filtering, layout stacking |
 | `mouse.lua` | Mouse event dispatching, hit-testing, click regions |
@@ -213,7 +223,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Draw Modules
 
 | Module | Renders |
-|---|---|
+| --- | --- |
 | `background.lua` | Rounded rectangles with gradient fills and borders |
 | `bar.lua` | Progress bars — smooth, block, dot, and polygon modes |
 | `calendar.lua` | Month calendar grid with day highlighting |
@@ -230,7 +240,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Hardware Modules
 
 | Module | Data Source |
-|---|---|
+| --- | --- |
 | `battery.lua` | Battery level, headset/mouse battery via UPower |
 | `core.lua` | DMI info, shell cache, system identity |
 | `dmi.lua` | BIOS, board, chassis details from `/sys/class/dmi/id/` |
@@ -243,7 +253,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Weather Modules
 
 | Module | Data |
-|---|---|
+| --- | --- |
 | `current.lua` | Current conditions — 35 accessors for every field |
 | `hourly.lua` | Hourly forecast (1–24 hours) |
 | `daily.lua` | Daily forecast (1–7 days) |
@@ -258,7 +268,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 Each widget consists of three files:
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | `widget.conf` | Conky configuration (Designer-generated) |
 | `widget.lua` | Theme block + draw list (Designer-edited) |
 | `widget.png` | Preview icon (for Conky Manager) |
@@ -282,7 +292,7 @@ The patch is applied automatically when building via the included `PKGBUILD`.
 Bash scripts fetch all external data into `tmp/`:
 
 | Script | Data |
-|---|---|
+| --- | --- |
 | `all_in_one.sh` | Single-call fetcher (weather + hardware + network) |
 | `0_fetch_all.sh` | Full data fetch (all modules) |
 | `4_fetch_weather.sh` | Open-Meteo weather API |
