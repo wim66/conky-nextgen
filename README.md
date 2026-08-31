@@ -89,8 +89,8 @@ The weather widget supports 3 views with clickable labels — click any label to
 
 ### Added widgets
 
-| Clock + Calendar Combi | Network | VNSTAT | Now Playing |
-|:---:|:---:|:---:|:---:|
+| Clock + Calendar Combi | Network | VNSTAT |
+|:---:|:---:|:---:|
 | ![clock_cal_combi](screenshots/clock_cal_combi.png) | ![network](screenshots/network.png) | ![vnstat](screenshots/vnstat.png) |
 
 | Now Playing | Visualizer |
