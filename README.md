@@ -89,9 +89,34 @@ The weather widget supports 3 views with clickable labels — click any label to
 
 ### Added widgets
 
-| Clock + Calendar Combi | Network | VNSTAT | Now Playing |
-|:---:|:---:|:---:|:---:|
-| ![clock_cal_combi](screenshots/clock_cal_combi.png) | ![network](screenshots/network.png) | ![vnstat](screenshots/vnstat.png) | ![now_playing](screenshots/now_playing.png) |
+## Google Dashboard (experimental)
+
+A Google widget showing Gmail, Calendar, Tasks, Contacts, Drive, YouTube and Meet
+in a compact dashboard. Data is pulled with **gogcli** (`gog`) — a command-line
+Google API client that stores OAuth credentials in a local keyring, so no API
+keys are embedded in the config.
+
+```
+# First-time setup (once)
+gog auth login --client default
+export GOG_KEYRING_BACKEND=file GOG_KEYRING_PASSWORD=conky-google-dashboard
+
+# Fetch all Google data into tmp/ (JSON)
+bash sh/0_fetch_all.sh google
+```
+
+- **Gmail** — recent messages (subject, sender, date, label), unread count
+- **Calendar** — upcoming events
+- **Tasks** — task lists and items
+- **Contacts** — name + phone list
+- **Drive** — file listing and sizes
+- **YouTube** — subscriptions
+- **Meet** — meeting history (needs a meeting code)
+
+Clicking an email opens the thread in the browser via `sh/gog_open_mail.sh`.
+
+> **Status: under testing** — the data fetching and Lua processing modules work,
+> the dashboard widget is still being developed. Watch this space.
 
 ---
 
@@ -170,13 +195,13 @@ A single `widget.lua` file defines:
 ### Load Order
 
 ```
-widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → lua/weather/*
+widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → lua/weather/* → lua/google/*
 ```
 
 ### Core Modules
 
 | Module | Purpose |
-| --- | --- |
+|---|---|
 | `draw_core.lua` | Main render loop, auto-interpretation, visibility control |
 | `draw_group.lua` | Group offsets, view filtering, layout stacking |
 | `mouse.lua` | Mouse event dispatching, hit-testing, click regions |
@@ -188,7 +213,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Draw Modules
 
 | Module | Renders |
-| --- | --- |
+|---|---|
 | `background.lua` | Rounded rectangles with gradient fills and borders |
 | `bar.lua` | Progress bars — smooth, block, dot, and polygon modes |
 | `calendar.lua` | Month calendar grid with day highlighting |
@@ -205,7 +230,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Hardware Modules
 
 | Module | Data Source |
-| --- | --- |
+|---|---|
 | `battery.lua` | Battery level, headset/mouse battery via UPower |
 | `core.lua` | DMI info, shell cache, system identity |
 | `dmi.lua` | BIOS, board, chassis details from `/sys/class/dmi/id/` |
@@ -218,7 +243,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 ### Weather Modules
 
 | Module | Data |
-| --- | --- |
+|---|---|
 | `current.lua` | Current conditions — 35 accessors for every field |
 | `hourly.lua` | Hourly forecast (1–24 hours) |
 | `daily.lua` | Daily forecast (1–7 days) |
@@ -233,7 +258,7 @@ widget.lua → require.lua → lua/core/* → lua/draw/* → lua/hardware/* → 
 Each widget consists of three files:
 
 | File | Purpose |
-| --- | --- |
+|---|---|
 | `widget.conf` | Conky configuration (Designer-generated) |
 | `widget.lua` | Theme block + draw list (Designer-edited) |
 | `widget.png` | Preview icon (for Conky Manager) |
@@ -257,7 +282,7 @@ The patch is applied automatically when building via the included `PKGBUILD`.
 Bash scripts fetch all external data into `tmp/`:
 
 | Script | Data |
-| --- | --- |
+|---|---|
 | `all_in_one.sh` | Single-call fetcher (weather + hardware + network) |
 | `0_fetch_all.sh` | Full data fetch (all modules) |
 | `4_fetch_weather.sh` | Open-Meteo weather API |
@@ -265,6 +290,8 @@ Bash scripts fetch all external data into `tmp/`:
  | `13_fetch_maps.sh` | Weather map tiles |
 | `fetch_network.sh` | Public IP, ping latency tests |
 | `fetch_nowplaying.sh` | MPRIS player data via playerctl |
+| `fetch_google.sh` | Gmail, Calendar, Tasks, Contacts, Drive, YouTube, Meet via `gog` |
+| `gog_open_mail.sh` | Open a Gmail thread in the browser from a message id |
 | `updates.sh` | Arch Linux package update checks |
 
 Data is cached as JSON in `tmp/` and read directly by the Lua modules — no database required.
@@ -296,6 +323,7 @@ Themes can be switched at runtime from the Designer's Theme tab. Widgets can ove
 - **Bash** + curl + jq — for data fetchers
 - **Lua modules**: dkjson, lfs, lua-utf8 (optional: lpeg for faster JSON decoding)
 - **System tools**: lm-sensors, playerctl, upower, lsblk
+- **Optional**: XDG icon themes, `kio-extras` (MTP support under KDE Plasma), `gog` (Google dashboard)
 - **Optional**: XDG icon themes, `kio-extras` (MTP support under KDE Plasma)
 
 ## Credits
