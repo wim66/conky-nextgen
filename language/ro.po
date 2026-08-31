@@ -680,3 +680,1077 @@ msgstr "Puțin probabil"
 
 msgid "alert_certainty_unknown"
 msgstr "Necunoscut"
+
+############################################
+# KDE SYSTEM STATS (short labels)
+############################################
+
+msgid "All"
+msgstr "Toate"
+
+msgid "All Disks"
+msgstr "Toate discurile"
+
+msgid "All GPUs"
+msgstr "Toate plăcile grafice"
+
+msgid "All GPUs Total Memory"
+msgstr "Memoria totală a tuturor plăcilor grafice"
+
+msgid "All GPUs Usage"
+msgstr "Utilizarea tuturor plăcilor grafice"
+
+msgid "All GPUs Used Memory"
+msgstr "Memoria folosită a tuturor plăcilor grafice"
+
+msgid "All Network Devices"
+msgstr "Toate dispozitivele de rețea"
+
+msgid "Application Memory"
+msgstr "Memorie aplicații"
+
+msgid "Application Memory Percentage"
+msgstr "Procentaj memorie aplicații"
+
+msgid "Average CPU Frequency"
+msgstr "Frecvența medie a procesorului"
+
+msgid "Average CPU Temperature"
+msgstr "Temperatura medie a procesorului"
+
+msgid "Buffer Memory"
+msgstr "Memorie-tampon"
+
+msgid "Buffer Memory Percentage"
+msgstr "Procentaj memorie-tampon"
+
+msgid "CPU %1"
+msgstr "Procesor %1"
+
+msgid "CPU %1 Core %2"
+msgstr "Procesor %1 Nucleu %2"
+
+msgid "CPU Pressure"
+msgstr "Presiunea procesorului"
+
+msgid "Cache Memory"
+msgstr "Memorie cache"
+
+msgid "Cache Memory Percentage"
+msgstr "Procentaj memorie cache"
+
+msgid "Charge"
+msgstr "Încărcare"
+
+msgid "Charge Percentage"
+msgstr "Procentaj încărcare"
+
+msgid "Charging  Rate"
+msgstr "Rată de încărcare"
+
+msgid "Charging Rate"
+msgstr "Rată de încărcare"
+
+msgid "Core %1"
+msgstr "Nucleu %1"
+
+msgid "Current Capacity"
+msgstr "Capacitate actuală"
+
+msgid "Current Frequency"
+msgstr "Frecvență actuală"
+
+msgid "Current Temperature"
+msgstr "Temperatură actuală"
+
+msgid "Design Capacity"
+msgstr "Capacitate proiectată"
+
+msgid "Download Rate"
+msgstr "Rată descărcare"
+
+msgid "Free Physical Memory"
+msgstr "Memorie fizică liberă"
+
+msgid "Free Physical Memory Percentage"
+msgstr "Procentaj memorie fizică liberă"
+
+msgid "Free Space"
+msgstr "Spațiu liber"
+
+msgid "Free Swap Memory"
+msgstr "Memorie swap liberă"
+
+msgid "Free Swap Memory Percentage"
+msgstr "Procentaj memorie swap liberă"
+
+msgid "Frequency"
+msgstr "Frecvență"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Health"
+msgstr "Sănătate"
+
+msgid "Hostname"
+msgstr "Nume gazdă"
+
+msgid "IPv4 Address"
+msgstr "Adresă IPv4"
+
+msgid "IPv4 DNS"
+msgstr "DNS IPv4"
+
+msgid "IPv4 Gateway"
+msgstr "Poartă IPv4"
+
+msgid "IPv4 Subnet Mask"
+msgstr "Mască de subrețea IPv4"
+
+msgid "IPv4 with Prefix Length"
+msgstr "IPv4 cu lungime de prefix"
+
+msgid "IPv6 Address"
+msgstr "Adresă IPv6"
+
+msgid "IPv6 DNS"
+msgstr "DNS IPv6"
+
+msgid "IPv6 Gateway"
+msgstr "Poartă IPv6"
+
+msgid "IPv6 Subnet Mask"
+msgstr "Mască de subrețea IPv6"
+
+msgid "IPv6 with Prefix Length"
+msgstr "IPv6 cu lungime de prefix"
+
+msgid "KDE Frameworks Version"
+msgstr "Versiune KDE Frameworks"
+
+msgid "KDE Plasma"
+msgstr "Plasma KDE"
+
+msgid "KDE Plasma Version"
+msgstr "Versiune KDE Plasma"
+
+msgid "Kernel"
+msgstr "Nucleu"
+
+msgid "Kernel Name"
+msgstr "Denumire nucleu"
+
+msgid "Kernel Name and Version"
+msgstr "Denumire și versiune nucleu"
+
+msgid "Kernel Version"
+msgstr "Versiune nucleu"
+
+msgid "Load Averages"
+msgstr "Încărcări medii"
+
+msgid "Load average (1 minute)"
+msgstr "Încărcare medie (1 min)"
+
+msgid "Load average (15 minute)"
+msgstr "Încărcare medie (15 min)"
+
+msgid "Load average (5 minutes)"
+msgstr "Încărcare medie (5 min)"
+
+msgid "Maximum CPU Frequency"
+msgstr "Frecvența maximă a procesorului"
+
+msgid "Maximum CPU Temperature"
+msgstr "Temperatura maximă a procesorului"
+
+msgid "Memory"
+msgstr "Memorie"
+
+msgid "Memory Frequency"
+msgstr "Frecvența memoriei"
+
+msgid "Memory Pressure"
+msgstr "Presiunea memoriei"
+
+msgid "Minimum CPU Frequency"
+msgstr "Frecvența minimă a procesorului"
+
+msgid "Minimum CPU Temperature"
+msgstr "Temperatura minimă a procesorului"
+
+msgid "Name"
+msgstr "Denumire"
+
+msgid "Network Devices"
+msgstr "Dispozitive de rețea"
+
+msgid "Network Name"
+msgstr "Denumire rețea"
+
+msgid "Number of CPUs"
+msgstr "Numărul de procesoare"
+
+msgid "Number of Cores"
+msgstr "Număr de nuclee"
+
+msgid "Operating System"
+msgstr "Sistem de operare"
+
+msgid "Operating System Logo"
+msgstr "Logotip sistem de operare"
+
+msgid "Operating System Name"
+msgstr "Denumire sistem de operare"
+
+msgid "Operating System Name and Version"
+msgstr "Denumire și versiune sistem de operare"
+
+msgid "Operating System URL"
+msgstr "URL sistem de operare"
+
+msgid "Operating System Version"
+msgstr "Versiune sistem de operare"
+
+msgid "Percentage Free"
+msgstr "Procentaj liber"
+
+msgid "Percentage Used"
+msgstr "Procentaj folosit"
+
+msgid "Physical Memory"
+msgstr "Memorie fizică"
+
+msgid "Power"
+msgstr "Putere"
+
+msgid "Pressure"
+msgstr "Presiune"
+
+msgid "Qt Version"
+msgstr "Versiune Qt"
+
+msgid "Read Rate"
+msgstr "Rată de citire"
+
+msgid "Signal Strength"
+msgstr "Intensitate semnal"
+
+msgid "Swap Memory"
+msgstr "Memorie swap"
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "System Usage"
+msgstr "Utilizare sistem"
+
+msgid "Temperature"
+msgstr "Temperatură"
+
+msgid "Total Downloaded"
+msgstr "Total descărcat"
+
+msgid "Total Physical Memory"
+msgstr "Memorie fizică totală"
+
+msgid "Total Space"
+msgstr "Spațiu total"
+
+msgid "Total Swap Memory"
+msgstr "Memorie swap totală"
+
+msgid "Total Uploaded"
+msgstr "Total încărcat"
+
+msgid "Total Usage"
+msgstr "Total folosit"
+
+msgid "Total Video Memory"
+msgstr "Memorie video totală"
+
+msgid "Upload Rate"
+msgstr "Rată încărcare"
+
+msgid "Uptime"
+msgstr "Durată pornire"
+
+msgid "Usage"
+msgstr "Utilizare"
+
+msgid "Used Physical Memory"
+msgstr "Memorie fizică folosită"
+
+msgid "Used Physical Memory Percentage"
+msgstr "Procentaj memorie fizică folosită"
+
+msgid "Used Space"
+msgstr "Spațiu folosit"
+
+msgid "Used Swap Memory"
+msgstr "Memorie swap folosită"
+
+msgid "Used Swap Memory Percentage"
+msgstr "Procentaj memorie cache folosită"
+
+msgid "User Usage"
+msgstr "Utilizare utilizator"
+
+msgid "Video Memory Used"
+msgstr "Memorie video folosită"
+
+msgid "Video Usage"
+msgstr "Utilizare video"
+
+msgid "Wait Usage"
+msgstr "Utilizare așteptare"
+
+msgid "Window System"
+msgstr "Sistem de ferestre"
+
+msgid "Write Rate"
+msgstr "Rată de scriere"
+
+############################################
+# GOOGLE DASHBOARD
+############################################
+
+msgid "Inbox"
+msgstr "Inbox"
+
+msgid "Sent"
+msgstr "Trimise"
+
+msgid "Drafts"
+msgstr "Ciorne"
+
+msgid "Junk"
+msgstr "Spam"
+
+msgid "Trash"
+msgstr "Coșul de gunoi"
+
+msgid "Archive"
+msgstr "Archivă"
+
+msgid "Folders"
+msgstr "Dosare"
+
+msgid "From"
+msgstr "De la"
+
+msgid "To"
+msgstr "Către"
+
+msgid "Subject"
+msgstr "Subiect"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Bcc"
+msgstr "Bcc"
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Priority"
+msgstr "Prioritate"
+
+msgid "Message"
+msgstr "Mesaj"
+
+msgid "Attachment"
+msgstr "Fișier atașat"
+
+msgid "Attachments"
+msgstr "Fișiere atașate"
+
+msgid "Attachment Properties"
+msgstr "Proprietăți fișier atașat"
+
+msgid "Reply"
+msgstr "Răspunde"
+
+msgid "Reply to All"
+msgstr "Răspunde tuturor"
+
+msgid "Forward"
+msgstr "Înaintează"
+
+msgid "Attach a file"
+msgstr "Atașează un fișier"
+
+msgid "Compose Message"
+msgstr "Compune un mesaj"
+
+msgid "Save"
+msgstr "Salvează"
+
+msgid "Close"
+msgstr "Închide"
+
+msgid "Account"
+msgstr "Cont"
+
+msgid "Accounts"
+msgstr "Conturi"
+
+msgid "Folder"
+msgstr "Dosar"
+
+msgid "Search"
+msgstr "Caută"
+
+msgid "Labels"
+msgstr "Etichete"
+
+msgid "Show"
+msgstr "Arată"
+
+msgid "Delete"
+msgstr "Șterge"
+
+msgid "Calendar"
+msgstr "Calendar"
+
+msgid "Event"
+msgstr "Eveniment"
+
+msgid "Events"
+msgstr "Evenimente"
+
+msgid "Meeting"
+msgstr "Întâlnire"
+
+msgid "Appointment"
+msgstr "Programare"
+
+msgid "Today"
+msgstr "Astăzi"
+
+msgid "Day"
+msgstr "Zi"
+
+msgid "Week"
+msgstr "Săptămână"
+
+msgid "Month"
+msgstr "Lună"
+
+msgid "Year"
+msgstr "An"
+
+msgid "Tasks"
+msgstr "Sarcini"
+
+msgid "Task"
+msgstr "Sarcină"
+
+msgid "Start"
+msgstr "Început"
+
+msgid "End"
+msgstr "Șfârșit"
+
+msgid "All day:"
+msgstr "Toată ziua:"
+
+msgid "Summary"
+msgstr "Rezumat"
+
+msgid "Description"
+msgstr "Descriere"
+
+msgid "Location"
+msgstr "Locație"
+
+msgid "Details"
+msgstr "Detalii"
+
+msgid "Reminders"
+msgstr "Mementouri"
+
+msgid "Busy"
+msgstr "Ocupat"
+
+msgid "Free"
+msgstr "Liber"
+
+msgid "Private"
+msgstr "Personal"
+
+msgid "Public"
+msgstr "Public"
+
+msgid "Recurring"
+msgstr "Recurent"
+
+msgid "Recurrence"
+msgstr "Recurență"
+
+msgid "Categories"
+msgstr "Categorii"
+
+msgid "Notes"
+msgstr "Note"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "Delete Task"
+msgstr "Șterge sarcină"
+
+msgid "Export"
+msgstr "Exportă"
+
+msgid "Print…"
+msgstr "Tipărește…"
+
+msgid "Undo"
+msgstr "Anulează"
+
+msgid "Previous"
+msgstr "Înapoi"
+
+msgid "Next"
+msgstr "Înainte"
+
+msgid "Monday"
+msgstr "Luni"
+
+msgid "Tuesday"
+msgstr "Marți"
+
+msgid "Wednesday"
+msgstr "Miercuri"
+
+msgid "Thursday"
+msgstr "Joi"
+
+msgid "Friday"
+msgstr "Vineri"
+
+msgid "Saturday"
+msgstr "Sâmbătă"
+
+msgid "Sunday"
+msgstr "Duminică"
+
+msgid "January"
+msgstr "Ianuarie"
+
+msgid "February"
+msgstr "Februarie"
+
+msgid "March"
+msgstr "Martie"
+
+msgid "April"
+msgstr "Aprilie"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Iunie"
+
+msgid "July"
+msgstr "Iulie"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "Septembrie"
+
+msgid "October"
+msgstr "Octombrie"
+
+msgid "November"
+msgstr "Noiembrie"
+
+msgid "December"
+msgstr "Decembrie"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "Cancel"
+msgstr "Anulează"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Error"
+msgstr "Eroare"
+
+msgid "Warning"
+msgstr "Avertisment"
+
+msgid "Open"
+msgstr "Deschide"
+
+msgid "Load"
+msgstr "Încarcă"
+
+msgid "Status"
+msgstr "Stare"
+
+msgid "Offline"
+msgstr "Deconectat"
+
+msgid "Done"
+msgstr "Gata"
+
+msgid "Completed"
+msgstr "Terminat"
+
+msgid "Unread Messages"
+msgstr "Mesaje necitite"
+
+msgid "Important"
+msgstr "Important"
+
+msgid "Flagged"
+msgstr "Marcat"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Label"
+msgstr "Etichetă"
+
+msgid "Select All"
+msgstr "Selectează tot"
+
+msgid "Loading"
+msgstr "Se încarcă"
+
+msgid "Updated"
+msgstr "Actualizată"
+
+msgid "Refresh"
+msgstr "Actualizare"
+
+msgid "Preferences"
+msgstr "Preferințe"
+
+msgid "Attendee"
+msgstr "Participant"
+
+msgid "Attendees"
+msgstr "Participanți"
+
+msgid "Tentative"
+msgstr "Tentativă"
+
+msgid "Free/Busy"
+msgstr "Disponibil/ocupat"
+
+msgid "Timezone"
+msgstr "Fus orar"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Daily"
+msgstr "Zilnic"
+
+msgid "Weekly"
+msgstr "Săptămânal"
+
+msgid "Holiday"
+msgstr "Vacanță"
+
+msgid "Birthday"
+msgstr "Zi de naștere"
+
+msgid "Anniversary"
+msgstr "Aniversare"
+
+msgid "Out of Office"
+msgstr "Absent din birou"
+
+msgid "Yesterday"
+msgstr "Ieri"
+
+msgid "Now"
+msgstr "Acum"
+
+msgid "Task List"
+msgstr "Listă de sarcini"
+
+msgid "To Do"
+msgstr "De făcut"
+
+msgid "Due date"
+msgstr "Dată scadentă"
+
+msgid "Assigned"
+msgstr "Alocat"
+
+msgid "Overdue Tasks"
+msgstr "Sarcini restante"
+
+msgid "Remove"
+msgstr "Elimină"
+
+msgid "Clear All"
+msgstr "Curăță tot"
+
+msgid "Size"
+msgstr "Dimensiune"
+
+msgid "Username:"
+msgstr "Nume utilizator:"
+
+msgid "Accept meeting request"
+msgstr "Acceptă cererea de întâlnire"
+
+msgid "Decline meeting request"
+msgstr "Refuză cererea de întâlnire"
+
+msgid "Accepted"
+msgstr "Acceptată"
+
+msgid "Declined"
+msgstr "Refuzată"
+
+msgid "Forward message"
+msgstr "Trimite mesajul mai departe"
+
+msgid "Address"
+msgstr "Adresă"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Due"
+msgstr "Scadent"
+
+msgid "Due Date:"
+msgstr "Dată scadentă:"
+
+msgid "Complete"
+msgstr "Terminat"
+
+msgid "Completed Tasks"
+msgstr "Sarcini Finalizate"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contacts"
+msgstr "Contacte"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Fax"
+msgstr "Fax"
+
+msgid "Work"
+msgstr "Loc de muncă"
+
+msgid "Home"
+msgstr "Acasă"
+
+msgid "Other"
+msgstr "Alte"
+
+msgid "Company"
+msgstr "Firmă"
+
+msgid "High"
+msgstr "Ridicat"
+
+msgid "Low"
+msgstr "Scăzut"
+
+msgid "Website"
+msgstr "Pagină web"
+
+msgid "Recent"
+msgstr "Recente"
+
+msgid "Reminder"
+msgstr "Memento"
+
+msgid "Starred"
+msgstr "Cu stea"
+
+msgid "Star"
+msgstr "Stea"
+
+msgid "Mute"
+msgstr "Dezactivează sunetul"
+
+msgid "Snooze"
+msgstr "Amână"
+
+msgid "Snoozed"
+msgstr "Amânat"
+
+msgid "Promotions"
+msgstr "Promoții"
+
+msgid "Updates"
+msgstr "Noutăți"
+
+msgid "Social"
+msgstr "Social"
+
+msgid "Forums"
+msgstr "Forumuri"
+
+msgid "Primary"
+msgstr "Principal"
+
+msgid "Sign in"
+msgstr "Autentifică-te"
+
+msgid "Sign out"
+msgstr "Deconectează-te"
+
+msgid "Settings"
+msgstr "Setări"
+
+msgid "No new mail"
+msgstr "Niciun e-mail nou"
+
+msgid "No messages"
+msgstr "Niciun mesaj"
+
+msgid "Last updated"
+msgstr "Ultima actualizare"
+
+msgid "Retry"
+msgstr "Reîncearcă"
+
+msgid "Connected"
+msgstr "Conectat"
+
+msgid "Disconnected"
+msgstr "Deconectat"
+
+msgid "Sync"
+msgstr "Sincronizare"
+
+msgid "No upcoming events"
+msgstr "Niciun eveniment viitor"
+
+msgid "Nothing scheduled"
+msgstr "Nimic programat"
+
+msgid "Mark all as read"
+msgstr "Marchează toate ca citite"
+
+msgid "Agenda"
+msgstr "Ordine de zi"
+
+msgid "All Mail"
+msgstr "Tot e-mailul"
+
+msgid "Move to"
+msgstr "Mută în"
+
+msgid "Due today"
+msgstr "Scade azi"
+
+msgid "Overdue"
+msgstr "Întârziat"
+
+msgid "Incomplete"
+msgstr "Incomplet"
+
+msgid "Add task"
+msgstr "Adaugă sarcină"
+
+msgid "New task"
+msgstr "Sarcină nouă"
+
+msgid "Edit task"
+msgstr "Editează sarcina"
+
+msgid "Task details"
+msgstr "Detalii sarcină"
+
+msgid "Task list"
+msgstr "Listă de sarcini"
+
+msgid "To Do list"
+msgstr "Listă de sarcini"
+
+msgid "Subtasks"
+msgstr "Subsarcini"
+
+msgid "Medium"
+msgstr "Mediu"
+
+msgid "Priority: High"
+msgstr "Prioritate: Ridicată"
+
+msgid "Priority: Medium"
+msgstr "Prioritate: Medie"
+
+msgid "Priority: Low"
+msgstr "Prioritate: Scăzută"
+
+msgid "Mark complete"
+msgstr "Marchează ca finalizată"
+
+msgid "Full name"
+msgstr "Nume complet"
+
+msgid "First name"
+msgstr "Prenume"
+
+msgid "Last name"
+msgstr "Nume"
+
+msgid "Mobile"
+msgstr "Mobil"
+
+msgid "Job title"
+msgstr "Funcție"
+
+msgid "Email address"
+msgstr "Adresă de e-mail"
+
+msgid "Drive"
+msgstr "Disc"
+
+msgid "Storage"
+msgstr "Stocare"
+
+msgid "Used"
+msgstr "Folosit"
+
+msgid "Quota"
+msgstr "Cotă"
+
+msgid "Upload"
+msgstr "Încarcă"
+
+msgid "Download"
+msgstr "Descarcă"
+
+msgid "Recent files"
+msgstr "Fișiere recente"
+
+msgid "Shared with me"
+msgstr "Partajat cu mine"
+
+msgid "My Drive"
+msgstr "Discul meu"
+
+msgid "Folder size"
+msgstr "Dimensiune folder"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Videos"
+msgstr "Videoclipuri"
+
+msgid "Channel"
+msgstr "Canal"
+
+msgid "Channels"
+msgstr "Canale"
+
+msgid "Subscription"
+msgstr "Abonament"
+
+msgid "Subscriptions"
+msgstr "Abonamente"
+
+msgid "Views"
+msgstr "Vizualizări"
+
+msgid "Uploads"
+msgstr "Încărcări"
+
+msgid "Latest"
+msgstr "Cele mai recente"
+
+msgid "Watch"
+msgstr "Vizionează"
+
+msgid "Playlists"
+msgstr "Liste de redare"
+
+msgid "Comments"
+msgstr "Comentarii"
+
+msgid "Meeting code"
+msgstr "Cod de întâlnire"
+
+msgid "Join"
+msgstr "Participă"
+
+msgid "Join now"
+msgstr "Participă acum"
+
+msgid "Ongoing"
+msgstr "În desfășurare"
+
+msgid "Ended"
+msgstr "S-a încheiat"
+
+msgid "History"
+msgstr "Istoric"
+
+msgid "Past calls"
+msgstr "Apeluri anterioare"
+
+msgid "Leave"
+msgstr "Părăsește"
+
+msgid "Participants"
+msgstr "Participanți"
+
+msgid "Pin"
+msgstr "Fixare"
+
+msgid "Pinned"
+msgstr "Fixat"
+
+msgid "Checklist"
+msgstr "Listă de verificare"
+
+msgid "Space"
+msgstr "Spațiu"
+
+msgid "Spaces"
+msgstr "Spații"
+
+msgid "Direct message"
+msgstr "Mesaj direct"
+
+msgid "Direct messages"
+msgstr "Mesaje directe"
+
+msgid "Mentions"
+msgstr "Mențiuni"
+
+msgid "Thread"
+msgstr "Discuție"
+
+msgid "Threads"
+msgstr "Discuții"
+
+msgid "Group chat"
+msgstr "Chat de grup"
+
+msgid "Reaction"
+msgstr "Reacție"
+
+msgid "React"
+msgstr "Reacționează"
+

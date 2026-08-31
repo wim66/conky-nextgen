@@ -5,19 +5,23 @@
 #  GitHub: https://github.com/molnari811023/conky-nextgen
 #  Description: Modular Conky UI framework (Lua engine + Bash backend)
 #}}}
-
 #{{{
-# fetch_network.sh — Background ping + public IP fetcher
+# ## fetch_network — network metrics fetcher
 #
-# Two independent functions that can run in parallel:
-#   fetch_ping()   — pings 1.1.1.1 (Cloudflare) and saves output
-#   fetch_ipinfo() — queries ipinfo.io for public IP, city, country
+# Defines fetch_ping() and fetch_ipinfo(), which collect connectivity and
+# public-IP data. fetch_ping pings 1.1.1.1 three times and saves the raw
+# output, while fetch_ipinfo downloads the ipinfo.io geolocation JSON. Both
+# write into TMP_DIR; running the script standalone launches the two in
+# parallel and waits.
 #
-# Usage: ./fetch_network.sh (runs both in background)
-#        or: source 0_common.sh && fetch_ping & fetch_ipinfo & wait
-# Output: tmp/network_ping.json, tmp/network_ip.json
+# **What it does:**
+# - fetch_ping(): ping probe → $TMP_DIR/network_ping.json
+# - fetch_ipinfo(): over HTTPS → $TMP_DIR/network_ip.json
+# - When run directly, starts both fetchers as background jobs
+#
+# **Environment/requirements:** needs 0_common.sh (curl_cmd, TMP_DIR) and
+# the system `ping` command
 #}}}
-
 _SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 source "$_SCRIPT_DIR/0_common.sh"
 

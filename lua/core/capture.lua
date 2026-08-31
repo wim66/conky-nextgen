@@ -4,24 +4,41 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/core/capture.lua — one-shot PNG capture of a view, triggered by a request file
+
+Reads a request from tmp/capture_request (view + output path), optionally
+switches to the requested view (with a short settle delay), and after drawing
+writes the conky surface to the requested PNG before removing the request.
+]]--
+
+--{{{
+-- ## Capture Module
 --
--- core/capture.lua — on-demand PNG export of the drawn surface
--- The NextGen Designer writes tmp/capture_request containing two lines:
---   <view name | ->
---   <output png path>
--- conky switches to that view (if needed), draws one frame, then saves the
--- whole surface to the requested PNG and removes the request on success.
--- Works on both X11 and Wayland: the surface is conky's own, so no external
--- screenshot tools are involved. On failure the request is kept and retried
--- on the next tick.
+-- Provides callbacks around the draw cycle to export the rendered surface.
+-- Before drawing, capture_poll() reads tmp/capture_request and may switch the
+-- active view; after drawing, capture_finish() writes the surface to the
+-- requested PNG and deletes the request file once it exists.
+--
+-- **Exposed/global functions:**
+-- - `capture_poll()` — read capture request; optionally switch_view() to the
+--   requested view and return the output path (or nil while settling frames)
+-- - `capture_finish()` — write the current conky surface to the pending PNG
+--   path and remove the request file once written
+--
+-- **Config/globals used:**
+-- - `script_dir` — base directory for tmp/capture_request
+-- - `lfs` — LuaFileSystem, to test for the request file's existence
+-- - `switch_view` — external view switcher called to change the active view
+-- - `current_view` — the currently active view, compared against requests
+--}}}
 
 --{{{
 --   capture_poll() — call before drawing
---     Reads tmp/capture_request; switches to the requested view.
+--   Reads tmp/capture_request; switches to the requested view.
 --   capture_finish() — call after drawing
 --     Writes the drawn surface to the requested PNG; removes the request
 --     only when the file exists afterwards.
---}}}
 --}}}
 
 local _CAPTURE_REQUEST = script_dir .. "tmp/capture_request"

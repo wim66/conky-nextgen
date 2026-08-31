@@ -680,3 +680,1104 @@ msgstr "غير محتمل"
 
 msgid "alert_certainty_unknown"
 msgstr "غير معروف"
+
+############################################
+# KDE SYSTEM STATS (short labels)
+############################################
+
+msgid "All"
+msgstr "الكلّ"
+
+msgid "All Disks"
+msgstr "جميع الأقراص"
+
+msgid "All GPUs"
+msgstr "جميع المعالجات الرسومية"
+
+msgid "All GPUs Total Memory"
+msgstr "مجموع ذواكر المعالجات الرسومية"
+
+msgid "All GPUs Usage"
+msgstr "استخدام جميع المعالجات الرسومية"
+
+msgid "All GPUs Used Memory"
+msgstr "مجموع ذواكر المعالجات الرسومية المستخدمة"
+
+msgid "All Network Devices"
+msgstr "جميع أجهزة الشبكة"
+
+msgid "Application Memory"
+msgstr "ذاكرة التطبيقات"
+
+msgid "Application Memory Percentage"
+msgstr "نسبة ذاكرة التطبيقات"
+
+msgid "Average CPU Frequency"
+msgstr "متوسط سرعة المعالج"
+
+msgid "Average CPU Temperature"
+msgstr "متوسط حرارة المعالج"
+
+msgid "Buffer Memory"
+msgstr "ذاكرة مؤقتة"
+
+msgid "Buffer Memory Percentage"
+msgstr "نسبة الذاكرة المؤقتة"
+
+msgid "CPU %1"
+msgstr "المعالج %1"
+
+msgid "CPU %1 Core %2"
+msgstr "المعالج %1 النواة %2"
+
+msgid "CPU Pressure"
+msgstr "ضغط المعالج"
+
+msgid "Cache Memory"
+msgstr "ذاكرة الخبيئة"
+
+msgid "Cache Memory Percentage"
+msgstr "نسبة ذاكرة الخبيئة"
+
+msgid "Charge"
+msgstr "التعبئة"
+
+msgid "Charge Percentage"
+msgstr "نسبة الشّحن"
+
+msgid "Charging  Rate"
+msgstr "معدل الشحن"
+
+msgid "Charging Rate"
+msgstr "معدل الشحن"
+
+msgid "Core %1"
+msgstr "النواة %1"
+
+msgid "Current Capacity"
+msgstr "السعة الحالية"
+
+msgid "Current Frequency"
+msgstr "التردد الحالي"
+
+msgid "Current Temperature"
+msgstr "الحرارة الحالية"
+
+msgid "Design Capacity"
+msgstr "السعة التصميمية"
+
+msgid "Download Rate"
+msgstr "معدّل التنزيل"
+
+msgid "Free Physical Memory"
+msgstr "الذاكرة الحقيقية المتبقية"
+
+msgid "Free Physical Memory Percentage"
+msgstr "نسبة الذاكرة الحقيقية المتبقية"
+
+msgid "Free Space"
+msgstr "المساحة المتبقية"
+
+msgid "Free Swap Memory"
+msgstr "ذاكرة التبادل المتبقية"
+
+msgid "Free Swap Memory Percentage"
+msgstr "نسبة ذاكرة التبديل المتبقية"
+
+msgid "Frequency"
+msgstr "التردّد"
+
+msgid "Full (1 minute average)"
+msgstr "كامل (متوسط دقيقة)"
+
+msgid "Full (10 second average)"
+msgstr "كامل (متوسط 10 ثواني)"
+
+msgid "Full (5 minute average)"
+msgstr "كامل (متوسط 5 دقائق)"
+
+msgid "GPU"
+msgstr "معالج الرسوميات"
+
+msgid "Health"
+msgstr "الصحة"
+
+msgid "Hostname"
+msgstr "اسم المضيف"
+
+msgid "IO Pressure"
+msgstr "ضغط الدخل والخرج"
+
+msgid "IPv4 Address"
+msgstr "عناوين IPv4"
+
+msgid "IPv4 DNS"
+msgstr "‏IPv4 DNS"
+
+msgid "IPv4 Gateway"
+msgstr "بوابة IPv4"
+
+msgid "IPv4 Subnet Mask"
+msgstr "قناع الشبكة الفرعية IPv4"
+
+msgid "IPv4 with Prefix Length"
+msgstr "‏IPv4 بطول مثبت"
+
+msgid "IPv6 Address"
+msgstr "عناوين IPv6"
+
+msgid "IPv6 DNS"
+msgstr "‏IPv6 DNS"
+
+msgid "IPv6 Gateway"
+msgstr "بوابة IPv6"
+
+msgid "IPv6 Subnet Mask"
+msgstr "قناع الشبكة الفرعية IPv6"
+
+msgid "IPv6 with Prefix Length"
+msgstr "‏IPv6 بطول مثبت"
+
+msgid "KDE Frameworks Version"
+msgstr "إصدارة إطار كِيدِي"
+
+msgid "KDE Plasma"
+msgstr "سطح مكتب بلازما"
+
+msgid "KDE Plasma Version"
+msgstr "إصدارة كِيدِي بلازما"
+
+msgid "Kernel"
+msgstr "النواة"
+
+msgid "Kernel Name"
+msgstr "اسم النواة"
+
+msgid "Kernel Name and Version"
+msgstr "اسم وإصدارة النواة"
+
+msgid "Kernel Version"
+msgstr "إصدارة النّواة"
+
+msgid "Load Averages"
+msgstr "معدلات الحمل"
+
+msgid "Load average (1 minute)"
+msgstr "معدّل الحِمْل (دقيقة واحدة)"
+
+msgid "Load average (15 minute)"
+msgstr "معدّل الحِمْل (15 دقيقة)"
+
+msgid "Load average (5 minutes)"
+msgstr "معدّل الحِمْل (5 دقائق)"
+
+msgid "Maximum CPU Frequency"
+msgstr "أقصى سرعة للمعالج"
+
+msgid "Maximum CPU Temperature"
+msgstr "أعلى درجة الحرارة المعالج"
+
+msgid "Memory"
+msgstr "الذاكرة"
+
+msgid "Memory Frequency"
+msgstr "تردد الذاكرة"
+
+msgid "Memory Pressure"
+msgstr "ضغط الذاكرة"
+
+msgid "Minimum CPU Frequency"
+msgstr "أدنى سرعة معالج"
+
+msgid "Minimum CPU Temperature"
+msgstr "أدنى درجة حرارة المعالج"
+
+msgid "Name"
+msgstr "الاسم"
+
+msgid "Network Devices"
+msgstr "أجهزة الشبكة"
+
+msgid "Network Name"
+msgstr "اسم الشبكة"
+
+msgid "Number of CPUs"
+msgstr "عدد المعالجات"
+
+msgid "Number of Cores"
+msgstr "عدد الأنوية"
+
+msgid "Operating System"
+msgstr "نظام التشغيل"
+
+msgid "Operating System Logo"
+msgstr "شعار نظام التشغيل"
+
+msgid "Operating System Name"
+msgstr "اسم نظام التشغيل"
+
+msgid "Operating System Name and Version"
+msgstr "اسم وإصدارة نظام التشغيل"
+
+msgid "Operating System URL"
+msgstr "عنوان نظام التشغيل"
+
+msgid "Operating System Version"
+msgstr "إصدارة نظام التشغيل"
+
+msgid "Percentage Free"
+msgstr "نسبة المتبقي"
+
+msgid "Percentage Used"
+msgstr "نسبة المستخدم"
+
+msgid "Physical Memory"
+msgstr "الذاكرة الفيزيائية"
+
+msgid "Power"
+msgstr "الطاقة"
+
+msgid "Pressure"
+msgstr "الضغط"
+
+msgid "Qt Version"
+msgstr "إصدار كيوت"
+
+msgid "Read Rate"
+msgstr "معدل القراءة"
+
+msgid "Signal Strength"
+msgstr "قوّة الإشارة"
+
+msgid "Some (1 minute average)"
+msgstr "البعض (متوسط دقيقة)"
+
+msgid "Some (10 second average)"
+msgstr "البعض (متوسط 10 ثواني)"
+
+msgid "Some (5 minute average)"
+msgstr "البعض (متوسط دقيقة)"
+
+msgid "Swap Memory"
+msgstr "ذاكرة الإبدال"
+
+msgid "System"
+msgstr "النظام"
+
+msgid "System Usage"
+msgstr "استخدام النظام"
+
+msgid "Temperature"
+msgstr "درجة الحرارة"
+
+msgid "Total Downloaded"
+msgstr "مجموع المنزل"
+
+msgid "Total Full Stall Time"
+msgstr "إجمالي وقت الانتظار الكامل"
+
+msgid "Total Physical Memory"
+msgstr "مجموع الذاكرة الحقيقية"
+
+msgid "Total Some Stall Time"
+msgstr "إجمالي بعض وقت التوقف"
+
+msgid "Total Space"
+msgstr "مجموع المساحة"
+
+msgid "Total Swap Memory"
+msgstr "مجموع ذاكرة التبادل"
+
+msgid "Total Uploaded"
+msgstr "مجموع المرفوع"
+
+msgid "Total Usage"
+msgstr "الاستخدام الكلي"
+
+msgid "Total Video Memory"
+msgstr "مجموع ذاكرة الفيديو"
+
+msgid "Upload Rate"
+msgstr "معدل ا لرفع"
+
+msgid "Uptime"
+msgstr "زمن التشغيل"
+
+msgid "Usage"
+msgstr "الاستخدام"
+
+msgid "Used Physical Memory"
+msgstr "الذاكرة الحقيقية المستخدمة"
+
+msgid "Used Physical Memory Percentage"
+msgstr "نسبة الذاكرة الحقيقية المستخدمة"
+
+msgid "Used Space"
+msgstr "المساحة المُستخدَمة"
+
+msgid "Used Swap Memory"
+msgstr "ذاكرة التبديل المستخدمة"
+
+msgid "Used Swap Memory Percentage"
+msgstr "نسبة ذاكرة التبديل المستخدمة"
+
+msgid "User Usage"
+msgstr "استخدام المستخدم"
+
+msgid "Video Memory Used"
+msgstr "ذاكرة الفيديو المستخدمة"
+
+msgid "Video Usage"
+msgstr "استخدام الفيديو"
+
+msgid "Wait Usage"
+msgstr "استخدام الانتظام"
+
+msgid "Window System"
+msgstr "النظام النوافذ"
+
+msgid "Write Rate"
+msgstr "معدل الكتابة"
+
+############################################
+# GOOGLE DASHBOARD
+############################################
+
+msgid "Inbox"
+msgstr "الوارد"
+
+msgid "Sent"
+msgstr "أرسِل"
+
+msgid "Drafts"
+msgstr "مسوّدات"
+
+msgid "Junk"
+msgstr "نفاية"
+
+msgid "Trash"
+msgstr "المهملات"
+
+msgid "Archive"
+msgstr "أرشيف"
+
+msgid "Folders"
+msgstr "المجلّدات"
+
+msgid "From"
+msgstr "من"
+
+msgid "To"
+msgstr "إلى"
+
+msgid "Subject"
+msgstr "الموضوع"
+
+msgid "Date"
+msgstr "التّاريخ"
+
+msgid "Bcc"
+msgstr "ن.ك.م"
+
+msgid "Cc"
+msgstr "ن.ك"
+
+msgid "Priority"
+msgstr "الأولويّة"
+
+msgid "Message"
+msgstr "رسالة"
+
+msgid "Attachment"
+msgstr "مرفق"
+
+msgid "Attachments"
+msgstr "المُرفقات"
+
+msgid "Attachment Properties"
+msgstr "خصائص المُرفق"
+
+msgid "Reply"
+msgstr "رد"
+
+msgid "Reply to All"
+msgstr "رد على الجميع"
+
+msgid "Forward"
+msgstr "مرّر"
+
+msgid "Attach a file"
+msgstr "إرفاق ملف"
+
+msgid "Compose Message"
+msgstr "أنشئ رسالة"
+
+msgid "Save"
+msgstr "حفظ"
+
+msgid "Close"
+msgstr "إغلاق"
+
+msgid "Account"
+msgstr "حساب"
+
+msgid "Accounts"
+msgstr "حسابات"
+
+msgid "Folder"
+msgstr "مجلد"
+
+msgid "Search"
+msgstr "بحث"
+
+msgid "Labels"
+msgstr "ملصقات"
+
+msgid "Show"
+msgstr "عرض"
+
+msgid "Delete"
+msgstr "احذف"
+
+msgid "Calendar"
+msgstr "التقويم"
+
+msgid "Event"
+msgstr "حدث"
+
+msgid "Events"
+msgstr "أحداث"
+
+msgid "Meeting"
+msgstr "اجتماع"
+
+msgid "Appointment"
+msgstr "موعد"
+
+msgid "Today"
+msgstr "اليوم"
+
+msgid "Day"
+msgstr "اليوم"
+
+msgid "Week"
+msgstr "أسبوع"
+
+msgid "Month"
+msgstr "شهر"
+
+msgid "Year"
+msgstr "سنة"
+
+msgid "Tasks"
+msgstr "المهام"
+
+msgid "Task"
+msgstr "مهمَّة"
+
+msgid "Start"
+msgstr "البداية"
+
+msgid "End"
+msgstr "النهاية"
+
+msgid "All day:"
+msgstr "طوال اليوم:"
+
+msgid "Summary"
+msgstr "الملخّص"
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Location"
+msgstr "المكان"
+
+msgid "Details"
+msgstr "تفاصيل"
+
+msgid "Reminders"
+msgstr "التذكيرات"
+
+msgid "Busy"
+msgstr "مشغول"
+
+msgid "Free"
+msgstr "متفرّغ"
+
+msgid "Private"
+msgstr "خاص"
+
+msgid "Public"
+msgstr "عام"
+
+msgid "Recurring"
+msgstr "متكرّر"
+
+msgid "Recurrence"
+msgstr "تكرار"
+
+msgid "Categories"
+msgstr "الفئات"
+
+msgid "Notes"
+msgstr "ملاحظات"
+
+msgid "New"
+msgstr "جديد"
+
+msgid "Delete Task"
+msgstr "احذف المهمة"
+
+msgid "Export"
+msgstr "تصدير"
+
+msgid "Print…"
+msgstr "طباعة…"
+
+msgid "Undo"
+msgstr "تراجع"
+
+msgid "Previous"
+msgstr "السابق"
+
+msgid "Next"
+msgstr "التّالي"
+
+msgid "Monday"
+msgstr "الإثنين"
+
+msgid "Tuesday"
+msgstr "الثّلاثاء"
+
+msgid "Wednesday"
+msgstr "الأربعاء"
+
+msgid "Thursday"
+msgstr "الخميس"
+
+msgid "Friday"
+msgstr "الجمعة"
+
+msgid "Saturday"
+msgstr "السّبت"
+
+msgid "Sunday"
+msgstr "الأحد"
+
+msgid "January"
+msgstr "يناير"
+
+msgid "February"
+msgstr "فبراير"
+
+msgid "March"
+msgstr "مارس"
+
+msgid "April"
+msgstr "أبريل"
+
+msgid "May"
+msgstr "مايو"
+
+msgid "June"
+msgstr "يونيو"
+
+msgid "July"
+msgstr "يوليو"
+
+msgid "August"
+msgstr "أغسطس"
+
+msgid "September"
+msgstr "سبتمبر"
+
+msgid "October"
+msgstr "أكتوبر"
+
+msgid "November"
+msgstr "نوفمبر"
+
+msgid "December"
+msgstr "ديسمبر"
+
+msgid "Yes"
+msgstr "نعم"
+
+msgid "No"
+msgstr "لا"
+
+msgid "Cancel"
+msgstr "الغِ"
+
+msgid "OK"
+msgstr "موافق"
+
+msgid "Error"
+msgstr "خطأ"
+
+msgid "Warning"
+msgstr "تحذير"
+
+msgid "Open"
+msgstr "افتح"
+
+msgid "Load"
+msgstr "تحميل"
+
+msgid "Status"
+msgstr "الحالة"
+
+msgid "Offline"
+msgstr "غير متصل"
+
+msgid "Done"
+msgstr "تمّ"
+
+msgid "Completed"
+msgstr "مُنجز"
+
+msgid "Unread Messages"
+msgstr "الرسائل غير المقروءة"
+
+msgid "Important"
+msgstr "هامة"
+
+msgid "Flagged"
+msgstr "معلّم"
+
+msgid "Category"
+msgstr "الفئة"
+
+msgid "Label"
+msgstr "لصيقة"
+
+msgid "Select All"
+msgstr "انتق الكل"
+
+msgid "Loading"
+msgstr "يحمّل"
+
+msgid "Updated"
+msgstr "تم التحديث"
+
+msgid "Refresh"
+msgstr "تحديث"
+
+msgid "Preferences"
+msgstr "التفضيلات"
+
+msgid "Attendee"
+msgstr "الحاضر"
+
+msgid "Attendees"
+msgstr "الحضور"
+
+msgid "Tentative"
+msgstr "مبدئي"
+
+msgid "Free/Busy"
+msgstr "متفرّغ/مشغول"
+
+msgid "Timezone"
+msgstr "المنطقة الزّمنيّة"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Daily"
+msgstr "يوميًا"
+
+msgid "Weekly"
+msgstr "أسبوعيًا"
+
+msgid "Holiday"
+msgstr "عطلة"
+
+msgid "Birthday"
+msgstr "عيد الميلاد"
+
+msgid "Anniversary"
+msgstr "الذكرى السنويّة"
+
+msgid "Out of Office"
+msgstr "خارج المكتب"
+
+msgid "Yesterday"
+msgstr "بالأمس"
+
+msgid "Now"
+msgstr "الآن"
+
+msgid "Task List"
+msgstr "قائمة المهام"
+
+msgid "To Do"
+msgstr "مهام"
+
+msgid "Due date"
+msgstr "تاريخ الاستحقاق"
+
+msgid "Assigned"
+msgstr "مُسْندة"
+
+msgid "Overdue Tasks"
+msgstr "المهام الفائت موعدها"
+
+msgid "Remove"
+msgstr "إزالة"
+
+msgid "Clear All"
+msgstr "امسح الكل"
+
+msgid "Size"
+msgstr "الحجم"
+
+msgid "Username:"
+msgstr "اسم المستخدم:"
+
+msgid "Accept meeting request"
+msgstr "قبول طلب الاجتماع"
+
+msgid "Decline meeting request"
+msgstr "رفض طلب الاجتماع"
+
+msgid "Accepted"
+msgstr "مقبول"
+
+msgid "Declined"
+msgstr "مرفوض"
+
+msgid "Forward message"
+msgstr "مرّر الرسالة"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Due"
+msgstr "مُستحق"
+
+msgid "Due Date:"
+msgstr "تاريخ الاستحقاق:"
+
+msgid "Complete"
+msgstr "تام"
+
+msgid "Completed Tasks"
+msgstr "المهام المنجَزة"
+
+msgid "Contact"
+msgstr "المتراسل"
+
+msgid "Contacts"
+msgstr "المتراسِلين"
+
+msgid "Phone"
+msgstr "هاتف"
+
+msgid "Fax"
+msgstr "فاكس"
+
+msgid "Work"
+msgstr "العمل"
+
+msgid "Home"
+msgstr "المنزل"
+
+msgid "Other"
+msgstr "أُخرى"
+
+msgid "Company"
+msgstr "الشركة"
+
+msgid "High"
+msgstr "مرتفع"
+
+msgid "Low"
+msgstr "منخفض"
+
+msgid "Website"
+msgstr "موقع ويب"
+
+msgid "Recent"
+msgstr "الأخيرة"
+
+msgid "Reminder"
+msgstr "تذكير"
+
+msgid "Starred"
+msgstr "مميّز بنجمة"
+
+msgid "Star"
+msgstr "نجمة"
+
+msgid "Mute"
+msgstr "كتم الصوت"
+
+msgid "Snooze"
+msgstr "غفوة"
+
+msgid "Snoozed"
+msgstr "مؤجَّل"
+
+msgid "Promotions"
+msgstr "عروض"
+
+msgid "Updates"
+msgstr "تحديثات"
+
+msgid "Social"
+msgstr "اجتماعي"
+
+msgid "Forums"
+msgstr "منتديات"
+
+msgid "Primary"
+msgstr "أساسي"
+
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+msgid "Sign out"
+msgstr "تسجيل الخروج"
+
+msgid "Settings"
+msgstr "الإعدادت"
+
+msgid "No new mail"
+msgstr "لا رسائل جديدة"
+
+msgid "No messages"
+msgstr "لا رسائل"
+
+msgid "Last updated"
+msgstr "آخر تحديث"
+
+msgid "Retry"
+msgstr "إعادة المحاولة"
+
+msgid "Connected"
+msgstr "متصل"
+
+msgid "Disconnected"
+msgstr "غير متصل"
+
+msgid "Sync"
+msgstr "مزامنة"
+
+msgid "No upcoming events"
+msgstr "لا أحداث قادمة"
+
+msgid "Nothing scheduled"
+msgstr "لا شيء مجدول"
+
+msgid "Mark all as read"
+msgstr "تحديد الكل كمقروء"
+
+msgid "Agenda"
+msgstr "جدول الأعمال"
+
+msgid "All Mail"
+msgstr "جميع الرسائل"
+
+msgid "Move to"
+msgstr "نقل إلى"
+
+msgid "Due today"
+msgstr "مستحق اليوم"
+
+msgid "Overdue"
+msgstr "متأخر"
+
+msgid "Incomplete"
+msgstr "غير مكتمل"
+
+msgid "Add task"
+msgstr "إضافة مهمة"
+
+msgid "New task"
+msgstr "مهمة جديدة"
+
+msgid "Edit task"
+msgstr "تعديل مهمة"
+
+msgid "Task details"
+msgstr "تفاصيل المهمة"
+
+msgid "Task list"
+msgstr "قائمة المهام"
+
+msgid "To Do list"
+msgstr "قائمة المهام"
+
+msgid "Subtasks"
+msgstr "مهام فرعية"
+
+msgid "Medium"
+msgstr "متوسط"
+
+msgid "Priority: High"
+msgstr "أولوية: عالية"
+
+msgid "Priority: Medium"
+msgstr "أولوية: متوسطة"
+
+msgid "Priority: Low"
+msgstr "أولوية: منخفضة"
+
+msgid "Mark complete"
+msgstr "وضع علامة مكتمل"
+
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+msgid "First name"
+msgstr "الاسم الأول"
+
+msgid "Last name"
+msgstr "اسم العائلة"
+
+msgid "Mobile"
+msgstr "جوال"
+
+msgid "Job title"
+msgstr "المسمى الوظيفي"
+
+msgid "Email address"
+msgstr "عنوان البريد الإلكتروني"
+
+msgid "Drive"
+msgstr "محرك الأقراص"
+
+msgid "Storage"
+msgstr "التخزين"
+
+msgid "Used"
+msgstr "مستخدم"
+
+msgid "Quota"
+msgstr "الحصة النسبية"
+
+msgid "Upload"
+msgstr "رفع"
+
+msgid "Download"
+msgstr "تنزيل"
+
+msgid "Recent files"
+msgstr "الملفات الأخيرة"
+
+msgid "Shared with me"
+msgstr "مشارَك معي"
+
+msgid "My Drive"
+msgstr "محرّك أقراصي"
+
+msgid "Folder size"
+msgstr "حجم المجلد"
+
+msgid "Video"
+msgstr "فيديو"
+
+msgid "Videos"
+msgstr "فيديوهات"
+
+msgid "Channel"
+msgstr "قناة"
+
+msgid "Channels"
+msgstr "قنوات"
+
+msgid "Subscription"
+msgstr "اشتراك"
+
+msgid "Subscriptions"
+msgstr "اشتراكات"
+
+msgid "Views"
+msgstr "المشاهدات"
+
+msgid "Uploads"
+msgstr "التحميلات"
+
+msgid "Latest"
+msgstr "الأحدث"
+
+msgid "Watch"
+msgstr "شاهد"
+
+msgid "Playlists"
+msgstr "قوائم التشغيل"
+
+msgid "Comments"
+msgstr "التعليقات"
+
+msgid "Meeting code"
+msgstr "رمز الاجتماع"
+
+msgid "Join"
+msgstr "انضم"
+
+msgid "Join now"
+msgstr "انضم الآن"
+
+msgid "Ongoing"
+msgstr "جاري"
+
+msgid "Ended"
+msgstr "انتهى"
+
+msgid "History"
+msgstr "السجل"
+
+msgid "Past calls"
+msgstr "المكالمات السابقة"
+
+msgid "Leave"
+msgstr "مغادرة"
+
+msgid "Participants"
+msgstr "المشاركون"
+
+msgid "Pin"
+msgstr "تثبيت"
+
+msgid "Pinned"
+msgstr "مثبّت"
+
+msgid "Checklist"
+msgstr "قائمة تحقق"
+
+msgid "Space"
+msgstr "مساحة"
+
+msgid "Spaces"
+msgstr "مساحات"
+
+msgid "Direct message"
+msgstr "رسالة مباشرة"
+
+msgid "Direct messages"
+msgstr "رسائل مباشرة"
+
+msgid "Mentions"
+msgstr "ذِكر"
+
+msgid "Thread"
+msgstr "سلسلة"
+
+msgid "Threads"
+msgstr "سلاسل"
+
+msgid "Group chat"
+msgstr "محادثة جماعية"
+
+msgid "Reaction"
+msgstr "تفاعل"
+
+msgid "React"
+msgstr "تفاعل"
+

@@ -1,29 +1,32 @@
 --{{{
 --  Conky NextGen Framework
---  Author: Istvan Molnar
+--  Author: István Molnár
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/svg.lua — Renders SVG files via librsvg with tinting, rotation, and shape clipping
+
+SVG handles are cached in an internal table and freed on demand with svg_free_all().
+]]--
+
+--{{{
+-- ## SVG
 --
--- draw/svg.lua -- Native SVG rendering via librsvg (rsvg bindings)
--- draw_svg(cr, opts) -> { x, y, w, h }
---     Render an SVG file directly onto a Cairo context using librsvg.
---     Handles are cached per path to avoid re-loading every frame.
---     Supports alpha, tint, rotation, circle clip, and rounded rect clip.
+-- Renders an SVG file onto the Cairo context using librsvg
+-- (`rsvg_create_handle_from_file` / `rsvg_render_document_at`). Handles are
+-- cached and reused across frames. Supports rotation, circle or rounded-rect
+-- clipping, flat tint overlay, and global alpha.
 --
--- Requires: rsvg (loaded in require.lua)
+-- **Exposed/global functions:**
+-- - `draw_svg(cr, opts)` — Renders an SVG file at the given position/size and returns `{x, y, w, h}`.
+-- - `svg_free_all()` — Destroys all cached rsvg handles and clears the cache.
 --
--- Parameters:
---   x, y, w, h, path
---   rotate, shape = "circle", radius
---   alpha, tint = "#hex", tint_alpha
---
--- Example:
---   draw[#draw+1] = {
---       type = "svg",
---       x = 30, y = 225, w = 28, h = 28,
---       path = "/usr/share/icons/breeze/places/24/folder-blue-symbolic.svg",
---   }
+-- **Config/globals used:**
+-- - `conky_window` — checked for early-exit guard.
+-- - `apply_defaults()` — merges user options over _SVG_DEFAULT.
+-- - `hex_to_rgba()` — converts a hex colour string to r, g, b, a values.
+-- - `rounded_rect_path()` — adds a rounded rectangle clipping path.
 --}}}
 
 local _SVG_DEFAULT = {

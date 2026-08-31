@@ -4,15 +4,30 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/icon_theme.lua — Resolves freedesktop icon-theme names to file paths
+
+Parses index.theme files, follows the Inherits chain, and caches both parsed
+metadata and resolved paths in global tables.
+]]--
 
 --{{{
--- draw/icon_theme.lua — XDG icon theme resolver
--- Finds closest-size SVG from icon themes, with automatic context search.
--- Search order: ~/.local/share/icons → ~/.icons → /usr/local/share/icons → /usr/share/icons
--- All helpers below are internal to this module.
+-- ## Icon Theme
 --
--- Default theme: "Papirus"
--- Automatic inheritance: if icon not found, searches parent theme
+-- Locates icon files by name within a freedesktop-compliant icon theme. The
+-- module searches standard XDG directories, parses index.theme metadata to
+-- extract available sizes and the Inherits chain, and picks the closest size
+-- match. SVG files are preferred; PNG is used as a fallback. All results are
+-- cached in global tables keyed by theme/name/size.
+--
+-- **Exposed/global functions:**
+-- - `icon_resolve(name, target_size, theme_name)` — Returns the filesystem path to the best-matching icon, or nil.
+--
+-- **Config/globals used:**
+-- - `ICON_THEME_CACHE` — global cache for parsed index.theme metadata.
+-- - `ICON_PATH_CACHE` — global cache for resolved icon file paths.
+-- - `XDG_ICON_THEME` — fallback theme name when none is passed explicitly.
+-- - `cache_set()` — external LRU cache helper used for both caches.
 --}}}
 
 ICON_THEME_CACHE = ICON_THEME_CACHE or {}

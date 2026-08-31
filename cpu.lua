@@ -4,17 +4,35 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+cpu.lua — CPU monitor widget (load, temperature, per-core bars)
+
+Root-level widget layout for the ConkyNextGen system. It bootstraps the
+script: computes script_dir, extends package.path to the lua/ module
+tree, sets JSON_PATH, defines the icon base globals, declares the
+THEMES theme, loads the engine via require("require") and registers
+the draw items: a rounded background, overall CPU load and temperature
+text, a CPU usage graph, and a 12-core view with per-core ${cpu cpuN}
+bars and ${freq N} frequencies.
+]]--
 
 --{{{
---  widget.lua — Widget data (generated/edited by sh/designer/main.py)
---  Loaded directly by Conky (lua_load = 'widget.lua'). Structure:
---    Global paths / config (formerly settings.lua)
---    DEFAULT_THEME / _PADDING — global settings
---    draw[#draw + 1] = { ... }        — draw items (background, clock, bar, ...)
---    _GROUPS = { { name, views } }    — item groups (view switching)
---    _VIEWS  = { { name } }           — view definitions
---    MOUSE_*_ACTION = ...             — mouse event callbacks
---    Bootstrap (formerly init.lua)    — loads the modules, inits the groups
+-- ## CPU widget
+--
+-- Displays overall CPU usage/temperature and a live graph in view
+-- "main", and twelve per-core load bars with frequencies in view_1.
+-- Uses the ${cpu}, ${freq} conky variables plus the lua text providers
+-- ${lua conky_cpu_name} and ${lua conky_cpu_temp}.
+--
+-- **Exposed/global functions:**
+-- (none defined in this file)
+--
+-- **Config/globals used:**
+-- `script_dir`, `package.path`, `JSON_PATH`, `ICON_BASE`, `ICON_THEME`,
+-- `MOON_ICON_BASE`, `WIND_ICON_BASE`, `draw`, `THEMES`, `DEFAULT_THEME`,
+-- `_PADDING`, `_GROUPS`, `_VIEWS`, `_MOUSE_ENABLED`
+-- `require("require")` and `init_groups(_GROUPS)` — bootstraps the system
+-- `view_toggle("view_1")` — left-click action (defined in mouse_actions.lua)
 --}}}
 
 ------------------------------------------------------------

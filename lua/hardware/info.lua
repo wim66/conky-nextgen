@@ -4,18 +4,23 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
-
+--[[[
+lua/hardware/info.lua — Hardware identification: CPU model, NVMe model, and OS install date.
+]]--
 --{{{
--- hardware/info.lua — CPU model, NVMe model, OS install date
--- Callable from Conky:
---   conky_cpu_name()      → string ("Intel Core i7-6700HQ")
---     CPU model name from /proc/cpuinfo, cleaned of the "CPU" and
---     "Processor" words and trademark symbols (24h cache).
---   conky_nvme_model()    → string ("Samsung SSD 970 EVO")
---     NVMe drive model from sysfs (24h cache), or "No NVMe" when absent.
---   conky_install_date()  → string ("2023-01-15")
---     Date the OS was installed, from the filesystem birth time of
---     /var/log (24h cache).
+-- ## Info Module
+--
+-- Returns human-readable hardware identifiers. CPU and NVMe names are
+-- read from sysfs/proc and cached for a full day. The Arch Linux install
+-- date is extracted once from `pacman.log` and stored in `static`.
+--
+-- **Exposed/global functions:**
+-- - `conky_cpu_name()` — cleaned-up CPU model name (symbols and filler words stripped)
+-- - `conky_nvme_model()` — NVMe drive model string
+-- - `conky_install_date()` — first line of pacman.log (Arch install date)
+--
+-- **Config/globals used:**
+-- `static` (from core.lua), `read_file()`, `cached()`, `pread()`
 --}}}
 
 function conky_cpu_name()

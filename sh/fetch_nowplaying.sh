@@ -5,23 +5,26 @@
 #  GitHub: https://github.com/molnari811023/conky-nextgen
 #  Description: Modular Conky UI framework (Lua engine + Bash backend)
 #}}}
-
 #{{{
-# fetch_nowplaying.sh — Multi-player track info + album art fetcher
+# ## Now Playing — metadata + cover art fetcher
 #
-# Supported players (auto-detected in priority order):
-#   1. playerctl (MPRIS2) — Spotify, VLC, Firefox, Chrome, etc.
-#   2. CMUS — cmus-remote
-#   3. MPD — mpc
-#   4. MOC — mocp
+# Detects the active music player (MPRIS via `playerctl`, `cmus`, `mpd`,
+# or `moc`), collects title/artist/album/status, downloads the cover art,
+# and writes the result to `$TMP_DIR/nowplaying.json` (+ `album_art.png`).
 #
-# Features:
-#   - Caches JSON to avoid re-downloading album art when track unchanged
-#   - Supports file:// and http:// album art URLs
-#   - Falls back to "Unknown Title"/"Unknown Artist" for empty fields
+# **Output JSON:**
+#   `{"player","title","artist","album","status","art"}`
+#   When stopped/no player → empty player and `"Stopped"` status, art removed.
 #
-# Usage: source 0_common.sh && fetch_nowplaying
-# Output: tmp/nowplaying.json, tmp/album_art.png
+# **Player detection order** (first match wins):
+#   1. MPRIS/`playerctl` — modern desktops
+#   2. `cmus-remote` — CMUS
+#   3. `mpc` + `mpd` — MPD
+#   4. `mocp` — MOC
+#
+# **Cover art** (via embedded python3): `file://` and `http(s)` URLs are
+#   copied/downloaded to the tmp path; missing/failed art is cleaned up.
+#   A change-cache skips rewriting when title/artist/status/art are unchanged.
 #}}}
 
 [ -n "$_FETCH_NOWPLAYING" ] && return || _FETCH_NOWPLAYING=1

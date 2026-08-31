@@ -680,3 +680,1104 @@ msgstr "Malo vjerojatno"
 
 msgid "alert_certainty_unknown"
 msgstr "Nepoznato"
+
+############################################
+# KDE SYSTEM STATS (short labels)
+############################################
+
+msgid "All"
+msgstr "Sve"
+
+msgid "All Disks"
+msgstr "Svi diskovi"
+
+msgid "All GPUs"
+msgstr "Svi GPU-i"
+
+msgid "All GPUs Total Memory"
+msgstr "Ukupna memorija svih GPU-a"
+
+msgid "All GPUs Usage"
+msgstr "Korištenje svih GPU-a"
+
+msgid "All GPUs Used Memory"
+msgstr "Zauzeta memorija svih GPU-a"
+
+msgid "All Network Devices"
+msgstr "Svi mrežni uređaji"
+
+msgid "Application Memory"
+msgstr "Memorija aplikacija"
+
+msgid "Application Memory Percentage"
+msgstr "Postotak memorije aplikacija"
+
+msgid "Average CPU Frequency"
+msgstr "Prosječna CPU frekvencija"
+
+msgid "Average CPU Temperature"
+msgstr "Prosječna CPU temperatura"
+
+msgid "Buffer Memory"
+msgstr "Međuspremnička memorija"
+
+msgid "Buffer Memory Percentage"
+msgstr "Postotak međuspremničke memorije"
+
+msgid "CPU %1"
+msgstr "CPU %1"
+
+msgid "CPU %1 Core %2"
+msgstr "CPU %1 jezgra %2"
+
+msgid "CPU Pressure"
+msgstr "CPU pritisak"
+
+msgid "Cache Memory"
+msgstr "Predmemorija"
+
+msgid "Cache Memory Percentage"
+msgstr "Postotak predmemorije"
+
+msgid "Charge"
+msgstr "Napunjenost"
+
+msgid "Charge Percentage"
+msgstr "Postotak napunjenosti"
+
+msgid "Charging  Rate"
+msgstr "Brzina punjenja"
+
+msgid "Charging Rate"
+msgstr "Brzina punjenja"
+
+msgid "Core %1"
+msgstr "Jezgra %1"
+
+msgid "Current Capacity"
+msgstr "Trenutni kapacitet"
+
+msgid "Current Frequency"
+msgstr "Trenutna frekvencija"
+
+msgid "Current Temperature"
+msgstr "Trenutna temperatura"
+
+msgid "Design Capacity"
+msgstr "Dizajniran kapacitet"
+
+msgid "Download Rate"
+msgstr "Brzina preuzimanja"
+
+msgid "Free Physical Memory"
+msgstr "Slobodna fizička memorija"
+
+msgid "Free Physical Memory Percentage"
+msgstr "Postotak slobodne fizičke memorije"
+
+msgid "Free Space"
+msgstr "Slobodni prostor"
+
+msgid "Free Swap Memory"
+msgstr "Slobodna swap memorija"
+
+msgid "Free Swap Memory Percentage"
+msgstr "Postotak slobodne swap memorije"
+
+msgid "Frequency"
+msgstr "Frekvencija"
+
+msgid "Full (1 minute average)"
+msgstr "Puno (prosjek 1 minuta)"
+
+msgid "Full (10 second average)"
+msgstr "Puno (prosjek 10 sekundi)"
+
+msgid "Full (5 minute average)"
+msgstr "Puno (prosjek 5 minuta)"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Health"
+msgstr "Zdravlje"
+
+msgid "Hostname"
+msgstr "Naziv računala"
+
+msgid "IO Pressure"
+msgstr "IO pritisak"
+
+msgid "IPv4 Address"
+msgstr "IPv4 adresa"
+
+msgid "IPv4 DNS"
+msgstr "IPv4 DNS"
+
+msgid "IPv4 Gateway"
+msgstr "IPv4 pristupnik"
+
+msgid "IPv4 Subnet Mask"
+msgstr "IPv4 mrežna maska"
+
+msgid "IPv4 with Prefix Length"
+msgstr "IPv4 s duljinom prefiksa"
+
+msgid "IPv6 Address"
+msgstr "IPv6 adresa"
+
+msgid "IPv6 DNS"
+msgstr "IPv6 DNS"
+
+msgid "IPv6 Gateway"
+msgstr "IPv6 pristupnik"
+
+msgid "IPv6 Subnet Mask"
+msgstr "IPv6 mrežna maska"
+
+msgid "IPv6 with Prefix Length"
+msgstr "IPv6 s duljinom prefiksa"
+
+msgid "KDE Frameworks Version"
+msgstr "Verzija KDE okvira"
+
+msgid "KDE Plasma"
+msgstr "KDE Plasma"
+
+msgid "KDE Plasma Version"
+msgstr "Verzija KDE Plasma"
+
+msgid "Kernel"
+msgstr "Jezgra"
+
+msgid "Kernel Name"
+msgstr "Naziv jezgre"
+
+msgid "Kernel Name and Version"
+msgstr "Naziv i verzija jezgre"
+
+msgid "Kernel Version"
+msgstr "Verzija jezgre"
+
+msgid "Load Averages"
+msgstr "Prosjeci opterećenja"
+
+msgid "Load average (1 minute)"
+msgstr "Prosjek opterećenja (1 minuta)"
+
+msgid "Load average (15 minute)"
+msgstr "Prosjek opterećenja (15 minuta)"
+
+msgid "Load average (5 minutes)"
+msgstr "Prosjek opterećenja (5 minuta)"
+
+msgid "Maximum CPU Frequency"
+msgstr "Maksimalna CPU frekvencija"
+
+msgid "Maximum CPU Temperature"
+msgstr "Maksimalna CPU temperatura"
+
+msgid "Memory"
+msgstr "Memorija"
+
+msgid "Memory Frequency"
+msgstr "Frekvencija memorije"
+
+msgid "Memory Pressure"
+msgstr "Pritisak memorije"
+
+msgid "Minimum CPU Frequency"
+msgstr "Minimalna CPU frekvencija"
+
+msgid "Minimum CPU Temperature"
+msgstr "Minimalna CPU temperatura"
+
+msgid "Name"
+msgstr "Naziv"
+
+msgid "Network Devices"
+msgstr "Mrežni uređaji"
+
+msgid "Network Name"
+msgstr "Naziv mreže"
+
+msgid "Number of CPUs"
+msgstr "Broj CPU-a"
+
+msgid "Number of Cores"
+msgstr "Broj jezgri"
+
+msgid "Operating System"
+msgstr "Operativni sustav"
+
+msgid "Operating System Logo"
+msgstr "Logotip operativnog sustava"
+
+msgid "Operating System Name"
+msgstr "Naziv operativnog sustava"
+
+msgid "Operating System Name and Version"
+msgstr "Naziv i verzija operativnog sustava"
+
+msgid "Operating System URL"
+msgstr "URL operativnog sustava"
+
+msgid "Operating System Version"
+msgstr "Verzija operativnog sustava"
+
+msgid "Percentage Free"
+msgstr "Postotak slobodno"
+
+msgid "Percentage Used"
+msgstr "Postotak iskorišteno"
+
+msgid "Physical Memory"
+msgstr "Fizička memorija"
+
+msgid "Power"
+msgstr "Napon"
+
+msgid "Pressure"
+msgstr "Pritisak"
+
+msgid "Qt Version"
+msgstr "Qt verzija"
+
+msgid "Read Rate"
+msgstr "Brzina čitanja"
+
+msgid "Signal Strength"
+msgstr "Jačina signala"
+
+msgid "Some (1 minute average)"
+msgstr "Djelomično (prosjek 1 minuta)"
+
+msgid "Some (10 second average)"
+msgstr "Djelomično (prosjek 10 sekundi)"
+
+msgid "Some (5 minute average)"
+msgstr "Djelomično (prosjek 5 minuta)"
+
+msgid "Swap Memory"
+msgstr "Swap memorija"
+
+msgid "System"
+msgstr "Sustav"
+
+msgid "System Usage"
+msgstr "Korištenje sustava"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Total Downloaded"
+msgstr "Ukupno preuzeto"
+
+msgid "Total Full Stall Time"
+msgstr "Ukupno vrijeme potpune blokade"
+
+msgid "Total Physical Memory"
+msgstr "Ukupna fizička memorija"
+
+msgid "Total Some Stall Time"
+msgstr "Ukupno vrijeme djelomične blokade"
+
+msgid "Total Space"
+msgstr "Ukupni prostor"
+
+msgid "Total Swap Memory"
+msgstr "Ukupna swap memorija"
+
+msgid "Total Uploaded"
+msgstr "Ukupno otpremljeno"
+
+msgid "Total Usage"
+msgstr "Ukupno korištenje"
+
+msgid "Total Video Memory"
+msgstr "Ukupna video memorija"
+
+msgid "Upload Rate"
+msgstr "Brzina otpremanja"
+
+msgid "Uptime"
+msgstr "Vrijeme rada"
+
+msgid "Usage"
+msgstr "Korištenje"
+
+msgid "Used Physical Memory"
+msgstr "Zauzeta fizička memorija"
+
+msgid "Used Physical Memory Percentage"
+msgstr "Postotak zauzete fizičke memorije"
+
+msgid "Used Space"
+msgstr "Zauzeti prostor"
+
+msgid "Used Swap Memory"
+msgstr "Zauzeta swap memorija"
+
+msgid "Used Swap Memory Percentage"
+msgstr "Postotak zauzete swap memorije"
+
+msgid "User Usage"
+msgstr "Korištenje korisnika"
+
+msgid "Video Memory Used"
+msgstr "Korištena video memorija"
+
+msgid "Video Usage"
+msgstr "Korištenje video"
+
+msgid "Wait Usage"
+msgstr "Korištenje čekanja"
+
+msgid "Window System"
+msgstr "Prozorski sustav"
+
+msgid "Write Rate"
+msgstr "Brzina pisanja"
+
+############################################
+# GOOGLE DASHBOARD
+############################################
+
+msgid "Inbox"
+msgstr "Pristigla pošta"
+
+msgid "Sent"
+msgstr "Slanje"
+
+msgid "Drafts"
+msgstr "Nedovršeno"
+
+msgid "Junk"
+msgstr "Neželjena pošta"
+
+msgid "Trash"
+msgstr "Smeće"
+
+msgid "Archive"
+msgstr "Arhiva"
+
+msgid "Folders"
+msgstr "Mape"
+
+msgid "From"
+msgstr "Od"
+
+msgid "To"
+msgstr "Prima"
+
+msgid "Subject"
+msgstr "Predmet"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Bcc"
+msgstr "Prima tajnu kopiju"
+
+msgid "Cc"
+msgstr "Prima kopiju"
+
+msgid "Priority"
+msgstr "Prioritet"
+
+msgid "Message"
+msgstr "Poruka"
+
+msgid "Attachment"
+msgstr "Privitak"
+
+msgid "Attachments"
+msgstr "Privitci"
+
+msgid "Attachment Properties"
+msgstr "Svojstva privitka"
+
+msgid "Reply"
+msgstr "Odgovori"
+
+msgid "Reply to All"
+msgstr "Odgovori svima"
+
+msgid "Forward"
+msgstr "Proslijedi"
+
+msgid "Attach a file"
+msgstr "Priloži datoteku"
+
+msgid "Compose Message"
+msgstr "Sastavi poruku"
+
+msgid "Save"
+msgstr "Spremi"
+
+msgid "Close"
+msgstr "Zatvori"
+
+msgid "Account"
+msgstr "Račun"
+
+msgid "Accounts"
+msgstr "Računi"
+
+msgid "Folder"
+msgstr "Mapa"
+
+msgid "Search"
+msgstr "Pretraži"
+
+msgid "Labels"
+msgstr "Natpisi"
+
+msgid "Show"
+msgstr "Prikaži"
+
+msgid "Delete"
+msgstr "Obriši"
+
+msgid "Calendar"
+msgstr "Kalendar"
+
+msgid "Event"
+msgstr "Događaj"
+
+msgid "Events"
+msgstr "Događaj"
+
+msgid "Meeting"
+msgstr "Sastanak"
+
+msgid "Appointment"
+msgstr "Ugovoreni sastanak"
+
+msgid "Today"
+msgstr "Danas"
+
+msgid "Day"
+msgstr "Dan"
+
+msgid "Week"
+msgstr "Tjedan"
+
+msgid "Month"
+msgstr "Mjesec"
+
+msgid "Year"
+msgstr "Godina"
+
+msgid "Tasks"
+msgstr "Zadaci"
+
+msgid "Task"
+msgstr "Zadatak"
+
+msgid "Start"
+msgstr "Početak"
+
+msgid "End"
+msgstr "Završetak"
+
+msgid "All day:"
+msgstr "Cijeli dan:"
+
+msgid "Summary"
+msgstr "Sažetak"
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Location"
+msgstr "Mjesto"
+
+msgid "Details"
+msgstr "Pojedinosti"
+
+msgid "Reminders"
+msgstr "Podsjetnici"
+
+msgid "Busy"
+msgstr "Zauzeto"
+
+msgid "Free"
+msgstr "Slobodno"
+
+msgid "Private"
+msgstr "Privatno"
+
+msgid "Public"
+msgstr "Javno"
+
+msgid "Recurring"
+msgstr "Ponavljajući"
+
+msgid "Recurrence"
+msgstr "Ponavljanje"
+
+msgid "Categories"
+msgstr "Kategorije"
+
+msgid "Notes"
+msgstr "Bilješke"
+
+msgid "New"
+msgstr "Novo"
+
+msgid "Delete Task"
+msgstr "Obriši zadatak"
+
+msgid "Export"
+msgstr "Izvoz"
+
+msgid "Print…"
+msgstr "Ispis…"
+
+msgid "Undo"
+msgstr "Vrati"
+
+msgid "Previous"
+msgstr "Prijašnja"
+
+msgid "Next"
+msgstr "Sljedeća"
+
+msgid "Monday"
+msgstr "Ponedjeljak"
+
+msgid "Tuesday"
+msgstr "Utorak"
+
+msgid "Wednesday"
+msgstr "Srijedu"
+
+msgid "Thursday"
+msgstr "Četvrtak"
+
+msgid "Friday"
+msgstr "Petak"
+
+msgid "Saturday"
+msgstr "Subotu"
+
+msgid "Sunday"
+msgstr "Nedjelju"
+
+msgid "January"
+msgstr "Siječanj"
+
+msgid "February"
+msgstr "Veljača"
+
+msgid "March"
+msgstr "Ožujak"
+
+msgid "April"
+msgstr "Travanj"
+
+msgid "May"
+msgstr "Svibanj"
+
+msgid "June"
+msgstr "Lipanj"
+
+msgid "July"
+msgstr "Srpanj"
+
+msgid "August"
+msgstr "Kolovoz"
+
+msgid "September"
+msgstr "Rujan"
+
+msgid "October"
+msgstr "Listopad"
+
+msgid "November"
+msgstr "Studeni"
+
+msgid "December"
+msgstr "Prosinac"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "Cancel"
+msgstr "Odustani"
+
+msgid "OK"
+msgstr "U redu"
+
+msgid "Error"
+msgstr "Greška"
+
+msgid "Warning"
+msgstr "Upozorenje"
+
+msgid "Open"
+msgstr "Otvori"
+
+msgid "Load"
+msgstr "Učitaj"
+
+msgid "Status"
+msgstr "Stanje"
+
+msgid "Offline"
+msgstr "Izvanmreže"
+
+msgid "Done"
+msgstr "Završetak"
+
+msgid "Completed"
+msgstr "Završeno"
+
+msgid "Unread Messages"
+msgstr "Nepročitane poruke"
+
+msgid "Important"
+msgstr "Bitno"
+
+msgid "Flagged"
+msgstr "Označeno"
+
+msgid "Category"
+msgstr "Kategorija"
+
+msgid "Label"
+msgstr "Natpis"
+
+msgid "Select All"
+msgstr "Odaberi sve"
+
+msgid "Loading"
+msgstr "Učitavanje"
+
+msgid "Updated"
+msgstr "Nadopunjen"
+
+msgid "Refresh"
+msgstr "Osvježen"
+
+msgid "Preferences"
+msgstr "Osobitosti"
+
+msgid "Attendee"
+msgstr "Sudionik"
+
+msgid "Attendees"
+msgstr "Sudionici"
+
+msgid "Tentative"
+msgstr "Privremeno"
+
+msgid "Free/Busy"
+msgstr "Slobodan/Zauzet"
+
+msgid "Timezone"
+msgstr "Vremenska zona"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Daily"
+msgstr "Dnevno"
+
+msgid "Weekly"
+msgstr "Tjedno"
+
+msgid "Holiday"
+msgstr "Praznik"
+
+msgid "Birthday"
+msgstr "Rođendan"
+
+msgid "Anniversary"
+msgstr "Obljetnica"
+
+msgid "Out of Office"
+msgstr "Izvan ureda"
+
+msgid "Yesterday"
+msgstr "Jučer"
+
+msgid "Now"
+msgstr "Sada"
+
+msgid "Task List"
+msgstr "Popis zadataka"
+
+msgid "To Do"
+msgstr "Zadaci"
+
+msgid "Due date"
+msgstr "Datum dospijeća"
+
+msgid "Assigned"
+msgstr "Dodijeljeno"
+
+msgid "Overdue Tasks"
+msgstr "Neispunjeni zadaci"
+
+msgid "Remove"
+msgstr "Ukloni"
+
+msgid "Clear All"
+msgstr "Ukloni sve"
+
+msgid "Size"
+msgstr "Veličina"
+
+msgid "Username:"
+msgstr "Korisničko ime:"
+
+msgid "Accept meeting request"
+msgstr "Prihvati zahtjev za sastankom"
+
+msgid "Decline meeting request"
+msgstr "Odbij zahtjev za sastankom"
+
+msgid "Accepted"
+msgstr "Prihvaćen"
+
+msgid "Declined"
+msgstr "Odbijen"
+
+msgid "Forward message"
+msgstr "Proslijeđena poruku"
+
+msgid "Address"
+msgstr "Adresa"
+
+msgid "Email"
+msgstr "E-pošta"
+
+msgid "Due"
+msgstr "Rok"
+
+msgid "Due Date:"
+msgstr "Datum dospijeća:"
+
+msgid "Complete"
+msgstr "Završeno"
+
+msgid "Completed Tasks"
+msgstr "Završeni zadaci"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Contacts"
+msgstr "Kontakti"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Fax"
+msgstr "Faks"
+
+msgid "Work"
+msgstr "Posao"
+
+msgid "Home"
+msgstr "Kuća"
+
+msgid "Other"
+msgstr "Ostalo"
+
+msgid "Company"
+msgstr "Tvrtka"
+
+msgid "High"
+msgstr "Visok"
+
+msgid "Low"
+msgstr "Nizak"
+
+msgid "Website"
+msgstr "Web stranica"
+
+msgid "Recent"
+msgstr "Nedavno"
+
+msgid "Reminder"
+msgstr "Podsjetnik"
+
+msgid "Starred"
+msgstr "Označeno zvjezdicom"
+
+msgid "Star"
+msgstr "Zvjezdica"
+
+msgid "Mute"
+msgstr "Utišaj"
+
+msgid "Snooze"
+msgstr "Odgodi"
+
+msgid "Snoozed"
+msgstr "Odgođeno"
+
+msgid "Promotions"
+msgstr "Promocije"
+
+msgid "Updates"
+msgstr "Novosti"
+
+msgid "Social"
+msgstr "Društvene mreže"
+
+msgid "Forums"
+msgstr "Forumi"
+
+msgid "Primary"
+msgstr "Glavno"
+
+msgid "Sign in"
+msgstr "Prijava"
+
+msgid "Sign out"
+msgstr "Odjava"
+
+msgid "Settings"
+msgstr "Postavke"
+
+msgid "No new mail"
+msgstr "Nema nove pošte"
+
+msgid "No messages"
+msgstr "Nema poruka"
+
+msgid "Last updated"
+msgstr "Zadnje ažuriranje"
+
+msgid "Retry"
+msgstr "Pokušaj ponovno"
+
+msgid "Connected"
+msgstr "Spojeno"
+
+msgid "Disconnected"
+msgstr "Prekinuto"
+
+msgid "Sync"
+msgstr "Sinkronizacija"
+
+msgid "No upcoming events"
+msgstr "Nema nadolazećih događaja"
+
+msgid "Nothing scheduled"
+msgstr "Ništa nije zakazano"
+
+msgid "Mark all as read"
+msgstr "Označi sve kao pročitano"
+
+msgid "Agenda"
+msgstr "Dnevni red"
+
+msgid "All Mail"
+msgstr "Sva pošta"
+
+msgid "Move to"
+msgstr "Premjesti u"
+
+msgid "Due today"
+msgstr "Dospijeva danas"
+
+msgid "Overdue"
+msgstr "Zakašnjelo"
+
+msgid "Incomplete"
+msgstr "Nedovršeno"
+
+msgid "Add task"
+msgstr "Dodaj zadatak"
+
+msgid "New task"
+msgstr "Novi zadatak"
+
+msgid "Edit task"
+msgstr "Uredi zadatak"
+
+msgid "Task details"
+msgstr "Detalji zadatka"
+
+msgid "Task list"
+msgstr "Popis zadataka"
+
+msgid "To Do list"
+msgstr "Popis zadataka"
+
+msgid "Subtasks"
+msgstr "Podzadaci"
+
+msgid "Medium"
+msgstr "Srednje"
+
+msgid "Priority: High"
+msgstr "Prioritet: Visok"
+
+msgid "Priority: Medium"
+msgstr "Prioritet: Srednji"
+
+msgid "Priority: Low"
+msgstr "Prioritet: Nizak"
+
+msgid "Mark complete"
+msgstr "Označi kao dovršeno"
+
+msgid "Full name"
+msgstr "Puno ime"
+
+msgid "First name"
+msgstr "Ime"
+
+msgid "Last name"
+msgstr "Prezime"
+
+msgid "Mobile"
+msgstr "Mobitel"
+
+msgid "Job title"
+msgstr "Radno mjesto"
+
+msgid "Email address"
+msgstr "Adresa e-pošte"
+
+msgid "Drive"
+msgstr "Disk"
+
+msgid "Storage"
+msgstr "Pohrana"
+
+msgid "Used"
+msgstr "Iskorišteno"
+
+msgid "Quota"
+msgstr "Kvota"
+
+msgid "Upload"
+msgstr "Prenesi"
+
+msgid "Download"
+msgstr "Preuzmi"
+
+msgid "Recent files"
+msgstr "Nedavne datoteke"
+
+msgid "Shared with me"
+msgstr "Podijeljeno sa mnom"
+
+msgid "My Drive"
+msgstr "Moj disk"
+
+msgid "Folder size"
+msgstr "Veličina mape"
+
+msgid "Video"
+msgstr "Videozapis"
+
+msgid "Videos"
+msgstr "Videozapisi"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Channels"
+msgstr "Kanali"
+
+msgid "Subscription"
+msgstr "Pretplata"
+
+msgid "Subscriptions"
+msgstr "Pretplate"
+
+msgid "Views"
+msgstr "Pregledi"
+
+msgid "Uploads"
+msgstr "Prijenos"
+
+msgid "Latest"
+msgstr "Najnovije"
+
+msgid "Watch"
+msgstr "Gledaj"
+
+msgid "Playlists"
+msgstr "Popisi za reprodukciju"
+
+msgid "Comments"
+msgstr "Komentari"
+
+msgid "Meeting code"
+msgstr "Kod sastanka"
+
+msgid "Join"
+msgstr "Pridruži se"
+
+msgid "Join now"
+msgstr "Pridruži se sada"
+
+msgid "Ongoing"
+msgstr "U tijeku"
+
+msgid "Ended"
+msgstr "Završeno"
+
+msgid "History"
+msgstr "Povijest"
+
+msgid "Past calls"
+msgstr "Prošli pozivi"
+
+msgid "Leave"
+msgstr "Napuštanje"
+
+msgid "Participants"
+msgstr "Sudionici"
+
+msgid "Pin"
+msgstr "Zakači"
+
+msgid "Pinned"
+msgstr "Zakačeno"
+
+msgid "Checklist"
+msgstr "Kontrolni popis"
+
+msgid "Space"
+msgstr "Prostor"
+
+msgid "Spaces"
+msgstr "Prostori"
+
+msgid "Direct message"
+msgstr "Izravna poruka"
+
+msgid "Direct messages"
+msgstr "Izravne poruke"
+
+msgid "Mentions"
+msgstr "Spominjanja"
+
+msgid "Thread"
+msgstr "Nit"
+
+msgid "Threads"
+msgstr "Niti"
+
+msgid "Group chat"
+msgstr "Grupni chat"
+
+msgid "Reaction"
+msgstr "Reakcija"
+
+msgid "React"
+msgstr "Reagiraj"
+

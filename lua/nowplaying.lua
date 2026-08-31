@@ -4,24 +4,34 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+nowplaying.lua — "now playing" media data provider (support module)
+
+Support module that reads the JSON_PATH/nowplaying.json cache file
+(produced by an external fetch script) and exposes per-field getter
+functions for use in draw text via ${lua conky_nowplaying_*}. The file
+is re-read lazily only when its modification time changes; decoded
+results are memoized in a module-local cache.
+]]--
 
 --{{{
--- nowplaying.lua — MPRIS now playing info via playerctl (title, artist, album, album art)
--- Callable from Conky:
---   conky_nowplaying_player()  → string ("spotify", "chromium")
---     Name of the active MPRIS player (e.g. "spotify", "chromium").
---   conky_nowplaying_title()   → string ("Bohemian Rhapsody")
---     Title of the currently playing track.
---   conky_nowplaying_artist()  → string ("Queen")
---     Artist of the current track.
---   conky_nowplaying_album()   → string ("A Night at the Opera")
---     Album name of the current track.
---   conky_nowplaying_status()  → string ("Playing","Paused","Stopped")
---     Playback state of the active player.
---   conky_nowplaying_art_path() → string ("/path/to/albumart.jpg")
---     Local path to the album art file, for an image widget.
+-- ## Now playing support module
 --
--- Data source: tmp/nowplaying.json (sh/fetch_nowplaying.sh)
+-- Not a standalone widget. Decodes tmp/nowplaying.json (player, title,
+-- artist, album, status, art) on demand and reloads it only when the
+-- file's mtime changes.
+--
+-- **Exposed/global functions:**
+-- - `conky_nowplaying_player()` — player name
+-- - `conky_nowplaying_title()` — track title
+-- - `conky_nowplaying_artist()` — artist name
+-- - `conky_nowplaying_album()` — album name
+-- - `conky_nowplaying_status()` — playback status
+-- - `conky_nowplaying_art_path()` — cover art path
+--
+-- **Config/globals used:**
+-- `JSON_PATH` — directory holding nowplaying.json (defaults to /tmp/)
+-- `lfs.attributes()` / `json.decode()` — file stat and JSON parsing helpers
 --}}}
 
 local cache = {}

@@ -4,17 +4,32 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+nvidia.lua — NVIDIA GPU monitoring widget
+
+Root-level widget layout for the ConkyNextGen system. It bootstraps the
+script (script_dir, package.path, JSON_PATH), loads the engine via
+require("require") early, declares the THEMES theme and icon globals,
+and registers draw items: a rounded background, GPU model, temperature,
+memory usage bar, driver version and GPU utilization.
+]]--
 
 --{{{
---  widget.lua — Widget data (generated/edited by sh/designer/main.py)
---  Loaded directly by Conky (lua_load = 'widget.lua'). Structure:
---    Global paths / config (formerly settings.lua)
---    DEFAULT_THEME / _PADDING — global settings
---    draw[#draw + 1] = { ... }        — draw items (background, clock, bar, ...)
---    _GROUPS = { { name, views } }    — item groups (view switching)
---    _VIEWS  = { { name } }           — view definitions
---    MOUSE_*_ACTION = ...             — mouse event callbacks
---    Bootstrap (formerly init.lua)    — loads the modules, inits the groups
+-- ## NVIDIA GPU widget
+--
+-- Monitors GPU model, temperature, memory usage, utilization and driver
+-- version in a single "main" view using the ${nvidia ...} conky
+-- variables (modelname, gputemp, memused, memmax, memutil,
+-- driverversion, gpuutil).
+--
+-- **Exposed/global functions:**
+-- (none defined in this file)
+--
+-- **Config/globals used:**
+-- `script_dir`, `package.path`, `JSON_PATH`, `ICON_BASE`, `ICON_THEME`,
+-- `MOON_ICON_BASE`, `WIND_ICON_BASE`, `draw`, `THEMES`, `DEFAULT_THEME`,
+-- `_PADDING`, `_GROUPS`, `_VIEWS`, `_MOUSE_ENABLED`
+-- `require("require")` and `init_groups(_GROUPS)` — bootstraps the system
 --}}}
 
 ------------------------------------------------------------

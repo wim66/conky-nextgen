@@ -4,20 +4,24 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
-
+--[[[
+lua/hardware/mtp.lua — MTP device detection and storage usage via KDE kmtpd or GVFS.
+]]--
 --{{{
--- hardware/mtp.lua — MTP device detection (KDE KIO / GVFS)
--- Callable from Conky:
---   conky_mtp_data()         → { count, devices[] }
---     Full MTP info: a table with `count` and a `devices` array, each
---     device having name and storages. Refreshed every 5s.
---   conky_mtp_count()        → number
---     Number of connected MTP devices (phone, tablet…).
---   conky_mtp_perc(dev_idx, storage_idx) → number (0-100)
---     Fill percentage of a device's storage (1-based indexes) — handy for
---     a phone-storage bar. Returns 0 when the index is out of range.
+-- ## MTP Module
 --
--- Automatic: KDE Plasma → qdbus6, others → GVFS/gio
+-- Detects MTP-connected Android (or similar) devices and reports storage
+-- capacity and usage. On KDE Plasma the kmtpd D-Bus interface is used;
+-- on other desktops GVFS (`gio info`) is the fallback. Results are cached
+-- for 5 seconds.
+--
+-- **Exposed/global functions:**
+-- - `conky_mtp_data()` — returns `{count, devices}` table with per-device storage info
+-- - `conky_mtp_count()` — number of connected MTP devices
+-- - `conky_mtp_perc(dev_idx, storage_idx)` — usage percentage for a specific storage volume
+--
+-- **Config/globals used:**
+-- `XDG_CURRENT_DESKTOP` env var, `cached()`, `pread()`, `parse_num()`
 --}}}
 
 local function kde_mtp_info()

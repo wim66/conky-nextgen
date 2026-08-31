@@ -4,27 +4,27 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/lines.lua — Draws straight lines with solid, dashed, or dotted styles
+
+Supports gradient colour along the line direction via build_gradient_pattern.
+Dash parameters are clamped to non-negative values to protect the Cairo context.
+]]--
 
 --{{{
--- draw/lines.lua — Lines with solid/dash/dot styles
--- draw_line_modules(cr, m) → { x, y, w, h }
---     Draw a straight line between two points with a given thickness.
---     Supports solid, dashed and dotted styles with configurable
---     on/off lengths. Returns the bounding box of the line.
+-- ## Lines
 --
--- Parameters:
---   x1, y1, x2, y2, thickness
---   style_type = "solid"|"dashed"|"dotted"
---   dash_on, dash_off, dot_on, dot_off
---   fg = { { position, "#hex", alpha }, ... }
+-- Renders a straight line between two endpoints using Cairo. The line style
+-- can be solid, dashed, or dotted, with configurable dash/gap and dot/gap
+-- lengths. A gradient pattern can be applied along the line axis. The dash
+-- state is explicitly reset after drawing to prevent leakage to later elements.
 --
--- Example:
---   draw[#draw+1] = {
---       type = "line",
---       x1 = 30, y1 = 50, x2 = 270, y2 = 50,
---       thickness = 1, style_type = "dashed",
---       fg = { { 1, "#7aa2f7", 0.6 } },
---   }
+-- **Exposed/global functions:**
+-- - `draw_line_modules(cr, m)` — Draws a styled line between two points and returns its bounding box `{x, y, w, h}`.
+--
+-- **Config/globals used:**
+-- - `conky_window` — checked for early-exit guard.
+-- - `build_gradient_pattern()` — creates a Cairo linear gradient from a color-stop list.
 --}}}
 
 local LINE_DEFAULT = {

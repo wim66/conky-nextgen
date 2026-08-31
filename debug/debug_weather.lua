@@ -1,15 +1,45 @@
 #!/usr/bin/env lua
-
 --{{{
 --  Conky NextGen Framework
 --  Author: István Molnár
 --  GitHub: https://github.com/molnari811023/conky-nextgen
+--  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
 
+--[[[
+debug/debug_weather.lua — standalone debug script that dumps the weather data
+layer (city, current conditions, hourly, daily, air quality, sun/moon, icons,
+alerts) with per-section timing
+
+Run it directly with the system lua interpreter from the project root:
+`lua debug/debug_weather.lua`. It stubs out the Conky environment, loads the
+weather modules, then prints every accessor grouped by section.
+]]--
+
 --{{{
--- debug_weather.lua — Standalone debug dump for the weather modules.
--- Needs data JSONs in <root>/tmp/ (written by the bash backend).
--- Run:  lua debug/debug_weather.lua   (from the repo root or anywhere)
+-- ## Weather data dump
+--
+-- Loads the weather module tree (core, weather_data, sun, moon, airquality,
+-- city, weather_icons, weather_translations, alerts) outside of Conky and
+-- prints each exported accessor through recursive dump()/dump_n() helpers so
+-- nested tables are pretty-printed too. Sections are bracketed by a timing
+-- helper that reports elapsed milliseconds.
+--
+-- **What it does:**
+-- - Bootstraps Conky stubs and the JSON/icon/theme config globals.
+-- - CITY: dumps name, country, timezone, lat/lon and postcode.
+-- - CURRENT: dumps W.weather.current plus the conky_weather_cur_* accessors
+--   (temp, humidity, apparent, is_day, precip, code, wind, dewpoint, ...).
+-- - HOURLY: 3 hours of time/temp/weather code/precip probability/wind speed.
+-- - DAILY: 3 days of time/temp max-min/sunrise/sunset/UV/weather code.
+-- - AIR QUALITY: dumps W.air.current plus the conky_air_cur_* pollutant and
+--   pollen accessors (PM10, PM2.5, CO, O3, NO2, SO2, dust, eaqi, usaqi, ...).
+-- - SUN / MOON: dumps W.sun.properties and W.moon.properties plus the rise/
+--   set/phase/position accessors and icon-draw flags.
+-- - CORE / ICONS: dumps weather code text, day names, wind direction text and
+--   the resolved icon paths for current/day/hour/moon.
+-- - ALERTS: dumps conky_update_alerts(), alerts_count() and alerts_updated().
+-- - Prints TOTAL elapsed time.
 --}}}
 
 local function get_root()

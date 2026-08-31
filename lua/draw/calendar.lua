@@ -4,29 +4,28 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/calendar.lua — Draws a monthly calendar grid with weekday headers and week numbers
+
+The calendar is computed entirely from Lua's os.date at draw time, so it
+always reflects the current month. Today's date is highlighted.
+]]--
 
 --{{{
--- draw/calendar.lua — Month calendar grid with week numbers
--- draw_calendar(cr, opts) → { x, y, w, h }
---     Draw the current month as a grid of day cells with the weekday
---     header, today highlighted, and an optional week-number column.
---     Colors and fonts come from the opts table. Returns the grid size.
+-- ## Calendar
 --
--- Parameters:
---   x, y, cell_w, row_h, font, size
---   show_weeknums = true/false
---   color_month, color_weekdays, color_days, color_today, color_outside, color_weeknums
+-- Renders a full monthly calendar: a centred month/year title, abbreviated
+-- weekday headers, an optional ISO week-number column, and a 6×7 grid of day
+-- cells. Days outside the current month are drawn in a muted colour; today is
+-- bold and highlighted.
 --
--- Automatic: month name, day numbers, today highlight, week numbers
+-- **Exposed/global functions:**
+-- - `draw_calendar(cr, opts)` — Draws a monthly calendar grid and returns `{x, y, w, h}`.
 --
--- Example:
---   draw[#draw+1] = {
---       type = "calendar",
---       x = 30, y = 10,
---       cell_w = 34, row_h = 22,
---       font = "Mono", size = 10,
---       show_weeknums = false,
---   }
+-- **Config/globals used:**
+-- - `conky_window` — checked for early-exit guard.
+-- - `draw_text()` — renders all text elements (title, weekdays, day numbers, week numbers).
+-- - `draw_line_modules()` — draws the separator line beneath the month title.
 --}}}
 
 CALENDAR_DEFAULT = {

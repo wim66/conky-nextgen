@@ -1,5 +1,4 @@
 #!/usr/bin/env lua
-
 --{{{
 --  Conky NextGen Framework
 --  Author: István Molnár
@@ -7,18 +6,37 @@
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
 
+--[[[
+debug/debug_memory.lua — standalone memory/leak benchmark and correctness test
+for the theme engine and draw-core helpers (apply_theme, resolve_gradient,
+view_toggle, draw_allowed, view_contains, cache_set)
+
+Run it directly with the system lua interpreter from the project root:
+`lua debug/debug_memory.lua`. It measures time and GC-heap growth for repeated
+calls and flags sections that grew more than expected as potential leaks.
+]]--
+
 --{{{
--- debug_memory.lua — Memory-leak / repeated-call stress tests.
--- Run:  lua debug/debug_memory.lua   (from the repo root or anywhere)
+-- ## Memory / leak benchmark
 --
--- Tests (N = 10000 unless noted):
---   1. theme_engine.apply_theme  — fresh draw item per iteration (worst case)
---   2. theme resolution          — resolve_gradient lookup
---   3. view_toggle churn         — back-and-forth view switching
---   4. draw_allowed multi-view   — view = { "main", "view_1" } table handling
---   5. cache_set() limit         — cache size-limit enforcement
+-- Measures timing and garbage-collector heap growth of the hot draw/theme
+-- functions in a loop and flags results whose memory growth exceeds a
+-- threshold as a suspected leak. It also runs a few one-shot correctness
+-- checks for table-based view matching and the bounded cache.
 --
--- Every test: memory growth measured after GC. Under 1-2 KB is OK.
+-- **What it does:**
+-- - Stubs the Conky and Cairo entry points and loads theme_engine, utils,
+--   draw_core and mouse_actions.
+-- - run_test(): runs fn(N) with GC collect before/after and prints timing,
+--   before/after heap KB and growth, flagging >= 4 KB growth as "LEAK?".
+-- - Benchmark: 10k apply_theme bar items, 10k apply_theme text items, 100k
+--   resolve_gradient lookups and 10k rapid view_toggle churn cycles.
+-- - Correctness: draw_allowed with a multi-view table, view_contains with a
+--   string vs a table.
+-- - Cache: cache_set capped at max entries after 1000 inserts, re-setting the
+--   same key must not bump the counter, and 200 fill+clear cycles of a
+--   100-entry cache must stay under 8 KB retention.
+-- - Prints TOTAL time for the final cache fill+clear loop.
 --}}}
 
 local function get_root()

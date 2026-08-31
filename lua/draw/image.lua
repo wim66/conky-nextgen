@@ -4,33 +4,31 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/image.lua — Draws cached PNG images with cropping, tinting, rotation, and shape clipping
+
+PNG surfaces are loaded once and stored in the global PNG_CACHE table for
+reuse across frames.
+]]--
 
 --{{{
--- draw/image.lua — PNG rendering, crop, tint, rotation
--- Pattern matrix-based scaling (no cairo_scale on cr).
--- draw_png(cr, m) → { x, y, w, h }
---     Load a PNG file and paint it into the given width/height box.
---     Supports opacity (alpha), a flat tint color, rotation, a circle
---     clip shape, and cropping. Returns the drawn bounding box.
+-- ## Image
 --
--- Parameters:
---   x, y, width, height, path, alpha, rotate
---   tint = "#hex", tint_alpha
---   shape = "circle", radius
---   crop = { x, y, w, h }
---   scale_mode = "bilinear"|"nearest"|"good"
+-- Renders a PNG image onto the Cairo context with support for optional crop
+-- region, aspect-ratio-preserving sizing, rotation, circle or rounded-rect
+-- clipping, bilinear/nearest/good scaling, flat tint overlay, and global
+-- alpha. Loaded surfaces are cached in `PNG_CACHE` and reused until invalid.
 --
--- Cache: PNG_CACHE
+-- **Exposed/global functions:**
+-- - `draw_png(cr, m)` — Draws a PNG image with all options and returns `{x, y, w, h}`.
 --
--- Example:
---   draw[#draw+1] = {
---       type = "image",
---       x = 238, y = 32, width = 24, height = 24,
---       path = "/usr/share/pixmaps/htop.png",
---       click = "konsole -e htop &",
---   }
-
--- Pre-allocated Cairo structs (reused every tick to avoid binding leak)
+-- **Config/globals used:**
+-- - `PNG_CACHE` — global table caching loaded Cairo image surfaces by path.
+-- - `conky_window` — checked for early-exit guard.
+-- - `apply_defaults()` — merges user options over PNG_DEFAULT.
+-- - `hex_to_rgba()` — converts a hex colour string to r, g, b, a values.
+-- - `rounded_rect_path()` — adds a rounded rectangle clipping path.
+-- - `cache_set()` — external cache helper for surface storage.
 --}}}
 
 local _img_mx1 = cairo_matrix_t:create()

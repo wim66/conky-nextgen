@@ -4,21 +4,56 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/weather/airquality.lua — Air-quality and pollen accessor functions for current and hourly data
+
+Provides conky-callable functions that return value+unit strings for pollutants (PM10, PM2.5, CO,
+O3, NO2, SO2, dust) and AQI indices (European, US), plus pollen counts (alder, birch, grass,
+mugwort, olive, ragweed). Both current-condition and 24-hourly variants are exposed.
+]]--
 
 --{{{
--- weather/airquality.lua — Air quality accessors (current + hourly)
--- Reads from W.air (fetched by sh/4_fetch_weather.sh).
--- Uses shared functions from weather/core.lua.
+-- ## Air Quality Module
 --
--- Callable from Conky (current):
---   conky_air_cur_pm10(), conky_air_cur_pm25(), conky_air_cur_co(),
---   conky_air_cur_o3(), conky_air_cur_no2(), conky_air_cur_so2(),
---   conky_air_cur_dust(), conky_air_cur_eaqi(), conky_air_cur_usaqi(),
---   conky_air_cur_alder(), conky_air_cur_birch(), conky_air_cur_grass(),
---   conky_air_cur_mugwort(), conky_air_cur_olive(), conky_air_cur_ragweed()
+-- Reads air-quality and pollen data from the global `W.air` table (loaded from airquality.json).
+-- Each exposed function returns a formatted string with the numeric value and its unit merged
+-- together (e.g. "12.5 µg/m³").
 --
--- Callable from Conky (hourly, i = 1-24):
---   conky_air_hour_pm10(i), conky_air_hour_pm25(i), ...
+-- **Exposed/global functions:**
+-- - `conky_air_cur_pm10()` — current PM10 value+unit
+-- - `conky_air_cur_pm25()` — current PM2.5 value+unit
+-- - `conky_air_cur_co()` — current carbon monoxide value+unit
+-- - `conky_air_cur_o3()` — current ozone value+unit
+-- - `conky_air_cur_no2()` — current nitrogen dioxide value+unit
+-- - `conky_air_cur_so2()` — current sulphur dioxide value+unit
+-- - `conky_air_cur_dust()` — current dust value+unit
+-- - `conky_air_cur_eaqi()` — current European AQI value+unit
+-- - `conky_air_cur_usaqi()` — current US AQI value+unit
+-- - `conky_air_cur_alder()` — current alder pollen value+unit
+-- - `conky_air_cur_birch()` — current birch pollen value+unit
+-- - `conky_air_cur_grass()` — current grass pollen value+unit
+-- - `conky_air_cur_mugwort()` — current mugwort pollen value+unit
+-- - `conky_air_cur_olive()` — current olive pollen value+unit
+-- - `conky_air_cur_ragweed()` — current ragweed pollen value+unit
+-- - `conky_air_hour_pm10(i)` — hourly PM10 for hour i (1–24)
+-- - `conky_air_hour_pm25(i)` — hourly PM2.5 for hour i
+-- - `conky_air_hour_co(i)` — hourly CO for hour i
+-- - `conky_air_hour_o3(i)` — hourly O3 for hour i
+-- - `conky_air_hour_no2(i)` — hourly NO2 for hour i
+-- - `conky_air_hour_so2(i)` — hourly SO2 for hour i
+-- - `conky_air_hour_dust(i)` — hourly dust for hour i
+-- - `conky_air_hour_eaqi(i)` — hourly European AQI for hour i
+-- - `conky_air_hour_usaqi(i)` — hourly US AQI for hour i
+-- - `conky_air_hour_alder(i)` — hourly alder pollen for hour i
+-- - `conky_air_hour_birch(i)` — hourly birch pollen for hour i
+-- - `conky_air_hour_grass(i)` — hourly grass pollen for hour i
+-- - `conky_air_hour_mugwort(i)` — hourly mugwort pollen for hour i
+-- - `conky_air_hour_olive(i)` — hourly olive pollen for hour i
+-- - `conky_air_hour_ragweed(i)` — hourly ragweed pollen for hour i
+--
+-- **Config/globals used:**
+-- `W.air` (table), `W.air.current`, `W.air.hourly`, `W.air.current_units`, `W.air.hourly_units`,
+-- `safe_num()`, `get_idx()`
 --}}}
 
 --{{{

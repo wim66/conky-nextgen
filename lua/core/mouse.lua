@@ -4,17 +4,38 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/core/mouse.lua — mouse interaction: hit testing, hover tracking, click/scroll actions
+
+Implements conky_on_mouse() as the single mouse event callback. It performs
+hit testing against clickable items and the tracked set of visible groups,
+tracks group hover enter/leave transitions, routes clicks (element, global,
+or modifier+global) and scrolls (with Ctrl/Shift/Alt variants) to the
+corresponding MOUSE_* action callbacks, and writes a debug log.
+]]--
 
 --{{{
--- core/mouse.lua — Mouse event dispatcher (all buttons, modifiers, scroll)
--- Conky callback: conky_on_mouse(event)
--- Events: mouse_enter, mouse_leave, mouse_move, mouse_scroll, button_down, button_up
+-- ## Mouse
 --
--- Actions defined in widget.lua:
---   MOUSE_LEAVE_ACTION, MOUSE_HOVER_IN_GROUP_ACTION, MOUSE_HOVER_LEAVE_GROUP_ACTION
---   MOUSE_SCROLL_UP/DOWN, MOUSE_CLICK_LEFT/RIGHT/MIDDLE, MOUSE_CTRL_CLICK, etc.
+-- Conky mouse event handling. on_event() interprets each incoming event
+-- (mouse_enter/leave, move, scroll, button_down/up): it detects group
+-- hover changes, hit-tests items for click_view/click handling, and fires
+-- global MOUSE_* actions where modifiers or unfilled elements apply. Left
+-- clicks handled by an element on button_down are suppressed on button_up so
+-- the global click does not also fire.
 --
--- Left click: hit_test → item.click_view or item.click
+-- **Exposed/global functions:**
+-- - `conky_on_mouse(event)` — callback entry point that dispatches to the internal handler
+--
+-- **Config/globals used:**
+-- - `GROUP_OFFSETS`, `draw`, `compute_group_height` — layout geometry for hit tracking
+-- - `evaluate_draw_me`, `draw_allowed`, `switch_view` — visibility and view helpers
+-- - `MOUSE_ENTER_ACTION`, `MOUSE_LEAVE_ACTION`,
+--   `MOUSE_HOVER_IN_GROUP_ACTION`, `MOUSE_HOVER_LEAVE_GROUP_ACTION`,
+--   `MOUSE_HOVER_IN_CONKY_WINDOW_ACTION` — enter/leave/hover callbacks
+-- - `MOUSE_SCROLL_UP/DOWN/LEFT/RIGHT`, `MOUSE_CTRL_*`, `MOUSE_SHIFT_*`,
+--   `MOUSE_ALT_*`, `MOUSE_CLICK_LEFT/RIGHT/MIDDLE/BACK/FORWARD`,
+--   `MOUSE_CTRL_CLICK/SHIFT_CLICK/ALT_CLICK` — action callbacks
 --}}}
 
 local dbg_file = io.open("/tmp/conky_mouse.log", "w")

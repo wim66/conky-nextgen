@@ -4,23 +4,25 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
-
+--[[[
+lua/hardware/usb.lua — Mounted USB block device detection and enumeration via lsblk.
+]]--
 --{{{
--- hardware/usb.lua — USB mount detection via lsblk
--- Callable from Conky:
---   conky_has_usb()        → 1|0
---     Whether at least one removable USB device is mounted.
---   conky_usb_count()      → number
---     Number of mounted removable USB devices.
---   conky_usb_name(i)      → string ("Samsung USB")
---     Human-readable name of the i-th USB device (1-based).
---   conky_usb_mount(i)     → string ("/run/user/1000/SAMSUNG")
---     Mount point of the i-th USB device (1-based).
+-- ## USB Module
 --
--- Helper:
---   conky_usb_list() → { { name, part, mount }, ... }
---     Raw list of all mounted removable devices; each entry carries the
---     device name, the partition, and the mount point (3s cache).
+-- Parses `lsblk` output to find block devices whose transport is USB and
+-- that are mounted under a user media directory. Returns device model
+-- names and mount points. Results are cached for 3 seconds.
+--
+-- **Exposed/global functions:**
+-- - `conky_usb_list()` — returns a sorted list of `{name, part, mount}` tables
+-- - `conky_has_usb()` — returns 1 if any USB device is mounted, else 0
+-- - `conky_usb_count()` — number of mounted USB devices
+-- - `conky_usb_name(i)` — model name of the i-th USB device
+-- - `conky_usb_mount(i)` — mount point of the i-th USB device
+--
+-- **Config/globals used:**
+-- `cached()`, `pread()`, `starts_with()`, `get_root_device()` (all from core.lua), `os.getenv("USER")`
 --}}}
 
 function conky_usb_list()

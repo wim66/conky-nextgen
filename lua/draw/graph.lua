@@ -4,37 +4,31 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/graph.lua — Draws time-series line or area graphs with history buffers
+
+Each unique graph key maintains a rolling history ring-buffer that persists
+across frames in the global `graph_history` table.
+]]--
 
 --{{{
--- draw/graph.lua — Scrolling time-series graphs (line or fill)
--- draw_graph(cr, m) → { x, y, w, h }
---     Render a scrolling time-series graph of a Conky value. Values are
---     sampled each draw cycle and scrolled left; line or filled area
---     rendering with an optional grid and border. `key` identifies the
---     value series so stacked graphs stay independent.
---     Returns the graph's bounding box.
+-- ## Graph
 --
--- Parameters:
---   x, y, width, height, max, autoscale, angle
---   key = "unique_id" (for storage)
---   value → "${downspeedf wlp59s0}" / name + arg
---   graph_type = "line"|"fill"
---   line_width, border_width
---   fg, bg, border, grid_color
---   grid = true/false, grid_steps = 4
+-- Renders a scrolling time-series graph as either a line or a filled area.
+-- The current value is appended to a width-sized ring buffer each frame; older
+-- samples scroll left. An optional grid, border, and rotation are supported.
+-- Autoscale mode adjusts the Y maximum to 110 % of the peak observed value.
 --
--- Example:
---   draw[#draw+1] = {
---       type = "graph",
---       x = 30, y = 90, width = 240, height = 40,
---       key = "wifi_down",
---       value = "${downspeedf wlp59s0}",
---       max = 1024*1024, autoscale = true,
---       graph_type = "fill",
---       fg = { { 0.0, "#9ece6a", 1 }, { 1.0, "#73daca", 1 } },
---   }
-
--- Pre-allocated Cairo struct (reused every tick to avoid binding leak)
+-- **Exposed/global functions:**
+-- - `draw_graph(cr, m)` — Draws a time-series graph and returns `{x, y, w, h}`.
+--
+-- **Config/globals used:**
+-- - `graph_history` — global table storing per-key history ring buffers.
+-- - `conky_window` — checked for early-exit guard.
+-- - `draw_get_value()` — fetches the numeric value to graph.
+-- - `normalize_with_suffix()` — parses human-readable suffixes.
+-- - `get_color_from_list()` — resolves gradient color-stop lists to RGBA.
+-- - `build_gradient_pattern()` — creates Cairo linear gradient patterns.
 --}}}
 
 local _graph_mx = cairo_matrix_t:create()

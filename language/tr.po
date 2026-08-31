@@ -636,3 +636,1104 @@ msgstr "Olası değil"
 
 msgid "alert_certainty_unknown"
 msgstr "Bilinmiyor"
+
+############################################
+# KDE SYSTEM STATS (short labels)
+############################################
+
+msgid "All"
+msgstr "Tümü"
+
+msgid "All Disks"
+msgstr "Tüm Diskler"
+
+msgid "All GPUs"
+msgstr "Tüm GPU’lar"
+
+msgid "All GPUs Total Memory"
+msgstr "Tüm GPU’ların Toplam Belleği"
+
+msgid "All GPUs Usage"
+msgstr "Kullanılan Tüm GPU’lar"
+
+msgid "All GPUs Used Memory"
+msgstr "Tüm GPU’ların Kullanılan Belleği"
+
+msgid "All Network Devices"
+msgstr "Tüm Ağ Aygıtları"
+
+msgid "Application Memory"
+msgstr "Uygulama Belleği"
+
+msgid "Application Memory Percentage"
+msgstr "Uygulama Belleği Yüzdesi"
+
+msgid "Average CPU Frequency"
+msgstr "Ortalama CPU Frekansı"
+
+msgid "Average CPU Temperature"
+msgstr "Ortalama CPU Sıcaklığı"
+
+msgid "Buffer Memory"
+msgstr "Arabellek Belleği"
+
+msgid "Buffer Memory Percentage"
+msgstr "Arabellek Belleği Yüzdesi"
+
+msgid "CPU %1"
+msgstr "%1. CPU"
+
+msgid "CPU %1 Core %2"
+msgstr "%1. CPU, %2. Çekirdek"
+
+msgid "CPU Pressure"
+msgstr "CPU Basıncı"
+
+msgid "Cache Memory"
+msgstr "Önbellek Belleği"
+
+msgid "Cache Memory Percentage"
+msgstr "Önbellek Belleği Yüzdesi"
+
+msgid "Charge"
+msgstr "Şarj"
+
+msgid "Charge Percentage"
+msgstr "Şarj Yüzdesi"
+
+msgid "Charging  Rate"
+msgstr "Şarj Hızı"
+
+msgid "Charging Rate"
+msgstr "Şarj Hızı"
+
+msgid "Core %1"
+msgstr "%1. Çekirdek"
+
+msgid "Current Capacity"
+msgstr "Geçerli Sığa"
+
+msgid "Current Frequency"
+msgstr "Geçerli Frekans"
+
+msgid "Current Temperature"
+msgstr "Geçerli Sıcaklık"
+
+msgid "Design Capacity"
+msgstr "Fabrika Sığası"
+
+msgid "Download Rate"
+msgstr "İndirme Hızı"
+
+msgid "Free Physical Memory"
+msgstr "Boş Fiziksel Bellek"
+
+msgid "Free Physical Memory Percentage"
+msgstr "Boş Fiziksel Bellek Yüzdesi"
+
+msgid "Free Space"
+msgstr "Boş Alan"
+
+msgid "Free Swap Memory"
+msgstr "Boş Takas Belleği"
+
+msgid "Free Swap Memory Percentage"
+msgstr "Boş Takas Belleği Yüzdesi"
+
+msgid "Frequency"
+msgstr "Frekans"
+
+msgid "Full (1 minute average)"
+msgstr "Tam (1 Dakikalık Averaj)"
+
+msgid "Full (10 second average)"
+msgstr "Tam (10 Saniyelik Averaj)"
+
+msgid "Full (5 minute average)"
+msgstr "Tam (5 Dakikalık Averaj)"
+
+msgid "GPU"
+msgstr "GPU"
+
+msgid "Health"
+msgstr "Sağlık"
+
+msgid "Hostname"
+msgstr "Makine Adı"
+
+msgid "IO Pressure"
+msgstr "GÇ Basıncı"
+
+msgid "IPv4 Address"
+msgstr "IPv4 Adresi"
+
+msgid "IPv4 DNS"
+msgstr "IPv4 DNS"
+
+msgid "IPv4 Gateway"
+msgstr "IPv4 Geçidi"
+
+msgid "IPv4 Subnet Mask"
+msgstr "IPv4 Alt Ağ Maskesi"
+
+msgid "IPv4 with Prefix Length"
+msgstr "Önek Uzunluklu IPv4"
+
+msgid "IPv6 Address"
+msgstr "IPv6 Adresi"
+
+msgid "IPv6 DNS"
+msgstr "IPv6 DNS"
+
+msgid "IPv6 Gateway"
+msgstr "IPv6 Geçidi"
+
+msgid "IPv6 Subnet Mask"
+msgstr "IPv6 Alt Ağ Maskesi"
+
+msgid "IPv6 with Prefix Length"
+msgstr "Önek Uzunluklu IPv6"
+
+msgid "KDE Frameworks Version"
+msgstr "KDE Frameworks Sürümü"
+
+msgid "KDE Plasma"
+msgstr "KDE Plasma"
+
+msgid "KDE Plasma Version"
+msgstr "KDE Plasma Sürümü"
+
+msgid "Kernel"
+msgstr "Çekirdek"
+
+msgid "Kernel Name"
+msgstr "Çekirdek Adı"
+
+msgid "Kernel Name and Version"
+msgstr "Çekirdek Adı ve Sürümü"
+
+msgid "Kernel Version"
+msgstr "Çekirdek Sürümü"
+
+msgid "Load Averages"
+msgstr "Yükleme Ortalamaları"
+
+msgid "Load average (1 minute)"
+msgstr "Yükleme ortalaması (1 dakika)"
+
+msgid "Load average (15 minute)"
+msgstr "Yükleme ortalaması (15 dakika)"
+
+msgid "Load average (5 minutes)"
+msgstr "Yükleme ortalaması (5 dakika)"
+
+msgid "Maximum CPU Frequency"
+msgstr "En Büyük CPU Frekansı"
+
+msgid "Maximum CPU Temperature"
+msgstr "En Yüksek CPU Sıcaklığı"
+
+msgid "Memory"
+msgstr "Bellek"
+
+msgid "Memory Frequency"
+msgstr "Bellek Frekansı"
+
+msgid "Memory Pressure"
+msgstr "Bellek Basıncı"
+
+msgid "Minimum CPU Frequency"
+msgstr "En Küçük CPU Frekansı"
+
+msgid "Minimum CPU Temperature"
+msgstr "En Düşük CPU Sıcaklığı"
+
+msgid "Name"
+msgstr "Ad"
+
+msgid "Network Devices"
+msgstr "Ağ Aygıtları"
+
+msgid "Network Name"
+msgstr "Ağ Adı"
+
+msgid "Number of CPUs"
+msgstr "CPU Sayısı"
+
+msgid "Number of Cores"
+msgstr "Çekirdek Sayısı"
+
+msgid "Operating System"
+msgstr "İşletim Sistemi"
+
+msgid "Operating System Logo"
+msgstr "İşletim Sistemi Logosu"
+
+msgid "Operating System Name"
+msgstr "İşletim Sistemi Adı"
+
+msgid "Operating System Name and Version"
+msgstr "İşletim Sistemi Adı ve Sürümü"
+
+msgid "Operating System URL"
+msgstr "İşletim Sistemi URL’si"
+
+msgid "Operating System Version"
+msgstr "İşletim Sistemi Sürümü"
+
+msgid "Percentage Free"
+msgstr "Boş Yüzde"
+
+msgid "Percentage Used"
+msgstr "Kullanılan Yüzde"
+
+msgid "Physical Memory"
+msgstr "Fiziksel Bellek"
+
+msgid "Power"
+msgstr "Güç"
+
+msgid "Pressure"
+msgstr "Basınç"
+
+msgid "Qt Version"
+msgstr "Qt Sürümü"
+
+msgid "Read Rate"
+msgstr "Okuma Hızı"
+
+msgid "Signal Strength"
+msgstr "Sinyal Gücü"
+
+msgid "Some (1 minute average)"
+msgstr "Biraz (1 Dakikalık Averaj)"
+
+msgid "Some (10 second average)"
+msgstr "Biraz (10 Saniyelik Averaj)"
+
+msgid "Some (5 minute average)"
+msgstr "Biraz (5 Dakikalık Averaj)"
+
+msgid "Swap Memory"
+msgstr "Takas Belleği"
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "System Usage"
+msgstr "Sistem Kullanımı"
+
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+msgid "Total Downloaded"
+msgstr "Toplam İndirilen"
+
+msgid "Total Full Stall Time"
+msgstr "Toplam Tam Oyalama Süresi"
+
+msgid "Total Physical Memory"
+msgstr "Toplam Fiziksel Bellek"
+
+msgid "Total Some Stall Time"
+msgstr "Toplam Biraz Oyalama Zamanı"
+
+msgid "Total Space"
+msgstr "Toplam Alan"
+
+msgid "Total Swap Memory"
+msgstr "Toplam Takas Belleği"
+
+msgid "Total Uploaded"
+msgstr "Toplam Karşıya Yüklenen"
+
+msgid "Total Usage"
+msgstr "Toplam Kullanım"
+
+msgid "Total Video Memory"
+msgstr "Toplam Video Belleği"
+
+msgid "Upload Rate"
+msgstr "Karşıya Yükleme Hızı"
+
+msgid "Uptime"
+msgstr "Açık Kalma Süresi"
+
+msgid "Usage"
+msgstr "Kullanım"
+
+msgid "Used Physical Memory"
+msgstr "Kullanılan Fiziksel Bellek"
+
+msgid "Used Physical Memory Percentage"
+msgstr "Kullanılan Fiziksel Bellek Yüzdesi"
+
+msgid "Used Space"
+msgstr "Kullanılan Alan"
+
+msgid "Used Swap Memory"
+msgstr "Kullanılan Takas Belleği"
+
+msgid "Used Swap Memory Percentage"
+msgstr "Kullanılan Takas Belleği Yüzdesi"
+
+msgid "User Usage"
+msgstr "Kullanıcı Kullanımı"
+
+msgid "Video Memory Used"
+msgstr "Kullanılan Video Belleği"
+
+msgid "Video Usage"
+msgstr "Video Kullanımı"
+
+msgid "Wait Usage"
+msgstr "Bekleme Kullanımı"
+
+msgid "Window System"
+msgstr "Pencere Sistemi"
+
+msgid "Write Rate"
+msgstr "Yazma Hızı"
+
+############################################
+# GOOGLE DASHBOARD
+############################################
+
+msgid "Inbox"
+msgstr "Gelenler"
+
+msgid "Sent"
+msgstr "Gönderilenler"
+
+msgid "Drafts"
+msgstr "Taslaklar"
+
+msgid "Junk"
+msgstr "Gereksiz"
+
+msgid "Trash"
+msgstr "Çöp"
+
+msgid "Archive"
+msgstr "Arşiv"
+
+msgid "Folders"
+msgstr "Klasörler"
+
+msgid "From"
+msgstr "Gönderen"
+
+msgid "To"
+msgstr "Alıcı"
+
+msgid "Subject"
+msgstr "Konu"
+
+msgid "Date"
+msgstr "Tarih"
+
+msgid "Bcc"
+msgstr "Saklı Bilgi"
+
+msgid "Cc"
+msgstr "Bilgi"
+
+msgid "Priority"
+msgstr "Öncelik"
+
+msgid "Message"
+msgstr "Mesaj"
+
+msgid "Attachment"
+msgstr "Eklenti"
+
+msgid "Attachments"
+msgstr "Ekler"
+
+msgid "Attachment Properties"
+msgstr "Ek Özellikleri"
+
+msgid "Reply"
+msgstr "Yanıtla"
+
+msgid "Reply to All"
+msgstr "Tümüne Yanıtla"
+
+msgid "Forward"
+msgstr "Yönlendir"
+
+msgid "Attach a file"
+msgstr "Dosya ekle"
+
+msgid "Compose Message"
+msgstr "İleti Yaz"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Account"
+msgstr "Hesap"
+
+msgid "Accounts"
+msgstr "Hesaplar"
+
+msgid "Folder"
+msgstr "Klasör"
+
+msgid "Search"
+msgstr "Ara"
+
+msgid "Labels"
+msgstr "Etiketler"
+
+msgid "Show"
+msgstr "Şunca gün gör:"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "Calendar"
+msgstr "Takvim"
+
+msgid "Event"
+msgstr "Olay"
+
+msgid "Events"
+msgstr "Olaylar"
+
+msgid "Meeting"
+msgstr "Toplantı"
+
+msgid "Appointment"
+msgstr "Randevu"
+
+msgid "Today"
+msgstr "Bugün"
+
+msgid "Day"
+msgstr "Gün"
+
+msgid "Week"
+msgstr "Hafta"
+
+msgid "Month"
+msgstr "Ay"
+
+msgid "Year"
+msgstr "Yıl"
+
+msgid "Tasks"
+msgstr "Görevler"
+
+msgid "Task"
+msgstr "Görev"
+
+msgid "Start"
+msgstr "Başlangıç"
+
+msgid "End"
+msgstr "Bitiş"
+
+msgid "All day:"
+msgstr "Tüm gün:"
+
+msgid "Summary"
+msgstr "Özet"
+
+msgid "Description"
+msgstr "Açıklama"
+
+msgid "Location"
+msgstr "Konum"
+
+msgid "Details"
+msgstr "Ayrıntılar"
+
+msgid "Reminders"
+msgstr "Anımsatıcılar"
+
+msgid "Busy"
+msgstr "Meşgul"
+
+msgid "Free"
+msgstr "Uygun"
+
+msgid "Private"
+msgstr "Özel"
+
+msgid "Public"
+msgstr "Herkese Açık"
+
+msgid "Recurring"
+msgstr "Yineleme"
+
+msgid "Recurrence"
+msgstr "Yineleniş"
+
+msgid "Categories"
+msgstr "Kategoriler"
+
+msgid "Notes"
+msgstr "Notlar"
+
+msgid "New"
+msgstr "Yeni"
+
+msgid "Delete Task"
+msgstr "Görevi Sil"
+
+msgid "Export"
+msgstr "Dışa Aktar"
+
+msgid "Print…"
+msgstr "Yazdır…"
+
+msgid "Undo"
+msgstr "Geri Al"
+
+msgid "Previous"
+msgstr "Geri"
+
+msgid "Next"
+msgstr "İleri"
+
+msgid "Monday"
+msgstr "Pazartesi"
+
+msgid "Tuesday"
+msgstr "Salı"
+
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+msgid "Thursday"
+msgstr "Perşembe"
+
+msgid "Friday"
+msgstr "Cuma"
+
+msgid "Saturday"
+msgstr "Cumartesi"
+
+msgid "Sunday"
+msgstr "Pazar"
+
+msgid "January"
+msgstr "Ocak"
+
+msgid "February"
+msgstr "Şubat"
+
+msgid "March"
+msgstr "Mart"
+
+msgid "April"
+msgstr "Nisan"
+
+msgid "May"
+msgstr "Mayıs"
+
+msgid "June"
+msgstr "Haziran"
+
+msgid "July"
+msgstr "Temmuz"
+
+msgid "August"
+msgstr "Ağustos"
+
+msgid "September"
+msgstr "Eylül"
+
+msgid "October"
+msgstr "Ekim"
+
+msgid "November"
+msgstr "Kasım"
+
+msgid "December"
+msgstr "Aralık"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "No"
+msgstr "Hayır"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "OK"
+msgstr "Tamam"
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Warning"
+msgstr "Uyarı"
+
+msgid "Open"
+msgstr "Aç"
+
+msgid "Load"
+msgstr "Yükle"
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "Offline"
+msgstr "Çevrim dışı"
+
+msgid "Done"
+msgstr "Tamamlandı"
+
+msgid "Completed"
+msgstr "Tamamlandı"
+
+msgid "Unread Messages"
+msgstr "Okunmamış İletiler"
+
+msgid "Important"
+msgstr "Önemli"
+
+msgid "Flagged"
+msgstr "İmli"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Label"
+msgstr "Etiket"
+
+msgid "Select All"
+msgstr "Tümünü Seç"
+
+msgid "Loading"
+msgstr "Yükleniyor"
+
+msgid "Updated"
+msgstr "Güncellendi"
+
+msgid "Refresh"
+msgstr "Yenile"
+
+msgid "Preferences"
+msgstr "Tercihler"
+
+msgid "Attendee"
+msgstr "Katılımcı"
+
+msgid "Attendees"
+msgstr "Katılımcılar"
+
+msgid "Tentative"
+msgstr "Belirsiz"
+
+msgid "Free/Busy"
+msgstr "Uygun/Meşgul"
+
+msgid "Timezone"
+msgstr "Saat dilimi"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Daily"
+msgstr "Günlük"
+
+msgid "Weekly"
+msgstr "Haftalık"
+
+msgid "Holiday"
+msgstr "Tatil"
+
+msgid "Birthday"
+msgstr "Doğum Günü"
+
+msgid "Anniversary"
+msgstr "Yıl Dönümü"
+
+msgid "Out of Office"
+msgstr "Ofis Dışı"
+
+msgid "Yesterday"
+msgstr "Dün"
+
+msgid "Now"
+msgstr "Şimdi"
+
+msgid "Task List"
+msgstr "Görev Listesi"
+
+msgid "To Do"
+msgstr "Yapılacaklar"
+
+msgid "Due date"
+msgstr "Tamamlanma tarihi"
+
+msgid "Assigned"
+msgstr "Görevlendirildi"
+
+msgid "Overdue Tasks"
+msgstr "Teslimi Geçmiş Görevler"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid "Clear All"
+msgstr "Tümünü Temizle"
+
+msgid "Size"
+msgstr "Boyut"
+
+msgid "Username:"
+msgstr "Kullanıcı adı:"
+
+msgid "Accept meeting request"
+msgstr "Toplantı istemini onayla"
+
+msgid "Decline meeting request"
+msgstr "Toplantı istemini geri çevir"
+
+msgid "Accepted"
+msgstr "Onaylandı"
+
+msgid "Declined"
+msgstr "Reddedildi"
+
+msgid "Forward message"
+msgstr "İletiyi yönlendir"
+
+msgid "Address"
+msgstr "Adres"
+
+msgid "Email"
+msgstr "E-posta"
+
+msgid "Due"
+msgstr "Tamamlanma"
+
+msgid "Due Date:"
+msgstr "Tamamlanma Tarihi:"
+
+msgid "Complete"
+msgstr "Tamamlandı"
+
+msgid "Completed Tasks"
+msgstr "Tamamlanmış Görevler"
+
+msgid "Contact"
+msgstr "Bağlantı"
+
+msgid "Contacts"
+msgstr "Bağlantılar"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Fax"
+msgstr "Faks"
+
+msgid "Work"
+msgstr "İş"
+
+msgid "Home"
+msgstr "Ev"
+
+msgid "Other"
+msgstr "Diğer"
+
+msgid "Company"
+msgstr "Şirket"
+
+msgid "High"
+msgstr "Yüksek"
+
+msgid "Low"
+msgstr "Düşük"
+
+msgid "Website"
+msgstr "Web Sitesi"
+
+msgid "Recent"
+msgstr "Son"
+
+msgid "Reminder"
+msgstr "Hatırlatma"
+
+msgid "Starred"
+msgstr "Yıldızlı"
+
+msgid "Star"
+msgstr "Yıldız"
+
+msgid "Mute"
+msgstr "Sessize al"
+
+msgid "Snooze"
+msgstr "Ertele"
+
+msgid "Snoozed"
+msgstr "Ertelendi"
+
+msgid "Promotions"
+msgstr "Promosyonlar"
+
+msgid "Updates"
+msgstr "Güncellemeler"
+
+msgid "Social"
+msgstr "Sosyal"
+
+msgid "Forums"
+msgstr "Forumlar"
+
+msgid "Primary"
+msgstr "Birincil"
+
+msgid "Sign in"
+msgstr "Oturum aç"
+
+msgid "Sign out"
+msgstr "Oturumu kapat"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "No new mail"
+msgstr "Yeni e-posta yok"
+
+msgid "No messages"
+msgstr "Mesaj yok"
+
+msgid "Last updated"
+msgstr "Son güncelleme"
+
+msgid "Retry"
+msgstr "Yeniden dene"
+
+msgid "Connected"
+msgstr "Bağlı"
+
+msgid "Disconnected"
+msgstr "Bağlı değil"
+
+msgid "Sync"
+msgstr "Senkronizasyon"
+
+msgid "No upcoming events"
+msgstr "Yaklaşan etkinlik yok"
+
+msgid "Nothing scheduled"
+msgstr "Planlanmış etkinlik yok"
+
+msgid "Mark all as read"
+msgstr "Tümünü okunmuş işaretle"
+
+msgid "Agenda"
+msgstr "Gündem"
+
+msgid "All Mail"
+msgstr "Tüm e-posta"
+
+msgid "Move to"
+msgstr "Şuraya taşı"
+
+msgid "Due today"
+msgstr "Bugün son tarih"
+
+msgid "Overdue"
+msgstr "Gecikmiş"
+
+msgid "Incomplete"
+msgstr "Tamamlanmamış"
+
+msgid "Add task"
+msgstr "Görev ekle"
+
+msgid "New task"
+msgstr "Yeni görev"
+
+msgid "Edit task"
+msgstr "Görevi düzenle"
+
+msgid "Task details"
+msgstr "Görev ayrıntıları"
+
+msgid "Task list"
+msgstr "Görev listesi"
+
+msgid "To Do list"
+msgstr "Yapılacaklar listesi"
+
+msgid "Subtasks"
+msgstr "Alt görevler"
+
+msgid "Medium"
+msgstr "Orta"
+
+msgid "Priority: High"
+msgstr "Öncelik: Yüksek"
+
+msgid "Priority: Medium"
+msgstr "Öncelik: Orta"
+
+msgid "Priority: Low"
+msgstr "Öncelik: Düşük"
+
+msgid "Mark complete"
+msgstr "Tamamlandı olarak işaretle"
+
+msgid "Full name"
+msgstr "Tam ad"
+
+msgid "First name"
+msgstr "Ad"
+
+msgid "Last name"
+msgstr "Soyad"
+
+msgid "Mobile"
+msgstr "Cep telefonu"
+
+msgid "Job title"
+msgstr "Unvan"
+
+msgid "Email address"
+msgstr "E-posta adresi"
+
+msgid "Drive"
+msgstr "Sürücü"
+
+msgid "Storage"
+msgstr "Depolama"
+
+msgid "Used"
+msgstr "Kullanılan"
+
+msgid "Quota"
+msgstr "Kota"
+
+msgid "Upload"
+msgstr "Yükle"
+
+msgid "Download"
+msgstr "İndir"
+
+msgid "Recent files"
+msgstr "Son dosyalar"
+
+msgid "Shared with me"
+msgstr "Benimle paylaşılan"
+
+msgid "My Drive"
+msgstr "Sürücüm"
+
+msgid "Folder size"
+msgstr "Klasör boyutu"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Videos"
+msgstr "Videolar"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Channels"
+msgstr "Kanallar"
+
+msgid "Subscription"
+msgstr "Abonelik"
+
+msgid "Subscriptions"
+msgstr "Abonelikler"
+
+msgid "Views"
+msgstr "Görüntülenme"
+
+msgid "Uploads"
+msgstr "Yüklemeler"
+
+msgid "Latest"
+msgstr "En yeni"
+
+msgid "Watch"
+msgstr "İzle"
+
+msgid "Playlists"
+msgstr "Oynatma listeleri"
+
+msgid "Comments"
+msgstr "Yorumlar"
+
+msgid "Meeting code"
+msgstr "Toplantı kodu"
+
+msgid "Join"
+msgstr "Katıl"
+
+msgid "Join now"
+msgstr "Şimdi katıl"
+
+msgid "Ongoing"
+msgstr "Devam ediyor"
+
+msgid "Ended"
+msgstr "Bitti"
+
+msgid "History"
+msgstr "Geçmiş"
+
+msgid "Past calls"
+msgstr "Geçmiş aramalar"
+
+msgid "Leave"
+msgstr "Ayrıl"
+
+msgid "Participants"
+msgstr "Katılımcılar"
+
+msgid "Pin"
+msgstr "Sabitle"
+
+msgid "Pinned"
+msgstr "Sabitlendi"
+
+msgid "Checklist"
+msgstr "Kontrol listesi"
+
+msgid "Space"
+msgstr "Alan"
+
+msgid "Spaces"
+msgstr "Alanlar"
+
+msgid "Direct message"
+msgstr "Doğrudan mesaj"
+
+msgid "Direct messages"
+msgstr "Doğrudan mesajlar"
+
+msgid "Mentions"
+msgstr "Bahsedilmeler"
+
+msgid "Thread"
+msgstr "Konu"
+
+msgid "Threads"
+msgstr "Konular"
+
+msgid "Group chat"
+msgstr "Grup sohbeti"
+
+msgid "Reaction"
+msgstr "Tepki"
+
+msgid "React"
+msgstr "Tepki ver"
+

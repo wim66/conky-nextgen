@@ -4,41 +4,25 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
-
+--[[[
+lua/hardware/battery.lua — Battery and external-device charge monitoring via sysfs, UPower, and BlueZ/D-Bus.
+]]--
 --{{{
--- hardware/battery.lua — Battery health, Bluetooth headset, mouse battery
--- Callable from Conky:
---   conky_battery_health_data()      → number (0-100, battery health)
---     Percentage of the battery's current capacity vs. its designed
---     capacity. Reads /sys/class/power_supply (1h cache). Use directly
---     in a bar/ring widget for a health gauge.
---   conky_headset_info()             → { name, pct } | nil
---     Info about a connected Bluetooth headset: table with `name` and
---     `pct`, or nil when none is connected. Queried via D-Bus (KDE Plasma
---     or UPower). Good for an "in-ear" percentage indicator.
---   conky_mouse_info()               → { name, pct } | nil
---     Same shape as headset_info but for a wireless mouse. Returns nil
---     when no such device is found.
---   conky_external_battery_list()    → { {name, pct}, ... }
---     List of every detachable battery detected via UPower, each entry
---     being { name, pct }. Empty table when nothing is attached.
---   conky_external_battery_count()   → number
---     How many external batteries are present (0 when none).
---   conky_external_battery_name(i)   → string
---     Display name of the i-th external battery (1-based).
---   conky_external_battery_charge(i) → number (0-100)
---     Charge percentage of the i-th external battery (1-based).
+-- ## Battery Module
 --
--- Helper functions:
---   get_battery_path()     → "/sys/class/power_supply/BAT0/"
---     Path of the main (internal) battery in sysfs, auto-detected.
---   is_plasma()            → bool (KDE Plasma detection)
---     True when running under KDE Plasma (used to pick the D-Bus path).
---   get_headset_plasma()   → { name, pct } | nil (D-Bus)
---     D-Bus lookup of a Bluetooth headset under Plasma.
---   get_device_upower(filter) → { name, pct } | nil
---     Generic UPower device lookup with a name filter; used for both the
---     headset and the mouse query.
+-- Reads internal battery health from sysfs, and detects Bluetooth headset
+-- and HID++ mouse battery levels via UPower or KDE Plasma's BlueZ D-Bus
+-- interface. All queries are cached to avoid rapid repeated I/O.
+--
+-- **Exposed/global functions:**
+-- - `conky_battery_health_data()` — returns internal battery health as a percentage (0–100), or nil
+-- - `conky_headset_info()` — returns `{name, pct}` table for a connected Bluetooth headset
+-- - `conky_mouse_info()` — returns `{name, pct}` table for a HID++ mouse via UPower
+-- - `conky_external_battery_list()` — combined list of headset and mouse battery entries
+-- - `conky_external_battery_count()` — number of detected external battery devices
+-- - `conky_external_battery_name(i)` — name of the i-th external device
+-- - `conky_external_battery_charge(i)` — charge percentage of the i-th external device
+--}}}
 
 local function get_battery_path()
 	return cached("main_battery_path", 3600, function()

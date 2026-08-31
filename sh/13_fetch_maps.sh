@@ -5,24 +5,27 @@
 #  GitHub: https://github.com/molnari811023/conky-nextgen
 #  Description: Modular Conky UI framework (Lua engine + Bash backend)
 #}}}
-
 #{{{
-# 13_fetch_maps.sh — Download OSM tiles, radar, temperature, wind maps
+# ## 13_fetch_maps — weather radar / temperature / wind map image builder
 #
-# Downloads a 3x3 tile grid centered on the user's city (from tmp/city.json).
-# Tile sources:
-#   - OpenStreetMap (base map)
-#   - RainViewer API (radar overlay)
-#   - Environment Canada GDPS (temperature 2m, wind 10m)
+# Defines fetch_maps(), which uses ImageMagick (`magick` or legacy `convert`)
+# to download a 3x3 grid of tiles centered on the city from TMP_DIR/city.json
+# and stitch them into large composite images. Tile sources are OpenStreetMap
+# (base map), RainViewer (radar), and Environment Canada WMS (2m temperature
+# and 10m wind). The zoom level defaults to 7 and is clamped to 5–7.
 #
-# Uses ImageMagick to stitch 9 tiles into 4 composite images.
-# Zoom levels: 5-7 (default 7). Zoom >7 or <5 falls back to 7.
+# **What it does:**
+# - Reads lat/lon from $TMP_DIR/city.json (error if missing)
+# - Computes the Mercator tile center via a python3 helper
+# - Downloads 9 tiles each of osm/temp/radar/wind with a retry on failure
+# - Stitches each set into osm_big.png, temp_big.png, rain_big.png and
+#   wind_big.png in $TMP_DIR, filling missing tiles with transparent ones
+# - Removes the 0..8 per-tile pngs afterwards
 #
-# Usage: source 0_common.sh && fetch_maps [zoom]
-# Output: tmp/{osm_big,rain_big,temp_big,wind_big}.png
-# Requires: ImageMagick (magick or convert), python3, jq
+# **Environment/requirements:** needs ImageMagick (magick or convert),
+# python3, 0_common.sh (curl_cmd, log, TMP_DIR) and an existing
+# $TMP_DIR/city.json
 #}}}
-
 _SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 source "$_SCRIPT_DIR/0_common.sh"
 

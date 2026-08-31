@@ -4,24 +4,26 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
-
+--[[[
+lua/hardware/sensors.lua — Hardware sensor readings (CPU, NVMe, WiFi temps and fan speed) via lm_sensors.
+]]--
 --{{{
--- hardware/sensors.lua — lm-sensors: CPU/NVMe/WiFi temp, fan speed
--- All values read from `sensors` output (2s cache, LANG=C); 0 when unavailable.
--- Callable from Conky:
---   conky_cpu_temp()          → number (°C)
---     CPU package temperature ("Package id 0") in °C.
---   conky_cpu_core_temp(core) → number (°C, 0-indexed)
---     Temperature of one CPU core, 0-indexed (core 0 = first core).
---   conky_nvme_temp()         → number (°C)
---     NVMe drive temperature from the "Composite" sensor.
---   conky_wifi_temp()         → number (°C)
---     WiFi adapter temperature when the driver exposes it (iwlwifi).
---   conky_fan_speed(index)    → number (RPM, 1-based)
---     Fan speed in RPM for the 1-based fan index (fan1, fan2, …).
+-- ## Sensors Module
 --
--- Helper:
---   read_sensors_raw() → string (2s cache) — internal to hardware/core.lua.
+-- Thin wrappers around `get_sensor_val()` that match specific `sensors`
+-- output patterns to return individual temperature or fan speed values.
+-- All raw sensor data is cached for 2 seconds by core.lua.
+--
+-- **Exposed/global functions:**
+-- - `conky_cpu_temp()` — CPU package temperature in °C
+-- - `conky_cpu_core_temp(core)` — temperature of a specific CPU core
+-- - `conky_nvme_temp()` — NVMe composite temperature in °C
+-- - `conky_wifi_temp()` — Intel WiFi adapter temperature in °C
+-- - `conky_fan_speed(index)` — fan RPM for the given fan index (default 1)
+--
+-- **Config/globals used:**
+-- `get_sensor_val()` (from core.lua)
+--}}}
 
 function conky_cpu_temp()
 	return get_sensor_val("Package id 0:%s+%+(%d+%.?%d*)%s*C")

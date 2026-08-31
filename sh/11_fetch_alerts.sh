@@ -5,21 +5,24 @@
 #  GitHub: https://github.com/molnari811023/conky-nextgen
 #  Description: Modular Conky UI framework (Lua engine + Bash backend)
 #}}}
-
 #{{{
-# 11_fetch_alerts.sh — Download MeteoAlarm weather alerts
+# ## 11_fetch_alerts — MeteoAlarm weather alert fetcher
 #
-# Reads country_code from tmp/city.json, maps to MeteoAlarm feed slug,
-# downloads Atom XML feed to tmp/alerts.xml.
+# Defines fetch_alerts(), which reads the city country code from
+# $TMP_DIR/city.json (produced by the weather fetcher) and maps it to a
+# MeteoAlarm feed slug. If no city file or no matching country slug exists,
+# it removes any stale alerts.xml and returns early; otherwise it downloads
+# the MeteoAlarm Atom feed into $TMP_DIR/alerts.xml.
 #
-# Supports: AD, AT, BE, BA, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR,
-#           HU, IS, IE, IL, IT, LV, LT, LU, MT, MD, ME, NL, MK, NO,
-#           PL, PT, RO, RS, SK, SI, ES, SE, CH, UA, GB
+# **What it does:**
+# - Reads country code from $TMP_DIR/city.json
+# - Maps the country code to a MeteoAlarm slug (or bails out silently)
+# - Downloads the matching feed, writing $TMP_DIR/alerts.xml
+# - Cleans up partial/empty downloads as alerts.xml.tmp
 #
-# Usage: source 0_common.sh && fetch_alerts
-# Output: tmp/alerts.xml
+# **Environment/requirements:** needs 0_common.sh (curl_cmd, log, TMP_DIR)
+# and an existing $TMP_DIR/city.json
 #}}}
-
 _SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 source "$_SCRIPT_DIR/0_common.sh"
 

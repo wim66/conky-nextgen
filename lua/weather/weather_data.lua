@@ -4,19 +4,43 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/weather/weather_data.lua — Conky accessors for current, hourly, and daily weather values
+
+Exposes a large set of Conky-callable functions that read current, hourly (1–24), and daily
+(1–7) conditions from the global `W.weather` table. Most functions return a numeric value merged
+with its unit into a formatted string; others return raw numbers, formatted times, or composed
+text wrappers for ${lua} templates.
+]]--
 
 --{{{
--- weather/weather_data.lua — Current + Hourly + Daily weather accessors
--- Reads from W.weather (fetched by sh/4_fetch_weather.sh).
--- Uses shared functions from weather/core.lua (read_j, round, get_idx, etc).
+-- ## Weather Data Module
 --
--- Each function returns VALUE + UNIT concatenated (e.g. "22°C").
--- Special functions (sunrise, sunset, daylight, sunshine) handle their own formatting.
+-- Primary access layer for the Open-Meteo-style weather data stored in `W.weather`. Current
+-- conditions cover temperature, humidity, precipitation, cloud cover, pressure, visibility, UV,
+-- wind, and more. Hourly values use `get_idx(i)` to align hour index i with the current hour.
+-- Daily values cover min/max temps, sunrise/sunset, daylight/sunshine durations, precipitation,
+-- wind, and radiation. Composed wrappers convert WMO codes to translated text and build wind
+-- direction strings.
 --
--- Naming convention:
---   conky_weather_cur_*    — current conditions (value+unit)
---   conky_weather_hour_*   — hourly forecast (i = 1-24, value+unit)
---   conky_weather_day_*    — daily forecast (i = 1-7, value+unit)
+-- **Exposed/global functions:** (selected)
+-- - `conky_weather_cur_*()` — current conditions (temp, humidity, apparent, precip, rain,
+--   showers, snow, code, clouds, pressure, surface, visibility, uv, radiation, wind speed/dir/
+--   gust, dewpoint, time, interval, is_day)
+-- - `conky_weather_hour_*(i)` — hourly conditions for hour i (1–24)
+-- - `conky_weather_day_*(i)` — daily conditions for day i (1–7)
+-- - `conky_weather_cur_code_text()` — translated current weather code text
+-- - `conky_weather_cur_wind_full()` — current wind speed + direction text
+-- - `conky_weather_hour_code_text(i)` / `conky_weather_day_code_text(i)` — translated code text
+-- - `conky_weather_hour_precip_icon(i)` — precipitation probability with "%" suffix
+-- - `conky_weather_hour_time_str(i)` — hourly time formatted as "HH:00"
+-- - `conky_weather_sunrise(i)` / `conky_weather_sunset(i)` — daily sunrise/sunset times
+-- - `conky_weather_day_uv_text(i)` — daily UV as text
+-- - `conky_weather_day_precip_hours_text(i)` — daily precipitation hours as string
+--
+-- **Config/globals used:**
+-- `W.weather`, `safe_num()`, `round()`, `get_idx()`, `fmt_unix()`, `seconds_to_hour_min()`,
+-- `conky_weather_code_text()`, `conky_wind_direction_text()`
 --}}}
 
 --{{{

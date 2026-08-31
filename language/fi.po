@@ -689,3 +689,1104 @@ msgstr "Epätodennäköinen"
 
 msgid "alert_certainty_unknown"
 msgstr "Tuntematon"
+
+############################################
+# KDE SYSTEM STATS (short labels)
+############################################
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "All Disks"
+msgstr "Kaikki levyt"
+
+msgid "All GPUs"
+msgstr "Kaikki grafiikkasuorittimet"
+
+msgid "All GPUs Total Memory"
+msgstr "kaikkien grafiikkasuoritinten muisti yhteensä"
+
+msgid "All GPUs Usage"
+msgstr "Kaikkien graafisten suoritinten käyttö"
+
+msgid "All GPUs Used Memory"
+msgstr "Kaikkien grafiikkasuoritinten käyttämä muisti"
+
+msgid "All Network Devices"
+msgstr "Kaikki verkkolaitteet"
+
+msgid "Application Memory"
+msgstr "Sovellusmuisti"
+
+msgid "Application Memory Percentage"
+msgstr "Sovellusmuistin osuus"
+
+msgid "Average CPU Frequency"
+msgstr "Suorittimen keskitaajuus"
+
+msgid "Average CPU Temperature"
+msgstr "Suorittimen keskilämpötila"
+
+msgid "Buffer Memory"
+msgstr "Puskurimuisti"
+
+msgid "Buffer Memory Percentage"
+msgstr "Puskurimuistin osuus"
+
+msgid "CPU %1"
+msgstr "Suoritin %1"
+
+msgid "CPU %1 Core %2"
+msgstr "Suoritin %1 ydin %2"
+
+msgid "CPU Pressure"
+msgstr "Suoritinpaine"
+
+msgid "Cache Memory"
+msgstr "Välimuisti"
+
+msgid "Cache Memory Percentage"
+msgstr "Välimuistin osuus"
+
+msgid "Charge"
+msgstr "Lataus"
+
+msgid "Charge Percentage"
+msgstr "lataus-%"
+
+msgid "Charging  Rate"
+msgstr "latausnopeus"
+
+msgid "Charging Rate"
+msgstr "latausnopeus"
+
+msgid "Core %1"
+msgstr "Ytimen %1"
+
+msgid "Current Capacity"
+msgstr "Nykyinen kapasiteetti"
+
+msgid "Current Frequency"
+msgstr "Nykyinen taajuus"
+
+msgid "Current Temperature"
+msgstr "Nykyinen lämpötila"
+
+msgid "Design Capacity"
+msgstr "Suunniteltu kapasiteetti"
+
+msgid "Download Rate"
+msgstr "latausnopeus"
+
+msgid "Free Physical Memory"
+msgstr "Vapaa fyysinen muisti"
+
+msgid "Free Physical Memory Percentage"
+msgstr "Vapaan fyysisen muistin osuus"
+
+msgid "Free Space"
+msgstr "Vapaa tila"
+
+msgid "Free Swap Memory"
+msgstr "Vapaa sivutusmuisti"
+
+msgid "Free Swap Memory Percentage"
+msgstr "Vapaan sivutusmuistin osuus"
+
+msgid "Frequency"
+msgstr "Taajuus"
+
+msgid "Full (1 minute average)"
+msgstr "Täysi (1 minuutin keskiarvo)"
+
+msgid "Full (10 second average)"
+msgstr "Täysi (10 sekunnin keskiarvo)"
+
+msgid "Full (5 minute average)"
+msgstr "Täysi (5 minuutin keskiarvo)"
+
+msgid "GPU"
+msgstr "Graafinen suoritin"
+
+msgid "Health"
+msgstr "Terveys"
+
+msgid "Hostname"
+msgstr "Konenimi"
+
+msgid "IO Pressure"
+msgstr "I/O-paine"
+
+msgid "IPv4 Address"
+msgstr "IPv4-osoite"
+
+msgid "IPv4 DNS"
+msgstr "IPv4 DNS"
+
+msgid "IPv4 Gateway"
+msgstr "IPv4-yhdyskäytävä"
+
+msgid "IPv4 Subnet Mask"
+msgstr "IPv4-aliverkkopeite"
+
+msgid "IPv4 with Prefix Length"
+msgstr "IPv4 etuliitteen pituudella"
+
+msgid "IPv6 Address"
+msgstr "IPv6-osoite"
+
+msgid "IPv6 DNS"
+msgstr "IPv6 DNS"
+
+msgid "IPv6 Gateway"
+msgstr "IPv6-yhdyskäytävä"
+
+msgid "IPv6 Subnet Mask"
+msgstr "IPv6-aliverkkopeite"
+
+msgid "IPv6 with Prefix Length"
+msgstr "IPv6 etuliitteen pituudella"
+
+msgid "KDE Frameworks Version"
+msgstr "KDE Frameworks -versio"
+
+msgid "KDE Plasma"
+msgstr "KDE Plasma"
+
+msgid "KDE Plasma Version"
+msgstr "KDE Plasma -versio"
+
+msgid "Kernel"
+msgstr "Ydin"
+
+msgid "Kernel Name"
+msgstr "Ytimen nimi"
+
+msgid "Kernel Name and Version"
+msgstr "Ytimen nimi ja versio"
+
+msgid "Kernel Version"
+msgstr "Ytimen versio"
+
+msgid "Load Averages"
+msgstr "Keskiarvokuorma"
+
+msgid "Load average (1 minute)"
+msgstr "Keskiarvokuorma (1 min)"
+
+msgid "Load average (15 minute)"
+msgstr "Keskiarvokuorma (15 min)"
+
+msgid "Load average (5 minutes)"
+msgstr "Keskiarvokuorma (5 min)"
+
+msgid "Maximum CPU Frequency"
+msgstr "Suorittimen enimmäistaajuus"
+
+msgid "Maximum CPU Temperature"
+msgstr "Suorittimen enimmäislämpötila"
+
+msgid "Memory"
+msgstr "Muisti"
+
+msgid "Memory Frequency"
+msgstr "Muistitaajuus"
+
+msgid "Memory Pressure"
+msgstr "Muistipaine"
+
+msgid "Minimum CPU Frequency"
+msgstr "Suorittimen vähimmäistaajuus"
+
+msgid "Minimum CPU Temperature"
+msgstr "Suorittimen vähimmäislämpötila"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Network Devices"
+msgstr "Verkkolaitteet"
+
+msgid "Network Name"
+msgstr "Verkkonimi"
+
+msgid "Number of CPUs"
+msgstr "Suorittimia"
+
+msgid "Number of Cores"
+msgstr "Ytimiä"
+
+msgid "Operating System"
+msgstr "Käyttöjärjestelmä"
+
+msgid "Operating System Logo"
+msgstr "Käyttöjärjestelmän logo"
+
+msgid "Operating System Name"
+msgstr "Käyttöjärjestelmän nimi"
+
+msgid "Operating System Name and Version"
+msgstr "Käyttöjärjestelmän nimi ja versio"
+
+msgid "Operating System URL"
+msgstr "Käyttöjärjestelmän verkko-osoite"
+
+msgid "Operating System Version"
+msgstr "Käyttöjärjestelmän versio"
+
+msgid "Percentage Free"
+msgstr "Vapaa osuus"
+
+msgid "Percentage Used"
+msgstr "% käytössä"
+
+msgid "Physical Memory"
+msgstr "Fyysinen muisti"
+
+msgid "Power"
+msgstr "Virta"
+
+msgid "Pressure"
+msgstr "Paine"
+
+msgid "Qt Version"
+msgstr "Qt-versio"
+
+msgid "Read Rate"
+msgstr "Lukunopeus"
+
+msgid "Signal Strength"
+msgstr "Signaalin voimakkuus"
+
+msgid "Some (1 minute average)"
+msgstr "Jonkin verran (1 minuutin keskiarvo)"
+
+msgid "Some (10 second average)"
+msgstr "Jonkin verran (10 sekunnin keskiarvo)"
+
+msgid "Some (5 minute average)"
+msgstr "Jonkin verran (5 minuutin keskiarvo)"
+
+msgid "Swap Memory"
+msgstr "Sivutusmuisti"
+
+msgid "System"
+msgstr "Järjestelmä"
+
+msgid "System Usage"
+msgstr "Järjestelmäkäyttö"
+
+msgid "Temperature"
+msgstr "Lämpötila"
+
+msgid "Total Downloaded"
+msgstr "ladattu yhteensä"
+
+msgid "Total Full Stall Time"
+msgstr "Täyden odottelun aika yhteensä"
+
+msgid "Total Physical Memory"
+msgstr "fyysinen muisti yhteensä"
+
+msgid "Total Some Stall Time"
+msgstr "Jonkin odottelun aika yhteensä"
+
+msgid "Total Space"
+msgstr "tila yhteensä"
+
+msgid "Total Swap Memory"
+msgstr "sivutusmuisti yhteensä"
+
+msgid "Total Uploaded"
+msgstr "lähetetty yhteensä"
+
+msgid "Total Usage"
+msgstr "käyttö yhteensä"
+
+msgid "Total Video Memory"
+msgstr "näyttömuisti yhteensä"
+
+msgid "Upload Rate"
+msgstr "lähetysnopeus"
+
+msgid "Uptime"
+msgstr "Käynnissäoloaika"
+
+msgid "Usage"
+msgstr "Käyttö"
+
+msgid "Used Physical Memory"
+msgstr "käytetty fyysinen muisti"
+
+msgid "Used Physical Memory Percentage"
+msgstr "% fyysistä muistia käytössä"
+
+msgid "Used Space"
+msgstr "käytetty tila"
+
+msgid "Used Swap Memory"
+msgstr "käytetty sivutusmuisti"
+
+msgid "Used Swap Memory Percentage"
+msgstr "Käytetyn sivutusmuistin osuus"
+
+msgid "User Usage"
+msgstr "Käyttäjäkäyttö"
+
+msgid "Video Memory Used"
+msgstr "käytetty näyttömuisti"
+
+msgid "Video Usage"
+msgstr "Näytön käyttö"
+
+msgid "Wait Usage"
+msgstr "Odotuskäyttö"
+
+msgid "Window System"
+msgstr "Ikkunointijärjestelmä"
+
+msgid "Write Rate"
+msgstr "Kirjoitusnopeus"
+
+############################################
+# GOOGLE DASHBOARD
+############################################
+
+msgid "Inbox"
+msgstr "Saapuneet"
+
+msgid "Sent"
+msgstr "Lähetetyt"
+
+msgid "Drafts"
+msgstr "Luonnokset"
+
+msgid "Junk"
+msgstr "Roskaposti"
+
+msgid "Trash"
+msgstr "Roskakori"
+
+msgid "Archive"
+msgstr "Arkisto"
+
+msgid "Folders"
+msgstr "Kansiot"
+
+msgid "From"
+msgstr "Lähettäjä"
+
+msgid "To"
+msgstr "Vastaanottaja"
+
+msgid "Subject"
+msgstr "Aihe"
+
+msgid "Date"
+msgstr "Päiväys"
+
+msgid "Bcc"
+msgstr "Piilokopiot"
+
+msgid "Cc"
+msgstr "Kopiot"
+
+msgid "Priority"
+msgstr "Prioriteetti"
+
+msgid "Message"
+msgstr "Viesti"
+
+msgid "Attachment"
+msgstr "Liite"
+
+msgid "Attachments"
+msgstr "Liitteet"
+
+msgid "Attachment Properties"
+msgstr "Liitteen ominaisuudet"
+
+msgid "Reply"
+msgstr "Vastaa"
+
+msgid "Reply to All"
+msgstr "Vastaa kaikille"
+
+msgid "Forward"
+msgstr "Välitä"
+
+msgid "Attach a file"
+msgstr "Liitä tiedosto viestiin"
+
+msgid "Compose Message"
+msgstr "Uusi viesti"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "Close"
+msgstr "Sulje"
+
+msgid "Account"
+msgstr "Tili"
+
+msgid "Accounts"
+msgstr "Tilit"
+
+msgid "Folder"
+msgstr "Kansio"
+
+msgid "Search"
+msgstr "Etsi"
+
+msgid "Labels"
+msgstr "Merkinnät"
+
+msgid "Show"
+msgstr "Näytä"
+
+msgid "Delete"
+msgstr "Poista"
+
+msgid "Calendar"
+msgstr "Kalenteri"
+
+msgid "Event"
+msgstr "Tapahtuma"
+
+msgid "Events"
+msgstr "Tapahtumat"
+
+msgid "Meeting"
+msgstr "Kokous"
+
+msgid "Appointment"
+msgstr "Tapaaminen"
+
+msgid "Today"
+msgstr "Tänään"
+
+msgid "Day"
+msgstr "Päivä"
+
+msgid "Week"
+msgstr "Viikko"
+
+msgid "Month"
+msgstr "Kuukausi"
+
+msgid "Year"
+msgstr "Vuosi"
+
+msgid "Tasks"
+msgstr "Tehtävät"
+
+msgid "Task"
+msgstr "Tehtävä"
+
+msgid "Start"
+msgstr "Alkaa"
+
+msgid "End"
+msgstr "Loppu"
+
+msgid "All day:"
+msgstr "Koko päivä:"
+
+msgid "Summary"
+msgstr "Yhteenveto"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Location"
+msgstr "Sijainti"
+
+msgid "Details"
+msgstr "Tiedot"
+
+msgid "Reminders"
+msgstr "Muistutukset"
+
+msgid "Busy"
+msgstr "Varattu"
+
+msgid "Free"
+msgstr "Vapaa"
+
+msgid "Private"
+msgstr "Henkilökohtainen"
+
+msgid "Public"
+msgstr "Julkinen"
+
+msgid "Recurring"
+msgstr "Toistuva"
+
+msgid "Recurrence"
+msgstr "Toistuvuus"
+
+msgid "Categories"
+msgstr "Ryhmät"
+
+msgid "Notes"
+msgstr "Muistio"
+
+msgid "New"
+msgstr "Uusi"
+
+msgid "Delete Task"
+msgstr "Poista tehtävä"
+
+msgid "Export"
+msgstr "Vie"
+
+msgid "Print…"
+msgstr "Tulosta…"
+
+msgid "Undo"
+msgstr "Kumoa"
+
+msgid "Previous"
+msgstr "Edellinen"
+
+msgid "Next"
+msgstr "Seuraava"
+
+msgid "Monday"
+msgstr "Maanantai"
+
+msgid "Tuesday"
+msgstr "Tiistai"
+
+msgid "Wednesday"
+msgstr "Keskiviikko"
+
+msgid "Thursday"
+msgstr "Torstai"
+
+msgid "Friday"
+msgstr "Perjantai"
+
+msgid "Saturday"
+msgstr "Lauantai"
+
+msgid "Sunday"
+msgstr "Sunnuntai"
+
+msgid "January"
+msgstr "Tammikuu"
+
+msgid "February"
+msgstr "Helmikuu"
+
+msgid "March"
+msgstr "Maaliskuu"
+
+msgid "April"
+msgstr "Huhtikuu"
+
+msgid "May"
+msgstr "Toukokuu"
+
+msgid "June"
+msgstr "Kesäkuu"
+
+msgid "July"
+msgstr "Heinäkuu"
+
+msgid "August"
+msgstr "Elokuu"
+
+msgid "September"
+msgstr "Syyskuu"
+
+msgid "October"
+msgstr "Lokakuu"
+
+msgid "November"
+msgstr "Marraskuu"
+
+msgid "December"
+msgstr "Joulukuu"
+
+msgid "Yes"
+msgstr "Kyllä"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "Cancel"
+msgstr "Peru"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Error"
+msgstr "Virhe"
+
+msgid "Warning"
+msgstr "Varoitus"
+
+msgid "Open"
+msgstr "Avaa"
+
+msgid "Load"
+msgstr "Lataa"
+
+msgid "Status"
+msgstr "Tila"
+
+msgid "Offline"
+msgstr "Offline-tilassa"
+
+msgid "Done"
+msgstr "Valmis"
+
+msgid "Completed"
+msgstr "Valmis"
+
+msgid "Unread Messages"
+msgstr "Lukemattomat viestit"
+
+msgid "Important"
+msgstr "Tärkeä"
+
+msgid "Flagged"
+msgstr "Merkitty"
+
+msgid "Category"
+msgstr "Luokka"
+
+msgid "Label"
+msgstr "Merkintä"
+
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+msgid "Loading"
+msgstr "Ladataan"
+
+msgid "Updated"
+msgstr "Päivitetty"
+
+msgid "Refresh"
+msgstr "Päivitä"
+
+msgid "Preferences"
+msgstr "Asetukset"
+
+msgid "Attendee"
+msgstr "Osallistuja"
+
+msgid "Attendees"
+msgstr "Osallistujat"
+
+msgid "Tentative"
+msgstr "Alustava"
+
+msgid "Free/Busy"
+msgstr "Vapaa/Varattu"
+
+msgid "Timezone"
+msgstr "Aikavyöhyke"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Daily"
+msgstr "Päivittäin"
+
+msgid "Weekly"
+msgstr "Viikoittain"
+
+msgid "Holiday"
+msgstr "Lomapäivä"
+
+msgid "Birthday"
+msgstr "Syntymäpäivä"
+
+msgid "Anniversary"
+msgstr "Vuosipäivä"
+
+msgid "Out of Office"
+msgstr "Poissa toimistolta"
+
+msgid "Yesterday"
+msgstr "Eilen"
+
+msgid "Now"
+msgstr "Nyt"
+
+msgid "Task List"
+msgstr "Tehtävälista"
+
+msgid "To Do"
+msgstr "Tehtävä"
+
+msgid "Due date"
+msgstr "Päättymispäivä"
+
+msgid "Assigned"
+msgstr "Annettu tehtäväksi"
+
+msgid "Overdue Tasks"
+msgstr "Vanhentuneet tehtävät"
+
+msgid "Remove"
+msgstr "Poista"
+
+msgid "Clear All"
+msgstr "Tyhjennä merkki"
+
+msgid "Size"
+msgstr "Koko"
+
+msgid "Username:"
+msgstr "Käyttäjätunnus:"
+
+msgid "Accept meeting request"
+msgstr "Hyväksy kokouspyyntö"
+
+msgid "Decline meeting request"
+msgstr "Kieltäydy kokouspyynnöstä"
+
+msgid "Accepted"
+msgstr "Hyväksytty"
+
+msgid "Declined"
+msgstr "Hylätty"
+
+msgid "Forward message"
+msgstr "Välitetty viesti"
+
+msgid "Address"
+msgstr "Osoite"
+
+msgid "Email"
+msgstr "Sähköposti"
+
+msgid "Due"
+msgstr "Päättyy"
+
+msgid "Due Date:"
+msgstr "Päättymispäivä:"
+
+msgid "Complete"
+msgstr "Valmis"
+
+msgid "Completed Tasks"
+msgstr "Valmistuneet tehtävät"
+
+msgid "Contact"
+msgstr "Yhteystieto"
+
+msgid "Contacts"
+msgstr "Yhteystiedot"
+
+msgid "Phone"
+msgstr "Puhelin"
+
+msgid "Fax"
+msgstr "Fax"
+
+msgid "Work"
+msgstr "Työ"
+
+msgid "Home"
+msgstr "Koti"
+
+msgid "Other"
+msgstr "Muut"
+
+msgid "Company"
+msgstr "Yritys"
+
+msgid "High"
+msgstr "Korkea"
+
+msgid "Low"
+msgstr "Matala"
+
+msgid "Website"
+msgstr "Verkkosivusto"
+
+msgid "Recent"
+msgstr "Viimeisimmät"
+
+msgid "Reminder"
+msgstr "Muistutus"
+
+msgid "Starred"
+msgstr "Tähdellä merkitty"
+
+msgid "Star"
+msgstr "Tähti"
+
+msgid "Mute"
+msgstr "Mykistä"
+
+msgid "Snooze"
+msgstr "Torkku"
+
+msgid "Snoozed"
+msgstr "Torkutettu"
+
+msgid "Promotions"
+msgstr "Tarjoukset"
+
+msgid "Updates"
+msgstr "Päivitykset"
+
+msgid "Social"
+msgstr "Sosiaaliset"
+
+msgid "Forums"
+msgstr "Foorumit"
+
+msgid "Primary"
+msgstr "Ensisijainen"
+
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
+msgid "Sign out"
+msgstr "Kirjaudu ulos"
+
+msgid "Settings"
+msgstr "Asetukset"
+
+msgid "No new mail"
+msgstr "Ei uutta sähköpostia"
+
+msgid "No messages"
+msgstr "Ei viestejä"
+
+msgid "Last updated"
+msgstr "Päivitetty viimeksi"
+
+msgid "Retry"
+msgstr "Yritä uudelleen"
+
+msgid "Connected"
+msgstr "Yhdistetty"
+
+msgid "Disconnected"
+msgstr "Ei yhteyttä"
+
+msgid "Sync"
+msgstr "Synkronointi"
+
+msgid "No upcoming events"
+msgstr "Ei tulevia tapahtumia"
+
+msgid "Nothing scheduled"
+msgstr "Ei aikataulutettua"
+
+msgid "Mark all as read"
+msgstr "Merkitse kaikki luetuiksi"
+
+msgid "Agenda"
+msgstr "Esityslista"
+
+msgid "All Mail"
+msgstr "Kaikki sähköposti"
+
+msgid "Move to"
+msgstr "Siirrä kohteeseen"
+
+msgid "Due today"
+msgstr "Erääntyy tänään"
+
+msgid "Overdue"
+msgstr "Myöhässä"
+
+msgid "Incomplete"
+msgstr "Keskeneräinen"
+
+msgid "Add task"
+msgstr "Lisää tehtävä"
+
+msgid "New task"
+msgstr "Uusi tehtävä"
+
+msgid "Edit task"
+msgstr "Muokkaa tehtävää"
+
+msgid "Task details"
+msgstr "Tehtävän tiedot"
+
+msgid "Task list"
+msgstr "Tehtävälista"
+
+msgid "To Do list"
+msgstr "Tehtävälista"
+
+msgid "Subtasks"
+msgstr "Alitehtävät"
+
+msgid "Medium"
+msgstr "Keskitaso"
+
+msgid "Priority: High"
+msgstr "Prioriteetti: Korkea"
+
+msgid "Priority: Medium"
+msgstr "Prioriteetti: Keski"
+
+msgid "Priority: Low"
+msgstr "Prioriteetti: Matala"
+
+msgid "Mark complete"
+msgstr "Merkitse tehdyksi"
+
+msgid "Full name"
+msgstr "Koko nimi"
+
+msgid "First name"
+msgstr "Etunimi"
+
+msgid "Last name"
+msgstr "Sukunimi"
+
+msgid "Mobile"
+msgstr "Matkapuhelin"
+
+msgid "Job title"
+msgstr "Työnimike"
+
+msgid "Email address"
+msgstr "Sähköpostiosoite"
+
+msgid "Drive"
+msgstr "Asema"
+
+msgid "Storage"
+msgstr "Tallennus"
+
+msgid "Used"
+msgstr "Käytetty"
+
+msgid "Quota"
+msgstr "Kiintiö"
+
+msgid "Upload"
+msgstr "Lataa"
+
+msgid "Download"
+msgstr "Lataa"
+
+msgid "Recent files"
+msgstr "Viimeisimmät tiedostot"
+
+msgid "Shared with me"
+msgstr "Jaettu kanssani"
+
+msgid "My Drive"
+msgstr "Oma Drive"
+
+msgid "Folder size"
+msgstr "Kansion koko"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Videos"
+msgstr "Videot"
+
+msgid "Channel"
+msgstr "Kanava"
+
+msgid "Channels"
+msgstr "Kanavat"
+
+msgid "Subscription"
+msgstr "Tilaus"
+
+msgid "Subscriptions"
+msgstr "Tilaukset"
+
+msgid "Views"
+msgstr "Katselut"
+
+msgid "Uploads"
+msgstr "Lataukset"
+
+msgid "Latest"
+msgstr "Uusimmat"
+
+msgid "Watch"
+msgstr "Katso"
+
+msgid "Playlists"
+msgstr "Soittolistat"
+
+msgid "Comments"
+msgstr "Kommentit"
+
+msgid "Meeting code"
+msgstr "Kokouskoodi"
+
+msgid "Join"
+msgstr "Liity"
+
+msgid "Join now"
+msgstr "Liity nyt"
+
+msgid "Ongoing"
+msgstr "Käynnissä"
+
+msgid "Ended"
+msgstr "Päättynyt"
+
+msgid "History"
+msgstr "Historia"
+
+msgid "Past calls"
+msgstr "Aiemmat puhelut"
+
+msgid "Leave"
+msgstr "Poistu"
+
+msgid "Participants"
+msgstr "Osallistujat"
+
+msgid "Pin"
+msgstr "Kiinnitä"
+
+msgid "Pinned"
+msgstr "Kiinnitetty"
+
+msgid "Checklist"
+msgstr "Tarkistuslista"
+
+msgid "Space"
+msgstr "Tila"
+
+msgid "Spaces"
+msgstr "Tilat"
+
+msgid "Direct message"
+msgstr "Suora viesti"
+
+msgid "Direct messages"
+msgstr "Suorat viestit"
+
+msgid "Mentions"
+msgstr "Maininnat"
+
+msgid "Thread"
+msgstr "Ketju"
+
+msgid "Threads"
+msgstr "Ketjut"
+
+msgid "Group chat"
+msgstr "Ryhmäkeskustelu"
+
+msgid "Reaction"
+msgstr "Reaktio"
+
+msgid "React"
+msgstr "Reagoi"
+

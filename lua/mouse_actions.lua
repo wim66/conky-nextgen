@@ -4,21 +4,33 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+mouse_actions.lua — view-switching and hover helpers (support module)
+
+Support module loaded by the engine (via require.lua). It defines the
+global functions that widget layouts bind to mouse events: switching
+between widget views and highlighting / restoring group backgrounds
+when the pointer enters or leaves a group.
+]]--
 
 --{{{
--- mouse_actions.lua — Mouse event action functions
--- switch_view(v)            — switch to a view (global function)
--- view_toggle(v)            — toggle between a view and the previous one
--- on_hover_group(event)     — hover highlight: white border, 3px
--- on_leave_group(event)     — restore group background
+-- ## Mouse actions support module
 --
--- Left click: hit_test → click_view / click
--- Mouse leave: restore main view
+-- Not a standalone widget. Provides global view-switching and hover
+-- callbacks: switch_view sets the current view, view_toggle flips
+-- between two views while remembering the previous one, and the
+-- hover/leave handlers temporarily highlight the border of the group
+-- under the pointer.
 --
--- Configurable in widget.lua (edited by the designer):
---   MOUSE_HOVER_IN_GROUP_ACTION = on_hover_group
---   MOUSE_HOVER_LEAVE_GROUP_ACTION = on_leave_group
---   MOUSE_LEAVE_ACTION = function() switch_view("main") end
+-- **Exposed/global functions:**
+-- - `switch_view(v)` — sets the global current_view
+-- - `view_toggle(v)` — toggles to v, or back to the previous view
+-- - `on_hover_group(event)` — highlights the group border on hover
+-- - `on_leave_group(event)` — restores the group background on leave
+--
+-- **Config/globals used:**
+-- `current_view` and `_previous_view` (module-local) — view state
+-- `modify_group_background()` / `restore_group_background()` — group styling helpers
 --}}}
 
 function switch_view(v)

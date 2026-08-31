@@ -4,36 +4,30 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/rings.lua — Draws circular ring gauges in sector, smooth, dot, or polygon mode
+
+Supports auto-computed sector sizes with configurable gaps and an alarm
+colour that overrides the foreground when the value exceeds the maximum.
+]]--
 
 --{{{
--- draw/rings.lua — Ring gauges: segmented, smooth arc, dot or polygon mode
--- draw_one_ring(cr, s) → { x, y, w, h }
---     Draw a circular gauge for a Conky value (e.g. ${cpu}). Supports
---     segmented rings (sectors), smooth arcs, dot and polygon modes, with
---     configurable start/end angles and an alarm color at high values.
---     Returns the ring's bounding box.
+-- ## Rings
 --
--- Parameters:
---   x, y, radius, thickness, start_angle, end_angle
---   sectors, sector_size, sides
---   mode = "ring"|"smooth"|"dot"|"polygon"
---   max, alarm_color, alarm_alpha
---   value → "${cpu 1}" / name + arg
---   fg, bg
+-- Renders a circular gauge around a centre point. The ring can be divided
+-- into discrete sectors, drawn as a smooth arc, as dots, or as polygons.
+-- When the measured value exceeds `max`, the alarm colour is applied to all
+-- sectors. Reversed angle spans (end < start) sweep the short arc correctly.
 --
--- Gap between sectors is always auto-computed (like bars):
---   (span - sectors * sector_size) / (sectors - 1)   when sector_size is set
---   0                                                   otherwise
+-- **Exposed/global functions:**
+-- - `draw_one_ring(cr, s0)` — Draws a single ring gauge and returns `{x, y, w, h}`.
 --
--- Example:
---   draw[#draw+1] = {
---       type = "ring",
---       x = 160, y = 50, radius = 35, thickness = 5,
---       value = "${cpu}", max = 100,
---       sectors = 12, mode = "smooth",
---       fg = { { 0.0, "#7aa2f7", 1 }, { 1.0, "#bb9af7", 1 } },
---       bg = { { 1, "#333333", 0.5 } },
---   }
+-- **Config/globals used:**
+-- - `conky_window` — checked for early-exit guard.
+-- - `draw_get_value()` — fetches the numeric value to display.
+-- - `normalize_with_suffix()` — parses human-readable suffixes.
+-- - `get_color_from_list()` — resolves gradient color-stop lists to RGBA.
+-- - `hex_to_rgba()` — converts the alarm hex colour to RGBA.
 --}}}
 
 local RING_DEFAULT = {

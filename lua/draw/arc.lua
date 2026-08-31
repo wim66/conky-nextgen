@@ -2,21 +2,24 @@
 --  Conky NextGen Framework
 --  Author: István Molnár
 --  GitHub: https://github.com/molnari811023/conky-nextgen
+--  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/arc.lua — Draws a segmented semicircular arc gauge via Cairo
+
+The arc is rendered as a series of line segments along the upper half of a
+circle and optionally includes a horizontal baseline.
+]]--
 
 --{{{
--- draw/arc.lua — Simple semicircle arc drawer
--- draw_arc(cr, m) → { x, y, w, h }
+-- ## Arc
 --
--- Parameters:
---   cx, cy        — center of the semicircle
---   r             — radius
---   segments      — line segments (default 20)
---   arc_color     — arc line color (default "#a1a9b1")
---   arc_alpha     — arc alpha (default 0.4)
---   arc_width     — arc line width (default 2)
---   horizon       — draw horizon line (default true)
---   horizon_color — horizon line color (default "#4a4d52")
+-- Renders a semicircular arc gauge divided into discrete segments using Cairo
+-- path operations. An optional horizon line is drawn across the arc diameter.
+-- A JSON-style config table merges user options over ARC_DEFAULT before drawing.
+--
+-- **Exposed/global functions:**
+-- - `draw_arc(cr, m)` — Draws a semicircular arc gauge and returns its bounding box `{x, y, w, h}`.
 --}}}
 
 local ARC_DEFAULT = {

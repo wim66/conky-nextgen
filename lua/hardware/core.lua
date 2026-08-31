@@ -4,35 +4,31 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
-
+--[[[
+lua/hardware/core.lua — Shared utilities: caching, sysfs readers, DMI access, sensor parsing, and update counters.
+]]--
 --{{{
--- hardware/core.lua — Core utilities: DMI, cache, shell calls, NVIDIA XML
--- Shared by all hardware modules (battery, dmi, info, mtp, network,
--- sensors, usb). Provides pread(), cached(), dmi().
--- Callable from Conky:
---   conky_updates_repo()  → "5 packages"
---     Number of pending package updates from the distro repos, as a
---     human-readable string (e.g. "5 packages"). Fetched in the
---     background by sh/ and cached. Use in a text widget.
---   conky_updates_aur()   → "3 packages"
---     Pending AUR updates, same format as conky_updates_repo().
+-- ## Core Utilities Module
 --
--- Helper functions (used by hardware modules):
---   cached(key, interval, f)  → cached value (TTL-based)
---   pread(cmd)                → string (shell output, timeout 10s)
---   read_file(path)           → string
---   read_num(path)            → number
---   has_cmd(cmd)              → bool
---   dmi(field)                → string (/sys/class/dmi/id/)
---   parse_num(v)              → number
---   starts_with(str, prefix)  → bool
---   get_sensor_val(pattern)   → number
---     Extract a number from the output of `sensors` matching the given
---     Lua pattern (e.g. "Package id 0:%s+%+(%d+%.?%d*)°C"). Used by
---     hardware/sensors.lua; returns 0 when no match is found.
---   get_root_device(map, name) → table
---     Find a device entry by name inside the lsblk JSON map; returns the
---     entry table or nil. Used by hardware/usb.lua.
+-- Provides foundational helpers used by every other hardware module: a
+-- time-based cache (`cached`), sysfs/proc file readers (`read_file`,
+-- `read_num`), DMI field lookup via `/sys/class/dmi/id/`, raw `sensors`
+-- output parsing, a generic `pread` wrapper, and pacman update counters
+-- read from a temp file.
+--
+-- **Exposed/global functions:**
+-- - `parse_num(v)` — extracts the first numeric value from a string
+-- - `dmi(field)` — reads a DMI field from sysfs (cached)
+-- - `get_sensor_val(pattern)` — matches a pattern against raw `sensors` output and returns a number
+-- - `get_root_device(map, name)` — walks a parent map to find the root block device
+-- - `cached(key, interval, f)` — time-based memoization wrapper
+-- - `pread(cmd)` — runs a shell command with a 10 s timeout, returns trimmed output
+-- - `read_num(path)` — reads a file and extracts the first integer
+-- - `conky_updates_repo()` — returns the number of pending repo packages
+-- - `conky_updates_aur()` — returns the number of pending AUR packages
+--
+-- **Config/globals used:**
+-- `static`, `chassis_map`, `cache`, `read_file()` (defined in core/utils.lua), `lfs`
 --}}}
 
 static = {}

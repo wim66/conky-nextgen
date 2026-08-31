@@ -5,24 +5,28 @@
 #  GitHub: https://github.com/molnari811023/conky-nextgen
 #  Description: Modular Conky UI framework (Lua engine + Bash backend)
 #}}}
-
 #{{{
-# all_in_one.sh — Standalone monolithic fetcher (no source dependencies)
+# ## all_in_one — combined weather, alerts and maps fetcher
 #
-# Combines all fetch functions into a single script. Use this when you
-# don't want to source individual modules from 0_fetch_all.sh.
+# Standalone script that embeds its own copy of the shared helpers
+# (log, require_cmds, User-Agent setup, curl_cmd, urlencode) and bundles the
+# weather, alerts and maps fetch routines into one file. It does not source
+# 0_common.sh; paths and TMP_DIR are computed locally.
 #
-# Usage: ./all_in_one.sh [mode] [arguments]
-#   all                  weather + alerts + maps (default)
-#   weather [city]       weather + air + sun + moon
-#   alerts               MeteoAlarm alerts
-#   map [zoom]           map tiles (zoom 5-7)
-#   [city name]          shorthand for weather
+# **What it does:**
+# - Builds a persisted User-Agent under ~/.config/conky-nextgen
+#   (auto-generated without a TTY, prompted otherwise)
+# - fetch_weather(): geocoding + Open-Meteo forecast/air-quality + Yr
+#   sun/moon → $TMP_DIR/city.json, weather_data.json, airquality.json,
+#   sun.json, moon.json, moon_next.json
+# - fetch_alerts(): MeteoAlarm feed → $TMP_DIR/alerts.xml
+# - fetch_maps(): ImageMagick 3x3 tile stitch → $TMP_DIR/osm_big.png,
+#   temp_big.png, rain_big.png, wind_big.png
+# - Dispatches by first argument: all / weather / alerts / map / <city>
 #
-# Requires: curl, jq, python3
-# Output: same as individual fetch modules
+# **Environment/requirements:** requires curl, jq, python3 and ImageMagick;
+# optional WEATHER_LANG
 #}}}
-
 DEBUG=1
 log() { [ "$DEBUG" -eq 1 ] && echo "$@"; }
 require_cmds() { local m=0; for c in "$@"; do command -v "$c" >/dev/null 2>&1 || { echo "[error] Missing: $c"; m=1; }; done; [ "$m" -eq 1 ] && exit 1; }
@@ -119,8 +123,6 @@ fetch_weather() {
     # log "[met] metnorway_raw.json"
     # curl_cmd "https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${lat}&lon=${lon}" >"$TMP_DIR/metnorway_raw.json.tmp" || { rm -f "$TMP_DIR/metnorway_raw.json.tmp"; log "[warn] MET Norway download failed"; }
     # [ -s "$TMP_DIR/metnorway_raw.json.tmp" ] && mv "$TMP_DIR/metnorway_raw.json.tmp" "$TMP_DIR/metnorway_raw.json" || { rm -f "$TMP_DIR/metnorway_raw.json.tmp"; log "[warn] MET Norway empty response"; }
-
-    log "[sw] all done"
 }
 
 # -------------------------------------------------------------------

@@ -5,20 +5,35 @@
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 -- edited by wim66
 --}}}
+--[[[
+require.lua — central module loader for the ConkyNextGen engine
+
+Single registration point for every module the engine needs: the
+external Lua libraries (cairo, rsvg, imlib2, lfs, dkjson), the core
+modules (theme, translation, drawing, capture, groups, mouse), the
+weather, hardware and nowplaying modules, an optional google module
+set and every draw.* renderer. A widget root file calls
+require("require") right after setting package.path so the dependency
+order stays in one place.
+]]--
 
 --{{{
--- require.lua — Central module loader
--- Load order (important!):
--- 1. C libraries: cairo, rsvg, imlib2, lfs, dkjson
--- 2. Core: theme_engine (themes come from the THEMES block in widget.lua),
---    translate, utils, draw_core, mouse_actions, mouse
--- 4. Hardware: core, battery, dmi, info, mtp, network, sensors, usb
--- 5. Extra: nowplaying
--- 6. Draw: icon_theme, hyphen, background, text, bar, graph, image, svg, clock, calendar, lines, rings
+-- ## Central module loader
 --
--- Debug files are in debug/ folder:
---   debug/debug_weather.lua    — weather module dump (requires tmp/ data)
---   debug/debug_hardware.lua   — hardware module dump (real values)
+-- Central require() hub (not a widget). Orders and registers all
+-- engine modules: system libraries, core rendering, mouse handling,
+-- weather data, hardware sensors, nowplaying, optional google data and
+-- every draw.* renderer. The hyphen renderer is kept in the global
+-- `hyphen`. The google modules are loaded under pcall so layouts that
+-- lack the lua/google path entry stay unaffected.
+--
+-- **Exposed/global functions:**
+-- (none defined; registers modules only)
+--
+-- **Config/globals used:**
+-- `cairo`, `rsvg`, `imlib2`, `lfs`, `json` — bound system libraries
+-- `hyphen` — draw.hyphen module exposed globally
+-- `pcall(require, "google.core")` — optional google loading guard
 --}}}
 
 cairo = require("cairo")
@@ -60,6 +75,15 @@ require("hardware.usb")
 
 -- ═══ EXTRAS ═══
 require("nowplaying")
+
+-- ═══ GOOGLE ═══
+-- The google modules need tmp/ JSONs (from sh/fetch_google.sh) and the
+-- lua/google/?.lua path entry. Loaded with pcall so configs that don't
+-- include that path (e.g. some secondary widgets) stay unaffected.
+local ok_google, _ = pcall(require, "google.core")
+if ok_google then
+	require("google.data")
+end
 
 -- ═══ DRAW MODULES ═══
 require("draw.icon_theme")

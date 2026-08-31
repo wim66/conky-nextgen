@@ -4,19 +4,34 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/weather/weather_icons.lua — Computes icon file paths for weather, moon, and wind states
+
+Builds the full file path to the icon image representing the current/hourly/daily weather (WMO
+code + day/night variant), the moon phase (synodic index + hemisphere suffix), and wind
+conditions (speed color + compass direction).
+]]--
 
 --{{{
--- weather/weather_icons.lua — Icon path builders
--- Generates PNG paths for weather, moon, and wind icons.
--- Uses shared functions from weather/core.lua.
+-- ## Weather Icons Module
 --
--- Callable from Conky:
---   conky_icon_current_weather() → "/path/to/100d.png"
---   conky_icon_hour_weather(i)   → "/path/to/3n.png"
---   conky_icon_day_weather(i)    → "/path/to/61d.png"
---   conky_icon_moon()            → "/path/to/4n.png"
---   conky_icon_current_wind()    → "/path/to/green_ne.png"
---   conky_icon_hour_wind(i)      → "/path/to/yellow_sw.png"
+-- Constructs icon image paths used by the Conky ${image} templates. Weather icons are named by
+-- WMO code plus a "d"/"n" day/night suffix under `ICON_BASE`/`ICON_THEME`. The moon icon uses
+-- the computed synodic phase (0–8) plus a hemisphere suffix derived from latitude. Wind icons
+-- combine a speed color with the compass direction code; calm conditions use a "no_wind" icon.
+--
+-- **Exposed/global functions:**
+-- - `conky_icon_current_weather()` — current conditions icon path
+-- - `conky_icon_hour_weather(i)` — hourly conditions icon path
+-- - `conky_icon_day_weather(i)` — daily conditions icon path (always day variant)
+-- - `conky_icon_moon()` — moon phase icon path
+-- - `conky_icon_current_wind()` — current wind icon path
+-- - `conky_icon_hour_wind(i)` — hourly wind icon path
+--
+-- **Config/globals used:**
+-- `ICON_BASE`, `ICON_THEME`, `MOON_ICON_BASE`, `WIND_ICON_BASE`, `W.weather`, `W.city`,
+-- `safe_num()`, `moon_phase_fraction()`, `wind_color()`, `get_wind_dir_code()`, `get_idx()`,
+-- and the `conky_weather_*` / `conky_city_lat` accessors
 --}}}
 
 --{{{

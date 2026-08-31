@@ -4,48 +4,30 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/core/theme_engine.lua — theme resolution and per-widget default/color application
+
+Holds the THEMES table and DEFAULT_THEME. apply_theme(item) selects the
+item's theme (or DEFAULT_THEME), resolves gradient-name strings in color
+fields to actual gradient stop lists, and fills in any missing widget fields
+from the theme's per-type defaults.
+]]--
 
 --{{{
--- core/theme_engine.lua — Theme resolution engine
--- THEMES table + apply_theme() + resolve_theme() + resolve_gradient()
--- Theme definitions live in widget.lua (the inline THEMES = {...} block,
--- defined before the modules are loaded and picked up here).
+-- ## Theme Engine
 --
--- Functions:
---   resolve_theme(name)   → theme table (nil name → DEFAULT_THEME)
---     Look up a theme by name in the global THEMES table. Passing nil
---     returns the DEFAULT_THEME ("theme"). The returned table holds
---     palette / gradients / defaults which color-fill draw items.
---   resolve_gradient(theme_name, gradient_name) → stops or nil
---     Return the named gradient stop list from a theme, or nil when the
---     theme or gradient does not exist. Used to expand fg/bg/… color
---     references in widget.lua.
---   apply_theme(item)     → fills in missing color fields from theme
---     Mutates a draw item in place: every color/stop field that is a
---     string (e.g. "text_value") is resolved against the active theme,
---     and missing fields are filled from the theme defaults.
+-- Resolves an item's theme and applies it before drawing. apply_theme(item)
+-- looks up the theme by the item's `.theme` name (falling back to
+-- DEFAULT_THEME), maps color-field strings that name a theme-defined
+-- gradient to their real stop lists, and back-fills per-widget-type default
+-- values for any field the item has not already set.
 --
--- Globals:
---   THEMES        — { name = { palette, gradients, defaults }, ... }
---   DEFAULT_THEME — "theme" (overridable)
+-- **Exposed/global functions:**
+-- - `apply_theme(item)` — apply theme defaults and resolve gradient color fields for a widget item
 --
--- Usage (widget.lua):
---   draw[#draw+1] = {
---       type = "bar",
---       value = "${cpu}",
---       width = 240, height = 12,
---       -- colors auto-filled from the "theme" theme
---   }
---
---   draw[#draw+1] = {
---       type = "text",
---       text = "Hello",
---       color = "text_value",  -- gradient name resolved from theme
---   }
-
--- ═══ THEME TABLE ═══
--- Populated from the THEMES block at the top of widget.lua. The or-{}
--- keeps widget.lua's definitions (loaded before this file) intact.
+-- **Config/globals used:**
+-- - `THEMES` — theme table keyed by name, each with optional `gradients` and `defaults`
+-- - `DEFAULT_THEME` — theme name used when an item does not name one
 --}}}
 
 THEMES = THEMES or {}

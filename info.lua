@@ -4,17 +4,31 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+info.lua — system information widget (OS, kernel, uptime, updates)
+
+Root-level widget layout for the ConkyNextGen system. It bootstraps the
+script (script_dir, package.path, JSON_PATH, icon globals), declares
+the THEMES theme, registers draw items for OS distribution, kernel,
+uptime, desktop session and repo/AUR update counts, then loads the
+engine via require("require") and initializes groups.
+]]--
 
 --{{{
---  widget.lua — Widget data (generated/edited by sh/designer/main.py)
---  Loaded directly by Conky (lua_load = 'widget.lua'). Structure:
---    Global paths / config (formerly settings.lua)
---    DEFAULT_THEME / _PADDING — global settings
---    draw[#draw + 1] = { ... }        — draw items (background, clock, bar, ...)
---    _GROUPS = { { name, views } }    — item groups (view switching)
---    _VIEWS  = { { name } }           — view definitions
---    MOUSE_*_ACTION = ...             — mouse event callbacks
---    Bootstrap (formerly init.lua)    — loads the modules, inits the groups
+-- ## System information widget
+--
+-- Reports the OS release (lsb_release), kernel, uptime, desktop
+-- session and available repo/AUR updates in a single "main" view.
+--
+-- **Exposed/global functions:**
+-- (none defined in this file)
+--
+-- **Config/globals used:**
+-- `script_dir`, `package.path`, `JSON_PATH`, `ICON_BASE`, `ICON_THEME`,
+-- `MOON_ICON_BASE`, `WIND_ICON_BASE`, `draw`, `THEMES`, `DEFAULT_THEME`,
+-- `_PADDING`, `_GROUPS`, `_VIEWS`, `_MOUSE_ENABLED`
+-- `${lua conky_updates_repo}` / `${lua conky_updates_aur}` — update providers
+-- `require("require")` and `init_groups(_GROUPS)` — bootstraps the system
 --}}}
 
 ------------------------------------------------------------

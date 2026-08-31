@@ -4,30 +4,27 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
+--[[[
+lua/draw/clock.lua — Draws an analogue clock face with hands, ticks, and numbers
+
+The clock reads the current time from os.date each frame. Hour/minute/second
+hand lengths are proportional to the configured radius.
+]]--
 
 --{{{
--- draw/clock.lua — Analog clock face with hands, ticks, numbers
--- draw_clock(cr, opts) → { x, y, w, h }
---     Draw an analog clock at (x, y) with a configurable radius: minute
---     and hour ticks, numbers around the rim, and hour/minute/second
---     hands plus a center dot. Options toggle ticks/numbers/seconds.
---     Returns the clock's bounding box.
+-- ## Clock
 --
--- Parameters:
---   x, y, radius
---   show_ticks, show_numbers, show_seconds
---   tick_width_hour, tick_width_minute, number_size, number_radius
---   hour_hand_width, minute_hand_width, second_hand_width, center_radius
---   bg, border, tick_color, number_color, hour_color, minute_color, second_color, center_color
+-- Renders a complete analogue clock: a filled circular face, optional tick
+-- marks (60 minute ticks + 12 bolder hour ticks), optional hour numbers, and
+-- hour/minute/second hands whose angles are derived from the current system
+-- time. A small centre dot caps the hands.
 --
--- Example:
---   draw[#draw+1] = {
---       type = "clock",
---       x = 160, y = 50, radius = 40,
---       show_seconds = true,
---   }
-
--- Pre-allocated Cairo struct (reused every tick to avoid binding leak)
+-- **Exposed/global functions:**
+-- - `draw_clock(cr, o)` — Draws an analogue clock face and returns `{x, y, w, h}`.
+--
+-- **Config/globals used:**
+-- - `conky_window` — checked for early-exit guard.
+-- - `get_color_from_list()` — resolves gradient color-stop lists to RGBA for every element.
 --}}}
 
 local _clock_ext = cairo_text_extents_t:create()
