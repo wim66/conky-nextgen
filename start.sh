@@ -10,6 +10,8 @@
    cd "$HOME/.conky/conky-nextgen"
    conky -c "$HOME/.conky/conky-nextgen/info.conf" &
    cd "$HOME/.conky/conky-nextgen"
+   conky -c "$HOME/.conky/conky-nextgen/google.conf" &
+   cd "$HOME/.conky/conky-nextgen"
    conky -c "$HOME/.conky/conky-nextgen/mem_swap.conf" &
    cd "$HOME/.conky/conky-nextgen"
    conky -c "$HOME/.conky/conky-nextgen/network.conf" &

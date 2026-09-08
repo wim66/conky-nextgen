@@ -82,9 +82,62 @@ THEMES         = {
             },
         },
     },
+
+    slot = {
+        -- primary/secondary/highlight/success live in .gradients only —
+        -- resolve_gradient() (lua/core/theme_engine.lua) is what
+        -- color = "primary" etc. actually resolve through, and it only
+        -- ever looks in THEMES[theme].gradients, never .palette. Having
+        -- them in both was dead duplication (the .palette copies were
+        -- never consulted by anything).
+        palette = {
+            bg_dark = "#202326",
+            bg_mid = "#292c30",
+            bg_light = "#31363c",
+            fg = "#fcfcfc",
+            fg_dim = "#a1a9b1",
+            blue = "#3daee9",
+            green = "#27ae60",
+            yellow = "#f67400",
+            red = "#da4453",
+        },
+        gradients = {
+            primary = { { 1, "#E7660B", 1 } },
+            secondary = { { 1, "#FAAD3E", 1 } },
+            highlight = { { 1, "#DCE142", 1 } },
+            success = { { 1, "#42E147", 1 } },
+        },
+        defaults = {
+            background = {
+                bg = { { 1, "#151d2b", 1 } },
+                border = { { 0.00, "#8899EE", 1 }, { 0.50, "#ece5ff", 1 }, { 1.00, "#8899EE", 1 } },
+                border_width = 2,
+            },
+            bar = {
+                fg = { { 1, "#3daee9", 1 } },
+                bg = { { 1, "#3a3d41", 1 } },
+            },
+            line = {
+                fg = { { 1, "#a1a9b1", 1 } },
+            },
+            graph = {
+                fg = { { 1, "#3daee9", 1 } },
+                bg = { { 1, "#3a3d41", 1 } },
+                border = { { 1, "#4a4d52", 1 } },
+                grid_color = { { 1, "#31363c", 1 } },
+            },
+            ring = {
+                fg = { { 1, "#3daee9", 1 } },
+                bg = { { 1, "#3a3d41", 1 } },
+            },
+            text = {
+                color = { { 1, "#fcfcfc", 1 } },
+            },
+        },
+    },
 }
 
-DEFAULT_THEME  = "theme"
+DEFAULT_THEME  = "slot"
 _PADDING       = 10
 
 -- Background box

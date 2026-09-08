@@ -46,8 +46,8 @@ THEMES = {
         },
         defaults = {
             background = {
-                bg = { { 1, "#202326", 0.9 } },
-                border = { { 1, "#4a4d52", 1 } },
+                bg = { { 1, "#151d2b", 1 } },
+                border = { { 0.00, "#8899EE", 1 }, { 0.50, "#ece5ff", 1 }, { 1.00, "#8899EE", 1 } },
                 border_width = 2,
             },
             text = {

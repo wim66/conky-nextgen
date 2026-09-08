@@ -42,6 +42,7 @@ local TEXT_DEFAULT = {
     align = "left",
     text = "",
     wrap_width = nil,
+    max_width = nil,
     wrap_dic = nil,
     -- color: provided by the theme via apply_theme()
 }
@@ -96,6 +97,35 @@ function draw_text(cr, opts)
     local weight = (cfg.weight == "bold") and CAIRO_FONT_WEIGHT_BOLD or CAIRO_FONT_WEIGHT_NORMAL
     cairo_select_font_face(cr, cfg.font, slant, weight)
     cairo_set_font_size(cr, cfg.size)
+
+    if cfg.max_width and cfg.max_width > 0 then
+        local ellipsis = "..."
+        local original_ext = _text_ext
+        cairo_text_extents(cr, txt, original_ext)
+        local original_width = original_ext.width
+        local ellipsis_ext = _text_ext
+        cairo_text_extents(cr, ellipsis, ellipsis_ext)
+        if ellipsis_ext.width > cfg.max_width then
+            txt = ""
+        else
+            local visible = ""
+            local visible_width = 0
+            for char in txt:gmatch(utf8.charpattern) do
+                local candidate = visible .. char
+                local candidate_ext = _text_ext
+                cairo_text_extents(cr, candidate .. ellipsis, candidate_ext)
+                if candidate_ext.width > cfg.max_width then
+                    break
+                end
+                visible = candidate
+                visible_width = candidate_ext.width
+            end
+            if visible_width < original_width then
+                txt = visible .. ellipsis
+            end
+        end
+    end
+
     local x = cfg.x
     local y = cfg.y
     if x == "center" then

@@ -110,6 +110,8 @@ keys are embedded in the config.
 # First-time setup (once)
 gog auth login --client default
 export GOG_KEYRING_BACKEND=file GOG_KEYRING_PASSWORD=conky-google-dashboard
+# Optional when more than one Google account is stored:
+export GOG_ACCOUNT=you@example.com
 
 # Fetch all Google data into tmp/ (JSON)
 bash sh/0_fetch_all.sh google

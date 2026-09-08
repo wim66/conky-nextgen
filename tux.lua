@@ -4,31 +4,17 @@
 --  GitHub: https://github.com/molnari811023/conky-nextgen
 --  Description: Modular Conky UI framework (Lua engine + Bash backend)
 --}}}
---[[[
-info.lua — system information widget (OS, kernel, uptime, updates)
-
-Root-level widget layout for the ConkyNextGen system. It bootstraps the
-script (script_dir, package.path, JSON_PATH, icon globals), declares
-the THEMES theme, registers draw items for OS distribution, kernel,
-uptime, desktop session and repo/AUR update counts, then loads the
-engine via require("require") and initializes groups.
-]]--
 
 --{{{
--- ## System information widget
---
--- Reports the OS release (lsb_release), kernel, uptime, desktop
--- session and available repo/AUR updates in a single "main" view.
---
--- **Exposed/global functions:**
--- (none defined in this file)
---
--- **Config/globals used:**
--- `script_dir`, `package.path`, `JSON_PATH`, `ICON_BASE`, `ICON_THEME`,
--- `MOON_ICON_BASE`, `WIND_ICON_BASE`, `draw`, `THEMES`, `DEFAULT_THEME`,
--- `_PADDING`, `_GROUPS`, `_VIEWS`, `_MOUSE_ENABLED`
--- `${lua conky_updates_repo}` / `${lua conky_updates_aur}` — update providers
--- `require("require")` and `init_groups(_GROUPS)` — bootstraps the system
+--  widget.lua — Widget data (generated/edited by sh/designer/main.py)
+--  Loaded directly by Conky (lua_load = 'widget.lua'). Structure:
+--    Global paths / config (formerly settings.lua)
+--    DEFAULT_THEME / _PADDING — global settings
+--    draw[#draw + 1] = { ... }        — draw items (background, clock, bar, ...)
+--    _GROUPS = { { name, views } }    — item groups (view switching)
+--    _VIEWS  = { { name } }           — view definitions
+--    MOUSE_*_ACTION = ...             — mouse event callbacks
+--    Bootstrap (formerly init.lua)    — loads the modules, inits the groups
 --}}}
 
 ------------------------------------------------------------
@@ -49,11 +35,6 @@ JSON_PATH      = script_dir .. "tmp/"
 
 draw = {}
 
-
-ICON_BASE      = script_dir .. "icons/"
-ICON_THEME     = "default"
-MOON_ICON_BASE = script_dir .. "icons/moon/"
-WIND_ICON_BASE = script_dir .. "icons/wind/"
 
 --{{{
 -- THEMES — Theme definitions (palette, gradients, widget defaults).
@@ -112,39 +93,8 @@ THEMES = {
                 fg = { { 1, "#3daee9", 1 } },
                 bg = { { 1, "#3a3d41", 1 } },
             },
-            line = {
-                fg = { { 1, "#a1a9b1", 1 } },
-            },
-            graph = {
-                fg = { { 1, "#3daee9", 1 } },
-                bg = { { 1, "#3a3d41", 1 } },
-                border = { { 1, "#4a4d52", 1 } },
-                grid_color = { { 1, "#31363c", 1 } },
-            },
-            ring = {
-                fg = { { 1, "#3daee9", 1 } },
-                bg = { { 1, "#3a3d41", 1 } },
-            },
             text = {
-                color = { { 1, "#fcfcfc", 1 } },
-            },
-            clock = {
-                bg = { { 1, "#31363c", 1 } },
-                border = { { 1, "#4a4d52", 1 } },
-                tick_color = { { 1, "#a1a9b1", 1 } },
-                number_color = { { 1, "#fcfcfc", 1 } },
-                hour_color = { { 1, "#fcfcfc", 1 } },
-                minute_color = { { 1, "#3daee9", 1 } },
-                second_color = { { 1, "#f67400", 1 } },
-                center_color = { { 1, "#3daee9", 1 } },
-            },
-            calendar = {
-                color_month = { { 1, "#fcfcfc", 1 } },
-                color_weekdays = { { 1, "#a1a9b1", 1 } },
-                color_days = { { 1, "#a1a9b1", 1 } },
-                color_today = { { 1, "#3daee9", 1 } },
-                color_outside = { { 1, "#4a4d52", 1 } },
-                color_weeknums = { { 1, "#3daee9", 1 } },
+                color = { { 1, "#a1a9b1", 1 } },
             },
         },
     },
@@ -187,7 +137,7 @@ THEMES = {
                 bg = { { 1, "#3a3d41", 1 } },
             },
             text = {
-                color = { { 1, "#d9d9d9", 1 } },
+                color = { { 1, "#fcfcfc", 1 } },
             },
             clock = {
                 bg = { { 1, "#31363c", 1 } },
@@ -214,6 +164,8 @@ THEMES = {
 DEFAULT_THEME = "slot"
 _PADDING = 10
 
+require("require")
+
 draw[#draw + 1] = {
     type = "background",
     x = 0,
@@ -224,129 +176,21 @@ draw[#draw + 1] = {
 }
 
 draw[#draw + 1] = {
-    type = "text",
-    x = 10,
+    type = "image",
+    x = 20,
     y = 10,
-    font = "Mono",
-    size = 12,
-    text = "Os:",
-
+    width = 48,
+    height = 100,
+    path = "/home/willem/.conky/conky-nextgen/images/archlinux-logo-dark.png",
 }
 
 draw[#draw + 1] = {
-    type = "text",
-    x = 330,
-    y = 10,
-    font = "Mono",
-    size = 12,
-    text = "${execpi 3600 lsb_release -ds | tr -d '\"'}",
-    align = "right",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 10,
-    y = 25,
-    font = "Mono",
-    size = 12,
-    text = "Kernel:",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 330,
-    y = 25,
-    font = "Mono",
-    size = 12,
-    text = "${kernel}",
-    align = "right",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 10,
-    y = 40,
-    font = "Mono",
-    size = 12,
-    text = "Uptime:",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 330,
-    y = 40,
-    font = "Mono",
-    size = 12,
-    text = "${uptime_short}",
-    align = "right",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 10,
-    y = 55,
-    font = "Mono",
-    size = 12,
-    text = "Desktop session:",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 330,
-    y = 55,
-    font = "Mono",
-    size = 12,
-    text = "${execpi 3600 echo $DESKTOP_SESSION/$XDG_SESSION_TYPE}",
-    align = "right",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 10,
-    y = 70,
-    font = "Mono",
-    size = 12,
-    text = "Repo updates:",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 330,
-    y = 70,
-    font = "Mono",
-    size = 12,
-    text = "${lua conky_updates_repo}",
-    align = "right",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 10,
-    y = 85,
-    font = "Mono",
-    size = 12,
-    text = "Aur updates:",
-
-}
-
-draw[#draw + 1] = {
-    type = "text",
-    x = 330,
-    y = 85,
-    font = "Mono",
-    size = 12,
-    text = "${lua conky_updates_aur}",
-    align = "right",
-
+    type = "image",
+    x = 80,
+    y = 130,
+    width = 0,
+    height = 200,
+    path = "/home/willem/.conky/conky-nextgen/images/tux.png",
 }
 
 
@@ -367,30 +211,10 @@ _VIEWS = {
 --                     caps_lock=bool, num_lock=bool }
 ------------------------------------------------------------
 
-_MOUSE_ENABLED = true
+_MOUSE_ENABLED = false
 
 
 ------------------------------------------------------------
--- Bootstrap (formerly init.lua): load the modules, then
--- initialize the item groups.
+-- Bootstrap (formerly init.lua): initialize the item groups.
 ------------------------------------------------------------
-------------------------------------------------------------
--- Package-updates refresh hook — called via ${lua conky_updates_check}
--- in conky.text. Uses script_dir (portable: resolves to wherever this
--- .lua file itself was loaded from, independent of the launcher's cwd
--- or the user's home directory) so it works for any user/clone/launcher.
-------------------------------------------------------------
-local UPDATES_CHECK_INTERVAL = 1800  -- seconds (30 min)
-local last_updates_check = 0
-
-function conky_updates_check()
-    local now = os.time()
-    if now - last_updates_check > UPDATES_CHECK_INTERVAL then
-        last_updates_check = now
-        os.execute(script_dir .. "sh/updates.sh >/dev/null 2>&1 &")
-    end
-    return ""
-end
-
-require("require")
 init_groups(_GROUPS)

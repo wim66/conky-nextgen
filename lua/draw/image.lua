@@ -117,11 +117,11 @@ function draw_png(cr, m)
     local sw = c.crop and (c.crop.w or (iw - crop_x)) or iw
     local sh = c.crop and (c.crop.h or (ih - crop_y)) or ih
 
-    if c.width and not c.height then
-        if sw > 0 then c.height = c.width * (sh / sw) end
-    elseif c.height and not c.width then
+    -- Altijd de breedte automatisch berekenen op basis van de ingestelde hoogte en aspect ratio
+    if c.height then
         if sh > 0 then c.width = c.height * (sw / sh) end
     end
+    
     local w = c.width or sw
     local h = c.height or sh
 
