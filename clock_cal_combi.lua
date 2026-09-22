@@ -133,9 +133,9 @@ THEMES = {
                 color = { { 1, "#fcfcfc", 1 } },
             },
             clock = {
-                bg = { { 1, "#31363c", 1 } },
-                border = { { 1, "#4a4d52", 1 } },
-                tick_color = { { 1, "#a1a9b1", 1 } },
+                bg = { { 1, "#2f384a", 1 } },
+                border = { { 1, "#8899EE", 1 } },
+                tick_color = { { 1, "#ece5ff", 1 } },
                 number_color = { { 1, "#fcfcfc", 1 } },
                 hour_color = { { 1, "#fcfcfc", 1 } },
                 minute_color = { { 1, "#3daee9", 1 } },

@@ -295,7 +295,7 @@ draw[#draw + 1] = {
     grid = true,
     grid_steps = 5,
     grid_color = { { 1, "#aaaaaa", 1 } },
-    autoscale = true,
+    autoscale = false,
 }
 
 -- Detect actual logical CPU count instead of assuming a fixed number —
